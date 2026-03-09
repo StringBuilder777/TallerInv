@@ -1,0 +1,532 @@
+---
+interface Props {
+    title?: string;
+    description?: string;
+}
+const {
+    title = "Instituto Tecnológico de Saltillo – Laboratorios",
+    description = "Portal oficial de los laboratorios del Instituto Tecnológico de Saltillo.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="description" content={description} />
+        <title>{title}</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Apply saved theme before first paint to avoid flash -->
+        <script is:inline>
+            (function () {
+                const t = localStorage.getItem("its-theme") || "light";
+                document.documentElement.setAttribute("data-theme", t);
+            })();
+        </script>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <div class="logo-icon">ITS</div>
+                    <div class="logo-text">
+                        <span class="logo-title">Instituto Tecnológico</span>
+                        <span class="logo-subtitle">de Saltillo</span>
+                    </div>
+                </a>
+                <div class="header-right">
+                    <nav class="nav">
+                        <a href="/" class="nav-link">Inicio</a>
+                        <a href="/sistemas" class="nav-link">Sistemas</a>
+                        <a href="/fisica" class="nav-link">Física</a>
+                        <a href="/quimica" class="nav-link">Química</a>
+                    </nav>
+                    <button
+                        class="theme-btn"
+                        id="theme-btn"
+                        aria-label="Cambiar tema"
+                    >
+                        <!-- Moon: visible in light mode -->
+                        <svg
+                            class="icon-moon"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                            ></path>
+                        </svg>
+                        <!-- Sun: visible in dark mode -->
+                        <svg
+                            class="icon-sun"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"
+                            ></line>
+                            <line
+                                x1="18.36"
+                                y1="18.36"
+                                x2="19.78"
+                                y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line
+                                x1="4.22"
+                                y1="19.78"
+                                x2="5.64"
+                                y2="18.36"></line>
+                            <line
+                                x1="18.36"
+                                y1="5.64"
+                                x2="19.78"
+                                y2="4.22"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <slot />
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Blvd. Venustiano Carranza #2400</p>
+                    <p>Col. Tecnológico, Saltillo, Coahuila</p>
+                    <p>Tel: (844) 123-4567</p>
+                    <p>Email: laboratorios@its.edu.mx</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <p><a href="/reglamento">Reglamento</a></p>
+                    <p><a href="/certificaciones">Certificaciones</a></p>
+                    <p><a href="/eventos">Eventos</a></p>
+                    <p><a href="/buzon">Buzón de Sugerencias</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horarios</h3>
+                    <p>Lunes a Viernes: 7:00 - 21:00 hrs</p>
+                    <p>Sábado: 8:00 - 14:00 hrs</p>
+                    <p>Domingo: Cerrado</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2024 Instituto Tecnológico de Saltillo. Todos los
+                    derechos reservados.
+                </p>
+            </div>
+        </footer>
+
+        <script>
+            const btn = document.getElementById("theme-btn");
+            const html = document.documentElement;
+            btn?.addEventListener("click", () => {
+                const next =
+                    html.getAttribute("data-theme") === "dark"
+                        ? "light"
+                        : "dark";
+                html.setAttribute("data-theme", next);
+                localStorage.setItem("its-theme", next);
+            });
+        </script>
+
+        <style is:global>
+            /* ── THEME VARIABLES ──────────────────────────────────────── */
+            :root {
+                /* Page & surfaces */
+                --bg-page: #f8fafc;
+                --bg-card: #ffffff;
+                --bg-surface: #f1f5f9;
+
+                /* Text */
+                --text-primary: #0f172a;
+                --text-secondary: #475569;
+                --text-muted: #94a3b8;
+
+                /* Border & shadow */
+                --border: #e2e8f0;
+                --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.07);
+                --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+                --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.12);
+
+                /* Brand */
+                --primary-color: #1e3a8a;
+                --primary-dark: #1e40af;
+                --accent-color: #3b82f6;
+                --secondary-color: #f59e0b;
+
+                /* Legacy aliases kept for [lab].astro compatibility */
+                --text-dark: #0f172a;
+                --text-light: #475569;
+                --bg-light: #f1f5f9;
+                --white: #ffffff;
+                --border-color: #e2e8f0;
+            }
+
+            [data-theme="dark"] {
+                --bg-page: #060d1a;
+                --bg-card: #0f1929;
+                --bg-surface: #1a2540;
+
+                --text-primary: #e2e8f0;
+                --text-secondary: #94a3b8;
+                --text-muted: #64748b;
+
+                --border: #1e2d45;
+                --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+                --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.35);
+                --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.5);
+
+                --primary-color: #3b82f6;
+                --primary-dark: #2563eb;
+                --accent-color: #60a5fa;
+                --secondary-color: #fbbf24;
+
+                /* Legacy aliases overridden for dark mode */
+                --text-dark: #e2e8f0;
+                --text-light: #94a3b8;
+                --bg-light: #1a2540;
+                --white: #0f1929;
+                --border-color: #1e2d45;
+            }
+
+            /* ── BASE ────────────────────────────────────────────────── */
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Inter", system-ui, sans-serif;
+                color: var(--text-primary);
+                background: var(--bg-page);
+                line-height: 1.6;
+                transition:
+                    background-color 0.3s,
+                    color 0.3s;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-family: "Poppins", sans-serif;
+                font-weight: 600;
+            }
+
+            /* ── HEADER ──────────────────────────────────────────────── */
+            .header {
+                background: linear-gradient(
+                    135deg,
+                    rgba(6, 13, 26, 0.97) 0%,
+                    rgba(30, 58, 138, 0.95) 100%
+                );
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+
+            .header-content {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 0.9rem 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .header-right {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 0.85rem;
+                text-decoration: none;
+            }
+
+            .logo-icon {
+                width: 44px;
+                height: 44px;
+                background: linear-gradient(135deg, #f59e0b, #d97706);
+                border-radius: 11px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+                font-size: 1rem;
+                color: white;
+                font-family: "Poppins", sans-serif;
+                box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+                flex-shrink: 0;
+            }
+
+            .logo-text {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .logo-title {
+                font-weight: 700;
+                font-size: 0.95rem;
+                color: white;
+                line-height: 1.2;
+            }
+
+            .logo-subtitle {
+                font-weight: 400;
+                font-size: 0.78rem;
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            .nav {
+                display: flex;
+                gap: 0.15rem;
+            }
+
+            .nav-link {
+                color: rgba(255, 255, 255, 0.8);
+                text-decoration: none;
+                padding: 0.45rem 0.85rem;
+                border-radius: 8px;
+                font-weight: 500;
+                font-size: 0.88rem;
+                transition: all 0.25s;
+            }
+
+            .nav-link:hover {
+                color: white;
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            /* ── THEME TOGGLE ────────────────────────────────────────── */
+            .theme-btn {
+                width: 38px;
+                height: 38px;
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                background: rgba(255, 255, 255, 0.07);
+                color: rgba(255, 255, 255, 0.8);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.25s;
+                flex-shrink: 0;
+            }
+
+            .theme-btn:hover {
+                background: rgba(255, 255, 255, 0.15);
+                color: white;
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+
+            .icon-sun {
+                display: none;
+            }
+
+            [data-theme="dark"] .icon-sun {
+                display: block;
+            }
+
+            [data-theme="dark"] .icon-moon {
+                display: none;
+            }
+
+            /* ── MAIN ────────────────────────────────────────────────── */
+            main {
+                min-height: calc(100vh - 300px);
+            }
+
+            /* ── FOOTER ──────────────────────────────────────────────── */
+            .footer {
+                background: #030916;
+                color: white;
+                margin-top: 4rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.04);
+            }
+
+            .footer-content {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 3rem 2rem;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 2rem;
+            }
+
+            .footer-section h3 {
+                color: #f59e0b;
+                margin-bottom: 1rem;
+                font-size: 0.95rem;
+                font-weight: 700;
+            }
+
+            .footer-section p {
+                color: rgba(255, 255, 255, 0.5);
+                margin-bottom: 0.4rem;
+                font-size: 0.88rem;
+            }
+
+            .footer-section a {
+                color: rgba(255, 255, 255, 0.5);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+            .footer-section a:hover {
+                color: #f59e0b;
+            }
+
+            .footer-bottom {
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                padding: 1.25rem 2rem;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.28);
+                font-size: 0.82rem;
+            }
+
+            /* ── UTILITIES ───────────────────────────────────────────── */
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                color: var(--text-primary);
+                margin-bottom: 0.75rem;
+                text-align: center;
+                letter-spacing: -0.02em;
+            }
+
+            .section-subtitle {
+                text-align: center;
+                color: var(--text-secondary);
+                font-size: 1.05rem;
+                margin-bottom: 3rem;
+            }
+
+            .card {
+                background: var(--bg-card);
+                border-radius: 16px;
+                padding: 2rem;
+                box-shadow: var(--shadow-md);
+                transition:
+                    transform 0.3s,
+                    box-shadow 0.3s;
+            }
+
+            .card:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .btn {
+                display: inline-block;
+                padding: 0.75rem 1.5rem;
+                border-radius: 8px;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.3s;
+                cursor: pointer;
+                border: none;
+                font-size: 1rem;
+            }
+
+            .btn-primary {
+                background: var(--primary-color);
+                color: white;
+            }
+
+            .btn-primary:hover {
+                background: var(--primary-dark);
+                transform: translateY(-2px);
+            }
+
+            .btn-secondary {
+                background: var(--secondary-color);
+                color: white;
+            }
+
+            .btn-secondary:hover {
+                background: #d97706;
+                transform: translateY(-2px);
+            }
+
+            /* ── SCROLL ANIMATIONS ───────────────────────────────────── */
+            .fade-up {
+                opacity: 0;
+                transform: translateY(28px);
+                transition:
+                    opacity 0.65s ease,
+                    transform 0.65s ease;
+            }
+
+            .fade-up.in-view {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* ── RESPONSIVE ──────────────────────────────────────────── */
+            @media (max-width: 768px) {
+                .header-content {
+                    flex-direction: column;
+                    gap: 0.6rem;
+                    padding: 0.75rem 1.25rem;
+                }
+
+                .header-right {
+                    width: 100%;
+                    justify-content: space-between;
+                }
+
+                .nav {
+                    flex-wrap: wrap;
+                }
+
+                .nav-link {
+                    padding: 0.35rem 0.7rem;
+                    font-size: 0.82rem;
+                }
+            }
+        </style>
+    </body>
+</html>

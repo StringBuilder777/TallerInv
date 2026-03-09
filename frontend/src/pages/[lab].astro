@@ -1,0 +1,1543 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { laboratorios, getLabBySlug } from "../data/laboratorios";
+
+export function getStaticPaths() {
+    return laboratorios.map((lab) => ({ params: { lab: lab.slug } }));
+}
+
+const { lab: slug } = Astro.params;
+const lab = getLabBySlug(slug!)!;
+
+const sections = [
+    { id: "practicas", label: "Prácticas", group: "Académico" },
+    { id: "horario", label: "Horario", group: "Académico" },
+    { id: "aulas", label: "Salas", group: "Académico" },
+    { id: "carreras", label: "Carreras", group: "Académico" },
+    { id: "mision", label: "Misión y Visión", group: "Institucional" },
+    { id: "objetivos", label: "Objetivos", group: "Institucional" },
+    { id: "valores", label: "Valores", group: "Institucional" },
+    { id: "historia", label: "Historia", group: "Institucional" },
+    { id: "organizacion", label: "Organización", group: "Recursos" },
+    { id: "equipo", label: "Equipamiento", group: "Recursos" },
+    { id: "certificaciones", label: "Certificaciones", group: "Actividades" },
+    { id: "eventos", label: "Eventos", group: "Actividades" },
+    { id: "concursos", label: "Concursos", group: "Actividades" },
+    { id: "congresos", label: "Congresos", group: "Actividades" },
+    { id: "reglamento", label: "Reglamento", group: "Info" },
+    { id: "ubicacion", label: "Ubicación", group: "Info" },
+    { id: "contacto", label: "Contacto", group: "Info" },
+    { id: "buzon", label: "Buzón", group: "Info" },
+];
+---
+
+<Layout title={`${lab.nombre} – ITS`} description={lab.descripcionCorta}>
+
+    <!-- ═══════════════════════════════════════════════════════════ HERO -->
+    <section class="lab-hero" style={`--c: ${lab.color}; --cs: ${lab.colorSecundario}`}>
+        <canvas class="lab-canvas" id="lab-canvas"></canvas>
+        <div class="hero-grid-bg"></div>
+        <div class="hero-orb ho-1"></div>
+        <div class="hero-orb ho-2"></div>
+
+        <div class="hero-inner">
+            <a href="/" class="back-link">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M19 12H5M12 5l-7 7 7 7"></path>
+                </svg>
+                Todos los laboratorios
+            </a>
+
+            <div class="hero-tag">ITS Saltillo</div>
+            <h1 class="hero-name">{lab.nombre}</h1>
+            <p class="hero-desc">{lab.descripcionCorta}</p>
+
+            <div class="hero-stats">
+                <div class="hstat">
+                    <span class="hstat-n">{lab.practicas.length}</span>
+                    <span class="hstat-l">Prácticas</span>
+                </div>
+                <div class="hstat-sep"></div>
+                <div class="hstat">
+                    <span class="hstat-n">{lab.equipo.length}</span>
+                    <span class="hstat-l">Equipos</span>
+                </div>
+                <div class="hstat-sep"></div>
+                <div class="hstat">
+                    <span class="hstat-n">{lab.aulas.length}</span>
+                    <span class="hstat-l">Salas</span>
+                </div>
+                <div class="hstat-sep"></div>
+                <div class="hstat">
+                    <span class="hstat-n">{lab.carreras.length}</span>
+                    <span class="hstat-l">Carreras</span>
+                </div>
+            </div>
+
+            <div class="hero-pills">
+                <span class="hpill">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    {lab.horario.lunesViernes}
+                </span>
+                <span class="hpill">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    {lab.contacto.responsable}
+                </span>
+                <span class="hpill">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    {lab.contacto.email}
+                </span>
+            </div>
+        </div>
+
+        <!-- Scroll hint -->
+        <div class="hero-scroll-hint">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════ TAB NAV -->
+    <nav class="tab-nav" id="tab-nav">
+        <!-- Row 1: group pills -->
+        <div class="nav-groups">
+            <div class="ng-inner">
+                {groups.map((g, gi) => (
+                    <button
+                        class={`group-btn${gi === 0 ? ' active' : ''}`}
+                        data-group={g}
+                        style={`--c: ${lab.color}`}
+                    >
+                        {g}
+                    </button>
+                ))}
+            </div>
+        </div>
+        <!-- Row 2: section tabs for active group -->
+        <div class="nav-sections">
+            <div class="ns-inner">
+                {groups.map((g, gi) => (
+                    <div class={`section-row${gi === 0 ? ' active' : ''}`} data-group={g}>
+                        {sections
+                            .filter((s) => s.group === g)
+                            .map((s, si) => (
+                                <button
+                                    class={`tab-btn${gi === 0 && si === 0 ? ' active' : ''}`}
+                                    data-target={s.id}
+                                    style={`--c: ${lab.color}`}
+                                >
+                                    {s.label}
+                                </button>
+                            ))}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════ PANELS -->
+    <div class="panels-area container">
+
+        <!-- PRACTICAS -->
+        <section class="panel active" id="panel-practicas">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Prácticas de laboratorio</h2>
+                <span class="badge" style={`background:${lab.color}18;color:${lab.color}`}>
+                    {lab.practicas.length} prácticas
+                </span>
+            </div>
+            <div class="practicas-grid">
+                {lab.practicas.map((p) => (
+                    <div class="practica-card" style={`--c:${lab.color}`}>
+                        <div class="p-num" style={`background:${lab.color}`}>{p.numero}</div>
+                        <div class="p-body">
+                            <h3>{p.nombre}</h3>
+                            <p>{p.descripcion}</p>
+                            <div class="p-dur">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                {p.duracion}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- HORARIO -->
+        <section class="panel" id="panel-horario">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Horario de atención</h2>
+            </div>
+            <div class="horario-cards">
+                <div class="h-card" style={`--c:${lab.color}`}>
+                    <div class="h-day">Lunes a Viernes</div>
+                    <div class="h-time">{lab.horario.lunesViernes}</div>
+                </div>
+                <div class="h-card" style={`--c:${lab.color}`}>
+                    <div class="h-day">Sábado</div>
+                    <div class="h-time">{lab.horario.sabado}</div>
+                </div>
+                <div class="h-card closed">
+                    <div class="h-day">Domingo</div>
+                    <div class="h-time">{lab.horario.domingo}</div>
+                </div>
+            </div>
+            <div class="obs-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={lab.color} stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <p>{lab.horario.observaciones}</p>
+            </div>
+        </section>
+
+        <!-- SALAS -->
+        <section class="panel" id="panel-aulas">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Salas disponibles</h2>
+            </div>
+            <div class="aulas-list">
+                {lab.aulas.map((a) => (
+                    <div class="aula-row">
+                        <div class="aula-id" style={`background:${lab.color}`}>{a.id}</div>
+                        <div class="aula-info">
+                            <strong>{a.nombre}</strong>
+                            <p>{a.descripcion}</p>
+                        </div>
+                        <div class="aula-cap">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                            </svg>
+                            {a.capacidad}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- CARRERAS Y MATERIAS -->
+        <section class="panel" id="panel-carreras">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Carreras y materias</h2>
+            </div>
+            <div class="two-col">
+                <div class="list-box">
+                    <h3 style={`color:${lab.color}`}>Carreras vinculadas</h3>
+                    <ul class="dot-list" style={`--c:${lab.color}`}>
+                        {lab.carreras.map((c) => <li>{c}</li>)}
+                    </ul>
+                </div>
+                <div class="list-box">
+                    <h3 style={`color:${lab.color}`}>Materias que usan el lab</h3>
+                    <ul class="dot-list" style={`--c:${lab.color}`}>
+                        {lab.materias.map((m) => <li>{m}</li>)}
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- MISION Y VISION -->
+        <section class="panel" id="panel-mision">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Misión y Visión</h2>
+            </div>
+            <div class="mv-grid">
+                <div class="mv-block" style={`border-left-color:${lab.color}`}>
+                    <div class="mv-label">Misión</div>
+                    <p>{lab.mision}</p>
+                </div>
+                <div class="mv-block" style={`border-left-color:${lab.color}`}>
+                    <div class="mv-label">Visión</div>
+                    <p>{lab.vision}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- OBJETIVOS -->
+        <section class="panel" id="panel-objetivos">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Objetivos</h2>
+            </div>
+            <ol class="obj-list" style={`--c:${lab.color}`}>
+                {lab.objetivos.map((o) => <li>{o}</li>)}
+            </ol>
+        </section>
+
+        <!-- VALORES -->
+        <section class="panel" id="panel-valores">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Valores institucionales</h2>
+            </div>
+            <div class="valores-grid">
+                {lab.valores.map((v, i) => (
+                    <div class="valor-tile" style={`--c:${lab.color}`}>
+                        <div class="v-num">{String(i + 1).padStart(2, "0")}</div>
+                        <p>{v}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- HISTORIA -->
+        <section class="panel" id="panel-historia">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Historia del laboratorio</h2>
+            </div>
+            <div class="historia-box" style={`border-left-color:${lab.color}`}>
+                <p>{lab.historia}</p>
+            </div>
+            <div class="ubicacion-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={lab.color} stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>{lab.ubicacion}</span>
+            </div>
+        </section>
+
+        <!-- ORGANIZACION -->
+        <section class="panel" id="panel-organizacion">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Estructura organizacional</h2>
+            </div>
+            <div class="org-tree">
+                <div class="org-jefe" style={`border-color:${lab.color}`}>
+                    <div class="org-avatar" style={`background:${lab.color}`}>
+                        {lab.organizacion.jefe.charAt(0)}
+                    </div>
+                    <div>
+                        <div class="org-role">Jefe de Laboratorio</div>
+                        <div class="org-name">{lab.organizacion.jefe}</div>
+                    </div>
+                </div>
+                <div class="org-row">
+                    <div class="org-col">
+                        <div class="org-col-title">Coordinadores</div>
+                        {lab.organizacion.coordinadores.map((c) => (
+                            <div class="org-person">
+                                <div class="org-avatar sm" style={`background:${lab.color}20;color:${lab.color}`}>
+                                    {c.charAt(0)}
+                                </div>
+                                <span>{c}</span>
+                            </div>
+                        ))}
+                    </div>
+                    <div class="org-col">
+                        <div class="org-col-title">Técnicos</div>
+                        {lab.organizacion.tecnicos.map((t) => (
+                            <div class="org-person">
+                                <div class="org-avatar sm">{t.charAt(0)}</div>
+                                <span>{t}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EQUIPO -->
+        <section class="panel" id="panel-equipo">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Equipamiento</h2>
+                <span class="badge" style={`background:${lab.color}18;color:${lab.color}`}>
+                    {lab.equipo.length} elementos
+                </span>
+            </div>
+            <div class="equipo-grid">
+                {lab.equipo.map((e) => (
+                    <div class="eq-card" style={`--c:${lab.color}`}>
+                        <div class="eq-qty" style={`background:${lab.color}`}>{e.cantidad}</div>
+                        <h4>{e.nombre}</h4>
+                        <p>{e.descripcion}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- CERTIFICACIONES -->
+        <section class="panel" id="panel-certificaciones">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Certificaciones</h2>
+            </div>
+            <div class="cert-list">
+                {lab.certificaciones.map((c) => (
+                    <div class="cert-row">
+                        <div class="cert-check" style={`color:${lab.color};border-color:${lab.color}`}>✓</div>
+                        <div class="cert-info">
+                            <strong>{c.nombre}</strong>
+                            <span class="cert-org" style={`color:${lab.color}`}>{c.organismo}</span>
+                            <p>{c.descripcion}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- EVENTOS -->
+        <section class="panel" id="panel-eventos">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Eventos</h2>
+            </div>
+            <div class="event-list">
+                {lab.eventos.map((e) => (
+                    <div class="event-row">
+                        <div class="event-date" style={`background:${lab.color}`}>{e.fecha}</div>
+                        <div class="event-info">
+                            <strong>{e.nombre}</strong>
+                            <p>{e.descripcion}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- CONCURSOS -->
+        <section class="panel" id="panel-concursos">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Concursos</h2>
+            </div>
+            <div class="event-list">
+                {lab.concursos.map((c) => (
+                    <div class="event-row">
+                        <div class="event-date nivel">{c.nivel}</div>
+                        <div class="event-info">
+                            <strong>{c.nombre}</strong>
+                            <p>{c.descripcion}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- CONGRESOS -->
+        <section class="panel" id="panel-congresos">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Congresos</h2>
+            </div>
+            <div class="event-list">
+                {lab.congresos.map((c) => (
+                    <div class="event-row">
+                        <div class="event-date nivel">{c.nivel}</div>
+                        <div class="event-info">
+                            <strong>{c.nombre}</strong>
+                            <p>{c.descripcion}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- REGLAMENTO -->
+        <section class="panel" id="panel-reglamento">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Reglamento interno</h2>
+                <span class="badge warn">Lectura obligatoria</span>
+            </div>
+            <div class="reg-list">
+                {lab.reglamento.map((r, i) => (
+                    <div class="reg-row">
+                        <div class="reg-n" style={`color:${lab.color}`}>{i + 1}</div>
+                        <p>{r}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- UBICACION -->
+        <section class="panel" id="panel-ubicacion">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Ubicación</h2>
+            </div>
+            <div class="ubic-card" style={`border-left-color:${lab.color}`}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={lab.color} stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <div>
+                    <strong>{lab.nombre}</strong>
+                    <p>{lab.ubicacion}</p>
+                    <a href="https://maps.google.com/?q=Instituto+Tecnologico+de+Saltillo" target="_blank" class="map-btn" style={`background:${lab.color}`}>
+                        Ver en Google Maps →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section class="panel" id="panel-contacto">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Contacto</h2>
+            </div>
+            <div class="contacto-grid">
+                <div class="contact-card" style={`--c:${lab.color}`}>
+                    <div class="cc-label">Responsable</div>
+                    <div class="cc-val">{lab.contacto.responsable}</div>
+                </div>
+                <div class="contact-card" style={`--c:${lab.color}`}>
+                    <div class="cc-label">Correo electrónico</div>
+                    <a href={`mailto:${lab.contacto.email}`} class="cc-val link" style={`color:${lab.color}`}>
+                        {lab.contacto.email}
+                    </a>
+                </div>
+                <div class="contact-card" style={`--c:${lab.color}`}>
+                    <div class="cc-label">Teléfono</div>
+                    <div class="cc-val">{lab.contacto.telefono}</div>
+                </div>
+                <div class="contact-card" style={`--c:${lab.color}`}>
+                    <div class="cc-label">Extensión</div>
+                    <div class="cc-val">{lab.contacto.extension}</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUZON -->
+        <section class="panel" id="panel-buzon">
+            <div class="panel-head">
+                <span class="ph-bar" style={`background:${lab.color}`}></span>
+                <h2>Buzón de sugerencias</h2>
+            </div>
+            <div class="buzon-wrap">
+                <p class="buzon-desc">{lab.buzonSugerencias}</p>
+                <div class="buzon-form">
+                    <textarea id="sug-text" placeholder="Escribe tu sugerencia aquí..." rows="5"></textarea>
+                    <div class="buzon-row">
+                        <input id="sug-name" type="text" placeholder="Tu nombre (opcional)" />
+                        <button id="sug-btn" style={`background:${lab.color}`}>Enviar sugerencia</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</Layout>
+
+<style>
+    /* ── HERO ─────────────────────────────────────────────────────── */
+    .lab-hero {
+        min-height: 65vh;
+        background: linear-gradient(
+            145deg,
+            color-mix(in srgb, var(--c) 90%, #000) 0%,
+            color-mix(in srgb, var(--c) 45%, #060d1a) 60%,
+            #060d1a 100%
+        );
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding: 6rem 0 5rem;
+    }
+
+    .lab-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    .hero-grid-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-image:
+            linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 0;
+        animation: orbDrift 9s ease-in-out infinite alternate;
+    }
+    .ho-1 {
+        width: 420px; height: 420px;
+        background: var(--c);
+        opacity: 0.18;
+        top: -100px; right: 5%;
+        animation-delay: 0s;
+    }
+    .ho-2 {
+        width: 280px; height: 280px;
+        background: var(--cs, #f59e0b);
+        opacity: 0.12;
+        bottom: -60px; left: 8%;
+        animation-delay: -4s;
+    }
+    @keyframes orbDrift {
+        from { transform: translate(0, 0) scale(1); }
+        to   { transform: translate(30px, -20px) scale(1.1); }
+    }
+
+    .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        text-align: center;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: rgba(255,255,255,0.6);
+        text-decoration: none;
+        font-size: 0.84rem;
+        margin-bottom: 2rem;
+        transition: color 0.2s;
+        letter-spacing: 0.01em;
+    }
+    .back-link:hover { color: rgba(255,255,255,0.9); }
+
+    .hero-tag {
+        display: inline-block;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: rgba(255,255,255,0.9);
+        padding: 0.3rem 1rem;
+        border-radius: 100px;
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+    }
+
+    .hero-name {
+        color: #fff;
+        font-size: clamp(2rem, 5vw, 3.4rem);
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 40px rgba(0,0,0,0.3);
+    }
+
+    .hero-desc {
+        color: rgba(255,255,255,0.72);
+        font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+        line-height: 1.7;
+        max-width: 600px;
+        margin: 0 auto 2.5rem;
+    }
+
+    /* Stats row */
+    .hero-stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.13);
+        border-radius: 16px;
+        padding: 1.25rem 2rem;
+        backdrop-filter: blur(10px);
+        max-width: 560px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hstat {
+        flex: 1;
+        min-width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+    }
+    .hstat-n {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1;
+        font-family: "Poppins", sans-serif;
+    }
+    .hstat-l {
+        font-size: 0.73rem;
+        color: rgba(255,255,255,0.55);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+    .hstat-sep {
+        width: 1px;
+        height: 40px;
+        background: rgba(255,255,255,0.15);
+        flex-shrink: 0;
+        margin: 0 1rem;
+    }
+
+    /* Pills */
+    .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+    .hpill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.18);
+        color: rgba(255,255,255,0.85);
+        padding: 0.35rem 0.9rem;
+        border-radius: 100px;
+        font-size: 0.82rem;
+        backdrop-filter: blur(8px);
+    }
+
+    /* Scroll hint */
+    .hero-scroll-hint {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        animation: bounceDown 2s ease-in-out infinite;
+    }
+    @keyframes bounceDown {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── TAB NAV ──────────────────────────────────────────────────── */
+    .tab-nav {
+        position: sticky;
+        top: 80px;
+        z-index: 100;
+        background: var(--bg-card);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    /* Row 1 – group pills */
+    .nav-groups {
+        background: var(--bg-surface);
+        border-bottom: 1px solid var(--border);
+        padding: 0.55rem 1.5rem;
+    }
+    .ng-inner {
+        display: flex;
+        gap: 0.4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+    .group-btn {
+        padding: 0.38rem 1.1rem;
+        border-radius: 100px;
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        font-size: 0.81rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-family: inherit;
+        transition: all 0.2s;
+        white-space: nowrap;
+    }
+    .group-btn:hover {
+        color: var(--text-primary);
+        border-color: var(--text-secondary);
+    }
+    .group-btn.active {
+        background: var(--c);
+        color: #fff;
+        border-color: var(--c);
+        font-weight: 600;
+        box-shadow: 0 2px 10px color-mix(in srgb, var(--c) 40%, transparent);
+    }
+
+    /* Row 2 – section tabs */
+    .nav-sections { overflow: hidden; }
+    .ns-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    .section-row {
+        display: none;
+        gap: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .section-row::-webkit-scrollbar { display: none; }
+    .section-row.active { display: flex; }
+
+    .tab-btn {
+        flex-shrink: 0;
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        padding: 0.8rem 1.05rem;
+        font-size: 0.86rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-family: inherit;
+        transition: color 0.2s, border-color 0.2s;
+        white-space: nowrap;
+        margin-bottom: -1px;
+    }
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active {
+        color: var(--c);
+        font-weight: 600;
+        border-bottom-color: var(--c);
+    }
+
+    /* ── PANELS AREA ──────────────────────────────────────────────── */
+    .panels-area {
+        padding-top: 2.5rem;
+        padding-bottom: 5rem;
+    }
+
+    .panel {
+        display: none;
+        animation: fadeIn 0.28s ease;
+    }
+    .panel.active { display: block; }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .panel-head {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        margin-bottom: 1.75rem;
+        padding-bottom: 1.1rem;
+        border-bottom: 1px solid var(--border);
+    }
+    .ph-bar {
+        display: block;
+        width: 4px;
+        height: 1.5rem;
+        border-radius: 2px;
+        flex-shrink: 0;
+    }
+    .panel-head h2 {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        margin: 0;
+        letter-spacing: -0.01em;
+        flex: 1;
+    }
+    .badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 100px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        flex-shrink: 0;
+    }
+    .badge.warn { background: #fef3c7; color: #92400e; }
+
+    /* ── PRACTICAS ────────────────────────────────────────────────── */
+    .practicas-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 1rem;
+    }
+    .practica-card {
+        display: flex;
+        gap: 1.25rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.25rem 1.5rem;
+        transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s, background 0.3s;
+    }
+    .practica-card:hover {
+        box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+        border-color: color-mix(in srgb, var(--c) 35%, transparent);
+        transform: translateX(4px);
+    }
+    .p-num {
+        flex-shrink: 0;
+        width: 42px; height: 42px;
+        border-radius: 10px;
+        color: #fff;
+        font-weight: 800;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .p-body h3 {
+        font-size: 0.97rem;
+        color: var(--text-primary);
+        margin-bottom: 0.3rem;
+    }
+    .p-body p {
+        font-size: 0.87rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+    }
+    .p-dur {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.78rem;
+        color: var(--text-secondary);
+        background: var(--bg-surface);
+        padding: 0.2rem 0.6rem;
+        border-radius: 100px;
+    }
+
+    /* ── HORARIO ──────────────────────────────────────────────────── */
+    .horario-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+    .h-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-top: 3px solid var(--c);
+        border-radius: 14px;
+        padding: 1.75rem 1.5rem;
+        text-align: center;
+        transition: background 0.3s, border-color 0.3s;
+    }
+    .h-card.closed { border-top-color: #d1d5db; opacity: 0.6; }
+    .h-day {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+    .h-time { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); }
+    .obs-box {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.65rem;
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1rem 1.25rem;
+        font-size: 0.87rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        transition: background 0.3s;
+    }
+    .obs-box svg { flex-shrink: 0; margin-top: 2px; }
+    .obs-box p { margin: 0; }
+
+    /* ── SALAS ────────────────────────────────────────────────────── */
+    .aulas-list { display: grid; gap: 0.75rem; }
+    .aula-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.1rem 1.4rem;
+        transition: background 0.3s, border-color 0.3s;
+    }
+    .aula-id {
+        flex-shrink: 0;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.8rem;
+        padding: 0.3rem 0.65rem;
+        border-radius: 7px;
+        margin-top: 2px;
+    }
+    .aula-info { flex: 1; }
+    .aula-info strong {
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        display: block;
+        margin-bottom: 0.2rem;
+    }
+    .aula-info p {
+        font-size: 0.87rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
+    .aula-cap {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        flex-shrink: 0;
+        background: var(--bg-surface);
+        padding: 0.3rem 0.7rem;
+        border-radius: 100px;
+        white-space: nowrap;
+    }
+
+    /* ── CARRERAS ─────────────────────────────────────────────────── */
+    .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+    .list-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.5rem;
+        transition: background 0.3s, border-color 0.3s;
+    }
+    .list-box h3 { font-size: 1rem; margin-bottom: 0.75rem; }
+    .dot-list { list-style: none; display: grid; gap: 0.45rem; }
+    .dot-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        padding: 0.35rem 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .dot-list li:last-child { border-bottom: none; }
+    .dot-list li::before {
+        content: "";
+        width: 7px; height: 7px;
+        border-radius: 50%;
+        background: var(--c);
+        flex-shrink: 0;
+    }
+
+    /* ── MISION/VISION ────────────────────────────────────────────── */
+    .mv-grid { display: grid; gap: 1.25rem; }
+    .mv-block {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-left: 4px solid;
+        border-radius: 14px;
+        padding: 1.5rem 1.75rem;
+        transition: background 0.3s, border-color 0.3s;
+    }
+    .mv-label {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-secondary);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    .mv-block p { color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem; margin: 0; }
+
+    /* ── OBJETIVOS ────────────────────────────────────────────────── */
+    .obj-list {
+        list-style: none;
+        counter-reset: obj;
+        display: grid;
+        gap: 0.75rem;
+    }
+    .obj-list li {
+        counter-increment: obj;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+        font-size: 0.93rem;
+        color: var(--text-primary);
+        line-height: 1.6;
+        transition: background 0.3s;
+    }
+    .obj-list li::before {
+        content: counter(obj, decimal-leading-zero);
+        color: var(--c);
+        font-weight: 800;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        line-height: 1.4;
+    }
+
+    /* ── VALORES ──────────────────────────────────────────────────── */
+    .valores-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 1rem;
+    }
+    .valor-tile {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-top: 3px solid var(--c);
+        border-radius: 14px;
+        padding: 1.35rem 1rem;
+        transition: box-shadow 0.2s, background 0.3s;
+    }
+    .valor-tile:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .v-num {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--c);
+        opacity: 0.25;
+        line-height: 1;
+        margin-bottom: 0.45rem;
+        font-family: "Poppins", sans-serif;
+    }
+    .valor-tile p { font-size: 0.88rem; color: var(--text-primary); line-height: 1.6; margin: 0; }
+
+    /* ── HISTORIA ─────────────────────────────────────────────────── */
+    .historia-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-left: 4px solid;
+        border-radius: 14px;
+        padding: 1.75rem;
+        margin-bottom: 1rem;
+        transition: background 0.3s;
+    }
+    .historia-box p { color: var(--text-secondary); line-height: 1.85; font-size: 0.95rem; margin: 0; }
+    .ubicacion-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+
+    /* ── ORGANIZACION ─────────────────────────────────────────────── */
+    .org-tree { display: grid; gap: 1.25rem; }
+    .org-jefe {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: var(--bg-card);
+        border: 2px solid;
+        border-radius: 14px;
+        padding: 1.25rem 1.5rem;
+        max-width: 520px;
+        transition: background 0.3s;
+    }
+    .org-avatar {
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        color: #fff;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+    }
+    .org-avatar.sm {
+        width: 34px; height: 34px;
+        font-size: 0.9rem;
+        background: var(--bg-surface);
+        color: var(--text-secondary);
+    }
+    .org-role { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); }
+    .org-name { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+    .org-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .org-col {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.25rem;
+        transition: background 0.3s;
+    }
+    .org-col-title {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-secondary);
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+    }
+    .org-person {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        padding: 0.35rem 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .org-person:last-child { border-bottom: none; }
+
+    /* ── EQUIPO ───────────────────────────────────────────────────── */
+    .equipo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1rem;
+    }
+    .eq-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.5rem 1.5rem 1.25rem;
+        position: relative;
+        transition: box-shadow 0.2s, background 0.3s, border-color 0.2s;
+    }
+    .eq-card:hover {
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        border-color: color-mix(in srgb, var(--c) 30%, transparent);
+    }
+    .eq-qty {
+        position: absolute;
+        top: -10px; right: 1rem;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.78rem;
+        padding: 0.2rem 0.55rem;
+        border-radius: 100px;
+    }
+    .eq-card h4 { font-size: 0.93rem; color: var(--text-primary); margin-bottom: 0.35rem; }
+    .eq-card p { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
+    /* ── CERTIFICACIONES ──────────────────────────────────────────── */
+    .cert-list { display: grid; gap: 1rem; }
+    .cert-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.25rem 1.5rem;
+        transition: background 0.3s;
+    }
+    .cert-check {
+        flex-shrink: 0;
+        width: 36px; height: 36px;
+        border: 2px solid;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+    .cert-info strong { font-size: 0.95rem; color: var(--text-primary); display: block; margin-bottom: 0.15rem; }
+    .cert-org {
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: block;
+        margin-bottom: 0.3rem;
+    }
+    .cert-info p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
+    /* ── EVENTOS / CONCURSOS / CONGRESOS ──────────────────────────── */
+    .event-list { display: grid; gap: 1rem; }
+    .event-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.25rem 1.5rem;
+        transition: background 0.3s;
+    }
+    .event-date {
+        flex-shrink: 0;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.78rem;
+        padding: 0.3rem 0.7rem;
+        border-radius: 8px;
+        white-space: nowrap;
+        margin-top: 2px;
+    }
+    .event-date.nivel { background: #6b7280; }
+    .event-info strong { font-size: 0.95rem; color: var(--text-primary); display: block; margin-bottom: 0.25rem; }
+    .event-info p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
+    /* ── REGLAMENTO ───────────────────────────────────────────────── */
+    .reg-list { display: grid; gap: 0.75rem; }
+    .reg-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+        transition: background 0.3s;
+    }
+    .reg-n { font-size: 1.3rem; font-weight: 800; flex-shrink: 0; line-height: 1.4; }
+    .reg-row p { font-size: 0.92rem; color: var(--text-primary); line-height: 1.6; margin: 0; }
+
+    /* ── UBICACION ────────────────────────────────────────────────── */
+    .ubic-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.25rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-left: 4px solid;
+        border-radius: 16px;
+        padding: 2rem;
+        transition: background 0.3s;
+    }
+    .ubic-card svg { flex-shrink: 0; margin-top: 2px; }
+    .ubic-card strong { font-size: 1rem; color: var(--text-primary); display: block; margin-bottom: 0.35rem; }
+    .ubic-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
+    .map-btn {
+        display: inline-block;
+        color: #fff;
+        text-decoration: none;
+        padding: 0.55rem 1.25rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: opacity 0.2s;
+    }
+    .map-btn:hover { opacity: 0.85; }
+
+    /* ── CONTACTO ─────────────────────────────────────────────────── */
+    .contacto-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    .contact-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-top: 3px solid var(--c);
+        border-radius: 14px;
+        padding: 1.35rem;
+        transition: background 0.3s, border-color 0.3s;
+    }
+    .cc-label {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-secondary);
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+    }
+    .cc-val { font-size: 0.97rem; font-weight: 600; color: var(--text-primary); }
+    .cc-val.link { text-decoration: none; }
+    .cc-val.link:hover { text-decoration: underline; }
+
+    /* ── BUZON ────────────────────────────────────────────────────── */
+    .buzon-wrap { max-width: 660px; }
+    .buzon-desc { color: var(--text-secondary); font-size: 0.93rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .buzon-form {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.5rem;
+        transition: background 0.3s;
+    }
+    .buzon-form textarea {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        font-family: inherit;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        background: var(--bg-surface);
+        resize: vertical;
+        margin-bottom: 0.75rem;
+        outline: none;
+        transition: border-color 0.2s, background 0.3s, color 0.3s;
+    }
+    .buzon-form textarea:focus { border-color: var(--c, #2563eb); }
+    .buzon-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .buzon-row input {
+        flex: 1;
+        min-width: 150px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 0.6rem 1rem;
+        font-family: inherit;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        background: var(--bg-surface);
+        outline: none;
+        transition: border-color 0.2s, background 0.3s, color 0.3s;
+    }
+    .buzon-row input:focus { border-color: var(--c, #2563eb); }
+    #sug-btn {
+        color: #fff;
+        border: none;
+        padding: 0.65rem 1.4rem;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        font-family: inherit;
+    }
+    #sug-btn:hover { opacity: 0.88; }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+        .lab-hero { padding: 5rem 0 4rem; }
+        .hero-inner { padding: 0 1.25rem; }
+        .hero-stats { padding: 1rem 1.25rem; gap: 0; }
+        .hstat-sep { margin: 0 0.6rem; height: 30px; }
+        .hstat-n { font-size: 1.5rem; }
+        .horario-cards { grid-template-columns: 1fr; }
+        .two-col { grid-template-columns: 1fr; }
+        .org-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+        .practicas-grid { grid-template-columns: 1fr; }
+        .practica-card { flex-direction: column; gap: 0.75rem; }
+        .aula-row { flex-wrap: wrap; }
+        .hero-stats { flex-wrap: wrap; gap: 0.75rem; }
+        .hstat-sep { display: none; }
+        .hstat { min-width: 70px; flex: none; }
+        .panels-area { padding-top: 1.5rem; }
+    }
+</style>
+
+<script>
+    // ── HERO PARTICLES ─────────────────────────────────────────────────────
+    (function () {
+        const canvas = document.getElementById("lab-canvas") as HTMLCanvasElement | null;
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d")!;
+        const N = 50, D = 110;
+        let W = 0, H = 0;
+        interface P { x: number; y: number; vx: number; vy: number; r: number; a: number; }
+        let pts: P[] = [];
+
+        function init() {
+            W = canvas!.width = canvas!.offsetWidth;
+            H = canvas!.height = canvas!.offsetHeight;
+            pts = Array.from({ length: N }, () => ({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                vx: (Math.random() - 0.5) * 0.35,
+                vy: (Math.random() - 0.5) * 0.35,
+                r: Math.random() * 1.6 + 0.4,
+                a: Math.random() * 0.45 + 0.1,
+            }));
+        }
+
+        function frame() {
+            ctx.clearRect(0, 0, W, H);
+            for (const p of pts) {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > W) p.vx *= -1;
+                if (p.y < 0 || p.y > H) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+                ctx.fill();
+            }
+            for (let i = 0; i < N; i++) {
+                for (let j = i + 1; j < N; j++) {
+                    const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+                    const d = Math.sqrt(dx * dx + dy * dy);
+                    if (d < D) {
+                        ctx.beginPath();
+                        ctx.moveTo(pts[i].x, pts[i].y);
+                        ctx.lineTo(pts[j].x, pts[j].y);
+                        ctx.strokeStyle = `rgba(255,255,255,${0.08 * (1 - d / D)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(frame);
+        }
+
+        init(); frame();
+        window.addEventListener("resize", init);
+    })();
+
+    // ── NAVIGATION ─────────────────────────────────────────────────────────
+    const groupBtns = document.querySelectorAll<HTMLButtonElement>(".group-btn");
+    const sectionRows = document.querySelectorAll<HTMLElement>(".section-row");
+    const tabBtns = document.querySelectorAll<HTMLButtonElement>(".tab-btn");
+    const panels = document.querySelectorAll<HTMLElement>(".panel");
+
+    function activatePanel(btn: HTMLButtonElement) {
+        const target = btn.dataset.target!;
+        tabBtns.forEach((b) => b.classList.remove("active"));
+        panels.forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(`panel-${target}`)?.classList.add("active");
+        btn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        const tabNav = document.getElementById("tab-nav");
+        const navBottom = (tabNav?.getBoundingClientRect().bottom ?? 0) + window.scrollY;
+        window.scrollTo({ top: navBottom - 10, behavior: "smooth" });
+    }
+
+    groupBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const group = btn.dataset.group!;
+            groupBtns.forEach((b) => b.classList.remove("active"));
+            sectionRows.forEach((r) => r.classList.remove("active"));
+            btn.classList.add("active");
+            const row = document.querySelector<HTMLElement>(`.section-row[data-group="${group}"]`);
+            row?.classList.add("active");
+            // Auto-activate first tab in the new group
+            const firstTab = row?.querySelector<HTMLButtonElement>(".tab-btn");
+            if (firstTab) activatePanel(firstTab);
+        });
+    });
+
+    tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => activatePanel(btn));
+    });
+
+    // ── BUZÓN ──────────────────────────────────────────────────────────────
+    document.getElementById("sug-btn")?.addEventListener("click", () => {
+        const ta = document.getElementById("sug-text") as HTMLTextAreaElement;
+        const btn = document.getElementById("sug-btn") as HTMLButtonElement;
+        if (ta.value.trim()) {
+            btn.textContent = "¡Enviado correctamente!";
+            btn.disabled = true;
+            ta.value = "";
+            setTimeout(() => {
+                btn.textContent = "Enviar sugerencia";
+                btn.disabled = false;
+            }, 3000);
+        } else {
+            ta.focus();
+        }
+    });
+</script>
