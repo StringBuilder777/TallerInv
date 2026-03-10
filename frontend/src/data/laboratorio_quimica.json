@@ -1,0 +1,205 @@
+{
+  "institucion": {
+    "nombre": "Instituto Tecnológico de Saltillo",
+    "red": "Tecnológico Nacional de México",
+    "departamento": "Departamento de Ciencias Básicas",
+    "mision": "Impartir educación superior tecnológica de calidad, formando de manera integral profesionales competentes, con alto sentido de responsabilidad social, sólida formación en ciencia, tecnología e innovación, que contribuyan al desarrollo sustentable del país.",
+    "vision": "Ser una institución de educación superior tecnológica reconocida nacional e internacionalmente por sus programas académicos de alta calidad, la eficiencia de sus servicios y procesos y la elevada competitividad de sus egresados que impulsen y fortalezcan el desarrollo de México.",
+    "politica_calidad_ambiental": "En el Instituto Tecnológico de Saltillo satisfacemos las necesidades de nuestros estudiantes y partes interesadas, comprometidos con el desarrollo sustentable, la prevención de la contaminación y el cumplimiento con los requisitos legales y los suscritos aplicables, a través de la mejora continua de nuestros procesos y servicios educativos."
+  },
+
+  "laboratorio": {
+    "nombre": "Laboratorio de Química",
+    "periodo": "Febrero - Junio 2026",
+
+    "horario_docentes": [
+      {
+        "hora": "7am - 8am",
+        "lunes":     "Marisol Rangel",
+        "martes":    "Norma Hernadez",
+        "miercoles": null,
+        "jueves":    null,
+        "viernes":   null
+      },
+      {
+        "hora": "8am - 9am",
+        "lunes":     null,
+        "martes":    "Norma Hernadez",
+        "miercoles": "Hilda Torres",
+        "jueves":    null,
+        "viernes":   null
+      },
+      {
+        "hora": "9am - 10am",
+        "lunes":     null,
+        "martes":    "Norma Hernadez",
+        "miercoles": "Hilda Torres",
+        "jueves":    null,
+        "viernes":   null
+      },
+      {
+        "hora": "10am - 11am",
+        "lunes":     null,
+        "martes":    null,
+        "miercoles": "Hilda Torres",
+        "jueves":    null,
+        "viernes":   null
+      },
+      {
+        "hora": "11am - 12am",
+        "lunes":     "Marisol Rangel",
+        "martes":    "Norma Hernadez",
+        "miercoles": null,
+        "jueves":    null,
+        "viernes":   null
+      },
+      {
+        "hora": "12pm - 13pm",
+        "lunes":     null,
+        "martes":    "Norma Hernadez",
+        "miercoles": null,
+        "jueves":    null,
+        "viernes":   null
+      },
+      {
+        "hora": "13pm - 14pm",
+        "lunes":     "Marisol Rangel",
+        "martes":    null,
+        "miercoles": "Alma Cazares",
+        "jueves":    "Alejandra",
+        "viernes":   null
+      },
+      {
+        "hora": "14pm - 15pm",
+        "lunes":     "Raymundo Garza",
+        "martes":    null,
+        "miercoles": "Alma",
+        "jueves":    "Alejandra",
+        "viernes":   null
+      },
+      {
+        "hora": "15pm - 16pm",
+        "lunes":     "Raymundo Garza",
+        "martes":    null,
+        "miercoles": null,
+        "jueves":    ["Alejandra", "Victor M"],
+        "viernes":   null
+      },
+      {
+        "hora": "16pm - 17pm",
+        "lunes":     "Raymundo",
+        "martes":    "Susana Aguirre",
+        "miercoles": "Alma Cazares",
+        "jueves":    ["Alejandra", "Victor M"],
+        "viernes":   null
+      },
+      {
+        "hora": "17pm - 18pm",
+        "lunes":     "Raymundo Garza",
+        "martes":    "Susana Aguirre",
+        "miercoles": "Karina Ayala",
+        "jueves":    ["Alejandra", "Victor M"],
+        "viernes":   null
+      },
+      {
+        "hora": "18pm - 19pm",
+        "lunes":     "Raymundo Garza",
+        "martes":    "Susana Aguirre",
+        "miercoles": "Karina Ayala",
+        "jueves":    null,
+        "viernes":   null
+      },
+      {
+        "hora": "19pm - 20pm",
+        "lunes":     null,
+        "martes":    "Susana Aguirre",
+        "miercoles": "Karina Ayala",
+        "jueves":    null,
+        "viernes":   null
+      },
+      {
+        "hora": "20pm - 21pm",
+        "lunes":     null,
+        "martes":    null,
+        "miercoles": "Karina Ayala",
+        "jueves":    null,
+        "viernes":   null
+      }
+    ],
+
+    "docentes": [
+      "Marisol Rangel",
+      "Norma Hernadez",
+      "Hilda Torres",
+      "Alma Cazares",
+      "Alejandra",
+      "Victor M",
+      "Raymundo Garza",
+      "Susana Aguirre",
+      "Karina Ayala"
+    ],
+
+    "reglamento": [
+      {
+        "numero": 1,
+        "titulo": "Trabajar únicamente con la supervisión del maestro",
+        "descripcion": "Su mejor protección contra accidentes es la presencia del maestro, que estará vigilando en todo momento y al existir alguna situación de peligro, será quien pueda sobre llevar de manera adecuada esta emergencia."
+      },
+      {
+        "numero": 2,
+        "titulo": "Asistir puntualmente en el horario correspondiente del laboratorio",
+        "descripcion": null
+      },
+      {
+        "numero": 3,
+        "titulo": "Usar bata obligatoriamente, y el equipo de seguridad cuando sea necesario (lentes, guante, mascarillas)",
+        "descripcion": "Con esto puedes evitar accidentes tales como salpicaduras de ácidos y álcalis, los cuales pueden causar daño permanente en diferentes partes del cuerpo y en los ojos. Se debe asistir al laboratorio con la vestimenta adecuada (pantalón o falda larga, no short, no top ni blusas de tirantes), cabello recogido y zapato cerrado."
+      },
+      {
+        "numero": 4,
+        "titulo": "Mantener el orden",
+        "descripcion": "No jugar, ni hacer bromas, para evitar accidentes."
+      },
+      {
+        "numero": 5,
+        "titulo": "No comer, beber, ni fumar",
+        "descripcion": "Podría ingerir sustancias que aún en pequeñas cantidades son tóxicas. Muchos solventes son fácilmente inflamables por el calor del cigarro."
+      },
+      {
+        "numero": 6,
+        "titulo": "No inhalar gases y vapores",
+        "descripcion": "Cuando le indique el maestro que perciba el olor de una sustancia, abanique con su mano para atraer pequeñas cantidades hacia la nariz evitando la inhalación directa."
+      },
+      {
+        "numero": 7,
+        "titulo": "No verter agua sobre el ácido",
+        "descripcion": "Si desea preparar una solución de algún ácido, vierta el ácido lentamente por las paredes del recipiente que contiene el agua."
+      },
+      {
+        "numero": 8,
+        "titulo": "Calentar correctamente las sustancias",
+        "descripcion": "Nunca caliente una sustancia en un tubo de ensayo que apunte hacia usted o hacia otra persona."
+      },
+      {
+        "numero": 9,
+        "titulo": "Revisar el material de vidrio antes y después de trabajar",
+        "descripcion": "El material no debe estar estrellado, quebrado, ni sucio."
+      },
+      {
+        "numero": 10,
+        "titulo": "Mantener limpia el área de trabajo",
+        "descripcion": "Para evitar accidentes, mantener despejada su mesa (no conectar en ella celulares) y tener lo necesario para limpiar inmediatamente cuando se derrame alguna sustancia."
+      },
+      {
+        "numero": 11,
+        "titulo": "Lavarse las manos al término de la sesión de laboratorio",
+        "descripcion": null
+      },
+      {
+        "numero": 12,
+        "titulo": "Conocer en dónde se ubican los elementos de seguridad",
+        "descripcion": "Como son: salida de emergencia, extintores, regaderas y lavabos."
+      }
+    ]
+  }
+}
