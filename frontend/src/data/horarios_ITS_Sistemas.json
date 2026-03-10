@@ -1,0 +1,2740 @@
+{
+  "institucion": "Instituto Tecnológico de Saltillo",
+  "periodo": "Enero-Junio 2026",
+  "aulas": [
+    {
+      "aula": "LS1",
+      "horario": [
+        {
+          "hora": "07:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": {
+            "grupo": "Ej1/A",
+            "materia": "Prog Basica",
+            "maestro": "De Leon Macias Francisco J."
+          },
+          "jueves": {
+            "grupo": "Ej1/A",
+            "materia": "Prog Basica",
+            "maestro": "De Leon Macias Francisco J."
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "08:00",
+          "lunes": {
+            "grupo": "Hf9/A",
+            "materia": "Prog. Disp. Moviles",
+            "maestro": "Dominguez Martinez Arturo Alejandro"
+          },
+          "martes": {
+            "grupo": "Hf9/A",
+            "materia": "Prog. Disp. Moviles",
+            "maestro": "Dominguez Martinez Arturo Alejandro"
+          },
+          "miercoles": {
+            "grupo": "Ej1/K",
+            "materia": "Prog Basica",
+            "maestro": "De Leon Macias Francisco Javier"
+          },
+          "jueves": {
+            "grupo": "Ej1/K",
+            "materia": "Prog Basica",
+            "maestro": "De Leon Macias Francisco Javier"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "09:00",
+          "lunes": {
+            "grupo": "Bf3/D",
+            "materia": "Estr. Datos",
+            "maestro": "Dominguez Martinez Arturo A."
+          },
+          "martes": {
+            "grupo": "Bf3/D",
+            "materia": "Estr. Datos",
+            "maestro": "Dominguez Martinez Arturo"
+          },
+          "miercoles": {
+            "grupo": "AVf8/A",
+            "materia": "Prog. En Amb. Dist.",
+            "maestro": "Contreras Gaytán Juan José"
+          },
+          "jueves": "Libre",
+          "viernes": {
+            "grupo": "AVf8/A",
+            "materia": "Prog. En Amb. Dist.",
+            "maestro": "Contreras Gaytán Juan José"
+          }
+        },
+        {
+          "hora": "10:00",
+          "lunes": {
+            "grupo": "Bf3/B",
+            "materia": "Estr. Datos",
+            "maestro": "Dominguez Martínez Arturo"
+          },
+          "martes": {
+            "grupo": "Bf3/B",
+            "materia": "Estr. Datos",
+            "maestro": "Dominguez Martínez Arturo"
+          },
+          "miercoles": {
+            "grupo": "Df4/A",
+            "materia": "Fund. Base De D",
+            "maestro": "Contreras Gaytán Juan José"
+          },
+          "jueves": "Libre",
+          "viernes": {
+            "grupo": "Df4/A",
+            "materia": "Fund. Base De D",
+            "maestro": "Contreras Gaytán Juan José"
+          }
+        },
+        {
+          "hora": "11:00",
+          "lunes": {
+            "grupo": "Ej1/C",
+            "materia": "Prog Basica",
+            "maestro": "Dominguez Martínez Arturo"
+          },
+          "martes": {
+            "grupo": "Ej1/C",
+            "materia": "Prog Basica",
+            "maestro": "Dominguez Martínez Arturo"
+          },
+          "miercoles": {
+            "grupo": "CF4/B",
+            "materia": "Top Av De Prog",
+            "maestro": "Contreras Gaytán Juan José"
+          },
+          "jueves": "Libre",
+          "viernes": {
+            "grupo": "CF4/B",
+            "materia": "Top Av De Prog",
+            "maestro": "Contreras Gaytán Juan José"
+          }
+        },
+        {
+          "hora": "12:00",
+          "lunes": {
+            "materia": "Fundamentos de Investigacion",
+            "maestro": "Olga Lidia Vidal Vazquez"
+          },
+          "martes": {
+            "materia": "Fundamentos de Investigacion",
+            "maestro": "Olga Lidia Vidal Vazquez"
+          },
+          "miercoles": {
+            "grupo": "CF4/C",
+            "materia": "Top Av De Prog",
+            "maestro": "Contreras Gaytán Juan José"
+          },
+          "jueves": {
+            "materia": "Fundamentos de Investigacion",
+            "maestro": "Olga Lidia Vidal Vazquez"
+          },
+          "viernes": {
+            "grupo": "CF4/C",
+            "materia": "Top Av De Prog",
+            "maestro": "Contreras Gaytán Juan José"
+          }
+        },
+        {
+          "hora": "13:00",
+          "lunes": {
+            "grupo": "Fe4/A",
+            "materia": "Program. Visual",
+            "maestro": "De La Peña Fuentes José R."
+          },
+          "martes": {
+            "grupo": "Fe4/A",
+            "materia": "Program. Visual",
+            "maestro": "De La Peña Fuentes José R."
+          },
+          "miercoles": "Libre",
+          "jueves": {
+            "grupo": "Af8/C",
+            "materia": "Leng. Y Aut. II",
+            "maestro": "Cabrera Chagoyán Karina"
+          },
+          "viernes": {
+            "grupo": "Af8/C",
+            "materia": "Leng. Y Aut. II",
+            "maestro": "Cabrera Chagoyán Karina"
+          }
+        },
+        {
+          "hora": "14:00",
+          "lunes": {
+            "grupo": "Ee3/B",
+            "materia": "Prog. Estructur",
+            "maestro": "Muñiz Jimenez Araceli E."
+          },
+          "martes": {
+            "grupo": "Ee3/B",
+            "materia": "Prog. Estructur",
+            "maestro": "Muñiz Jimenez Araceli E."
+          },
+          "miercoles": {
+            "grupo": "Ei3/D",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Avendaño Méndez Roberto"
+          },
+          "jueves": {
+            "grupo": "El2/D",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Avendaño Méndez Roberto"
+          },
+          "viernes": {
+            "grupo": "Ee3/B",
+            "materia": "Prog. Estructur",
+            "maestro": "Muñiz Jimenez Araceli E."
+          }
+        },
+        {
+          "hora": "15:00",
+          "lunes": {
+            "grupo": "Ff6/6",
+            "materia": "Leng De Interfa",
+            "maestro": "De La Peña Fuentes José R."
+          },
+          "martes": {
+            "grupo": "Ff6/G",
+            "materia": "Leng De Interfa",
+            "maestro": "De La Peña Fuentes José R."
+          },
+          "miercoles": {
+            "grupo": "Fk3/A",
+            "materia": "Programación",
+            "maestro": "Avendaño Méndez Roberto"
+          },
+          "jueves": {
+            "grupo": "Fk3/A",
+            "materia": "Programación",
+            "maestro": "Avendaño Méndez Roberto"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "16:00",
+          "lunes": {
+            "grupo": "Ff6/C",
+            "materia": "Leng De Interfa",
+            "maestro": "De La Peña Fuentes José R."
+          },
+          "martes": {
+            "grupo": "Ff6/C",
+            "materia": "Leng De Interfa",
+            "maestro": "De La Peña Fuentes José R."
+          },
+          "miercoles": {
+            "grupo": "Ch4/H",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Avendaño Méndez Roberto"
+          },
+          "jueves": {
+            "grupo": "Ch4/H",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Avendaño Méndez Roberto"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "17:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": {
+            "grupo": "Ch4/E",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Avendaño Méndez Roberto"
+          },
+          "jueves": {
+            "grupo": "Ch4/E",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Avendaño Méndez Roberto"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "18:00",
+          "lunes": {
+            "grupo": "El2/B",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Quintana Maldonado Federico"
+          },
+          "martes": {
+            "grupo": "El2/B",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Quintana Maldonado F."
+          },
+          "miercoles": {
+            "grupo": "El2/B",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Quintana Maldonado F."
+          },
+          "jueves": {
+            "grupo": "El2/B",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Quintana Maldonado F."
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "19:00",
+          "lunes": {
+            "grupo": "El2/E",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Quintana Maldonado Federico"
+          },
+          "martes": {
+            "grupo": "El2/E",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Quintana Maldonado F."
+          },
+          "miercoles": {
+            "grupo": "El2/E",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Quintana Maldonado F."
+          },
+          "jueves": {
+            "grupo": "El2/E",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Quintana Maldonado F."
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "20:00",
+          "lunes": {
+            "grupo": "Ch4/G",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Quintana Maldonado Federico"
+          },
+          "martes": {
+            "grupo": "Ch4/G",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Quintana Maldonado F."
+          },
+          "miercoles": {
+            "grupo": "Ch4/G",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Quintana Maldonado F."
+          },
+          "jueves": {
+            "grupo": "Ch4/G",
+            "materia": "Dis. Leng. Prog",
+            "maestro": "Quintana Maldonado F."
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "21:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        },
+        {
+          "hora": "22:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        }
+      ]
+    },
+    {
+      "aula": "LC1",
+      "horario": [
+        {
+          "hora": "07:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        },
+        {
+          "hora": "08:00",
+          "lunes": {
+            "grupo": "Ch4/D",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "martes": {
+            "grupo": "Ch4/D",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "miercoles": {
+            "grupo": "Ch4/D",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "jueves": {
+            "grupo": "Ch4/D",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "09:00",
+          "lunes": {
+            "grupo": "Fj7/F",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "martes": {
+            "grupo": "Fj7/F",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "miercoles": {
+            "grupo": "Fj7/F",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "jueves": {
+            "grupo": "Fj7/F",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "viernes": {
+            "grupo": "Fj7/F",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          }
+        },
+        {
+          "hora": "10:00",
+          "lunes": {
+            "grupo": "Fj7/H",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "martes": {
+            "grupo": "Fj7/H",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "miercoles": {
+            "grupo": "Fj7/H",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "jueves": {
+            "grupo": "Fj7/H",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "viernes": {
+            "grupo": "Fj7/H",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          }
+        },
+        {
+          "hora": "11:00",
+          "lunes": {
+            "grupo": "El2/A",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "martes": {
+            "grupo": "El2/A",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "miercoles": {
+            "grupo": "El2/A",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "jueves": {
+            "grupo": "El2/A",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "viernes": {
+            "grupo": "Fj7/H",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          }
+        },
+        {
+          "hora": "12:00",
+          "lunes": {
+            "grupo": "Fj7/D",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "martes": {
+            "grupo": "Fj7/D",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "miercoles": {
+            "grupo": "Fj7/D",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "jueves": {
+            "grupo": "Fj7/D",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "viernes": {
+            "grupo": "Fj7/D",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          }
+        },
+        {
+          "hora": "13:00",
+          "lunes": {
+            "grupo": "Ch4/J",
+            "materia": "Alg. Long. Prog",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "martes": {
+            "grupo": "Ch4/J",
+            "materia": "Alg. Long. Prog",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "miercoles": {
+            "grupo": "Ch4/J",
+            "materia": "Alg. Long. Prog",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "jueves": {
+            "grupo": "Ch4/J",
+            "materia": "Alg. Long. Prog",
+            "maestro": "Mexicano Reyes Yolanda"
+          },
+          "viernes": {
+            "grupo": "Fj7/D",
+            "materia": "Prog Avanzada",
+            "maestro": "Mexicano Reyes Yolanda"
+          }
+        },
+        {
+          "hora": "14:00",
+          "lunes": {
+            "grupo": "Fj7/-",
+            "materia": "Prog Avanzada",
+            "maestro": "Olga Lidia Vidal Vazquez"
+          },
+          "martes": {
+            "grupo": "Fj7/-",
+            "materia": "Prog Avanzada",
+            "maestro": "Olga Lidia Vidal Vazquez"
+          },
+          "miercoles": {
+            "grupo": "Fj7/-",
+            "materia": "Prog Avanzada",
+            "maestro": "Olga Lidia Vidal Vazquez"
+          },
+          "jueves": {
+            "grupo": "Fj7/-",
+            "materia": "Prog Avanzada",
+            "maestro": "Olga Lidia Vidal Vazquez"
+          },
+          "viernes": {
+            "grupo": "Fj7/-",
+            "materia": "Prog Avanzada",
+            "maestro": "Olga Lidia Vidal Vazquez"
+          }
+        },
+        {
+          "hora": "15:00",
+          "lunes": {
+            "grupo": "Ej1/H",
+            "materia": "Prog Basica",
+            "maestro": "Garcia Hernandez Hector"
+          },
+          "martes": {
+            "grupo": "Ej1/H",
+            "materia": "Prog Basica",
+            "maestro": "Garcia Hernandez Hector"
+          },
+          "miercoles": {
+            "grupo": "Ej1/H",
+            "materia": "Prog Basica",
+            "maestro": "Garcia Hernandez Hector"
+          },
+          "jueves": {
+            "grupo": "Ej1/H",
+            "materia": "Prog Basica",
+            "maestro": "Garcia Hernandez Hector"
+          },
+          "viernes": {
+            "grupo": "Ej1/H",
+            "materia": "Prog Basica",
+            "maestro": "Garcia Hernandez Hector"
+          }
+        },
+        {
+          "hora": "16:00",
+          "lunes": {
+            "grupo": "Ad2/D",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          },
+          "martes": {
+            "grupo": "Ad2/D",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          },
+          "miercoles": {
+            "grupo": "Ad2/D",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          },
+          "jueves": {
+            "grupo": "Ad2/D",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          },
+          "viernes": {
+            "grupo": "Ad2/D",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          }
+        },
+        {
+          "hora": "17:00",
+          "lunes": {
+            "grupo": "Ej1/F",
+            "materia": "Prog Basica",
+            "maestro": "Jauregui Sánchez Mario Alberto"
+          },
+          "martes": {
+            "grupo": "Ej1/F",
+            "materia": "Prog Basica",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          },
+          "miercoles": {
+            "grupo": "Ej1/F",
+            "materia": "Prog Basica",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          },
+          "jueves": {
+            "grupo": "Ej1/F",
+            "materia": "Prog Basica",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          },
+          "viernes": {
+            "grupo": "Ej1/F",
+            "materia": "Prog Basica",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          }
+        },
+        {
+          "hora": "18:00",
+          "lunes": {
+            "grupo": "Ej1/E",
+            "materia": "Prog Basica",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          },
+          "martes": {
+            "grupo": "Ej1/E",
+            "materia": "Prog Basica",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          },
+          "miercoles": {
+            "grupo": "Ej1/E",
+            "materia": "Prog Basica",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          },
+          "jueves": {
+            "grupo": "Ej1/E",
+            "materia": "Prog Basica",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          },
+          "viernes": {
+            "grupo": "Ej1/E",
+            "materia": "Prog Basica",
+            "maestro": "Jáuregui Sánchez Mario Alberto"
+          }
+        },
+        {
+          "hora": "19:00",
+          "lunes": {
+            "grupo": "Kj7/E",
+            "materia": "Dis. Asist. Por Comp.",
+            "maestro": "Garcia Bustos Luis Uriel"
+          },
+          "martes": {
+            "grupo": "Kj7/E",
+            "materia": "Dis. Asist. Por Comp.",
+            "maestro": "Garcia Bustos Luis Uriel"
+          },
+          "miercoles": {
+            "grupo": "Kj7/E",
+            "materia": "Dis. Asist. Por Comp.",
+            "maestro": "Garcia Bustos Luis Uriel"
+          },
+          "jueves": {
+            "grupo": "Kj7/E",
+            "materia": "Dis. Asist. Por Comp.",
+            "maestro": "Garcia Bustos Luis Uriel"
+          },
+          "viernes": {
+            "grupo": "Kj7/E",
+            "materia": "Dis. Asist. Por Comp.",
+            "maestro": "Garcia Bustos Luis Uriel"
+          }
+        },
+        {
+          "hora": "20:00",
+          "lunes": {
+            "grupo": "Kj7/D",
+            "materia": "Dis. Asist. Por Comp.",
+            "maestro": "Garcia Bustos Luis Uriel"
+          },
+          "martes": {
+            "grupo": "Kj7/D",
+            "materia": "Dis. Asist. Por Comp.",
+            "maestro": "Garcia Bustos Luis Uriel"
+          },
+          "miercoles": {
+            "grupo": "Kj7/D",
+            "materia": "Dis. Asist. Por Comp.",
+            "maestro": "Garcia Bustos Luis Uriel"
+          },
+          "jueves": {
+            "grupo": "Kj7/D",
+            "materia": "Dis. Asist. Por Comp.",
+            "maestro": "Garcia Bustos Luis Uriel"
+          },
+          "viernes": {
+            "grupo": "Kj7/D",
+            "materia": "Dis. Asist. Por Comp.",
+            "maestro": "Garcia Bustos Luis Uriel"
+          }
+        },
+        {
+          "hora": "21:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        },
+        {
+          "hora": "22:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        }
+      ]
+    },
+    {
+      "aula": "LS5",
+      "horario": [
+        {
+          "hora": "07:00",
+          "lunes": {
+            "grupo": "Bf8/A",
+            "materia": "Admon De Redes",
+            "maestro": "Martinez Martinez Oscar Humberto"
+          },
+          "martes": {
+            "grupo": "Bf8/A",
+            "materia": "Admon De Redes",
+            "maestro": "Martinez Martinez Oscar Humberto"
+          },
+          "miercoles": {
+            "grupo": "Bf8/A",
+            "materia": "Admon De Redes",
+            "maestro": "Martinez Martinez Oscar Humberto"
+          },
+          "jueves": {
+            "grupo": "Bf8/A",
+            "materia": "Admon De Redes",
+            "maestro": "Martinez Martinez Oscar Humberto"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "08:00",
+          "lunes": {
+            "grupo": "Bf8/B",
+            "materia": "Admon De Redes",
+            "maestro": "Martinez Martinez Oscar Humberto"
+          },
+          "martes": {
+            "grupo": "Bf8/B",
+            "materia": "Admon De Redes",
+            "maestro": "Martinez Martinez Oscar Humberto"
+          },
+          "miercoles": {
+            "grupo": "Bf8/B",
+            "materia": "Admon De Redes",
+            "maestro": "Martinez Martinez Oscar Humberto"
+          },
+          "jueves": {
+            "grupo": "Bf8/B",
+            "materia": "Admon De Redes",
+            "maestro": "Martinez Martinez Oscar Humberto"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "09:00",
+          "lunes": {
+            "grupo": "Bf7/A",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Mendoza Morales Sergio Arturo"
+          },
+          "martes": {
+            "grupo": "Bf7/A",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Mendoza Morales Sergio Arturo"
+          },
+          "miercoles": {
+            "grupo": "Bf7/A",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Mendoza Morales Sergio Arturo"
+          },
+          "jueves": {
+            "grupo": "Bf7/A",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Mendoza Morales Sergio Arturo"
+          },
+          "viernes": {
+            "grupo": "Bf7/A",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Mendoza Morales Sergio Arturo"
+          }
+        },
+        {
+          "hora": "10:00",
+          "lunes": {
+            "grupo": "Bf6/A",
+            "materia": "Redes De Comp.",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "martes": {
+            "grupo": "Bf6/A",
+            "materia": "Redes De Comp.",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "miercoles": {
+            "grupo": "Bf6/A",
+            "materia": "Redes De Comp.",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "jueves": {
+            "grupo": "Bf6/A",
+            "materia": "Redes De Comp.",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "viernes": {
+            "grupo": "Bf6/A",
+            "materia": "Redes De Comp.",
+            "maestro": "Valdivia Lugo Eduardo"
+          }
+        },
+        {
+          "hora": "11:00",
+          "lunes": {
+            "grupo": "Bf7/C",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Carreon Valerio Aide Natzielly"
+          },
+          "martes": {
+            "grupo": "Bf7/C",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Carreon Valerio Aide Natzielly"
+          },
+          "miercoles": {
+            "grupo": "Bf7/C",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Carreon Valerio Aide Natzielly"
+          },
+          "jueves": {
+            "grupo": "Bf7/C",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Carreon Valerio Aide Natzielly"
+          },
+          "viernes": {
+            "grupo": "Bf7/C",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Carreon Valerio Aide N."
+          }
+        },
+        {
+          "hora": "12:00",
+          "lunes": {
+            "grupo": "Bf6/C",
+            "materia": "Redes De Comp.",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "martes": {
+            "grupo": "Bf6/C",
+            "materia": "Redes De Comp.",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "miercoles": {
+            "grupo": "Bf6/C",
+            "materia": "Redes De Comp.",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "jueves": {
+            "grupo": "Bf6/C",
+            "materia": "Redes De Comp.",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "viernes": {
+            "grupo": "Bf6/C",
+            "materia": "Redes De Comp.",
+            "maestro": "Valdivia Lugo Eduardo"
+          }
+        },
+        {
+          "hora": "13:00",
+          "lunes": {
+            "grupo": "Bf7/B",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "martes": {
+            "grupo": "Bf7/B",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "miercoles": {
+            "grupo": "Bf7/B",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "jueves": {
+            "grupo": "Bf7/B",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "viernes": {
+            "grupo": "Bf7/B",
+            "materia": "Conm.Y Enrut. D",
+            "maestro": "Valdivia Lugo Eduardo"
+          }
+        },
+        {
+          "hora": "14:00",
+          "lunes": {
+            "grupo": "Bf6/B",
+            "materia": "Redes De Comp.",
+            "maestro": "Mendoza Morales Sergio Arturo"
+          },
+          "martes": {
+            "grupo": "Bf6/B",
+            "materia": "Redes De Comp.",
+            "maestro": "Mendoza Morales Sergio Arturo"
+          },
+          "miercoles": {
+            "grupo": "Bf6/B",
+            "materia": "Redes De Comp.",
+            "maestro": "Mendoza Morales Sergio Arturo"
+          },
+          "jueves": {
+            "grupo": "Bf6/B",
+            "materia": "Redes De Comp.",
+            "maestro": "Mendoza Morales Sergio Arturo"
+          },
+          "viernes": {
+            "grupo": "Bf6/B",
+            "materia": "Redes De Comp.",
+            "maestro": "Mendoza Morales Sergio"
+          }
+        },
+        {
+          "hora": "15:00",
+          "lunes": {
+            "grupo": "Bf5/B",
+            "materia": "F. De Telecom.",
+            "maestro": "Melendez Olivares Ana Karen"
+          },
+          "martes": {
+            "grupo": "Bf5/B",
+            "materia": "F. De Telecom.",
+            "maestro": "Melendez Olivares Ana Karen"
+          },
+          "miercoles": {
+            "grupo": "Bf5/B",
+            "materia": "F. De Telecom.",
+            "maestro": "Melendez Olivares Ana Karen"
+          },
+          "jueves": {
+            "grupo": "Bf5/B",
+            "materia": "F. De Telecom.",
+            "maestro": "Melendez Olivares Ana Karen"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "16:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        },
+        {
+          "hora": "17:00",
+          "lunes": {
+            "grupo": "Bf5/C",
+            "materia": "F. De Telecom.",
+            "maestro": "Melendez Olivares Ana Karen"
+          },
+          "martes": {
+            "grupo": "Bf5/C",
+            "materia": "F. De Telecom.",
+            "maestro": "Melendez Olivares Ana Karen"
+          },
+          "miercoles": {
+            "grupo": "Bf5/C",
+            "materia": "F. De Telecom.",
+            "maestro": "Melendez Olivares Ana Karen"
+          },
+          "jueves": {
+            "grupo": "Bf5/C",
+            "materia": "F. De Telecom.",
+            "maestro": "Melendez Olivares Ana Karen"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "19:00",
+          "lunes": "Libre",
+          "martes": {
+            "grupo": "Bf8/C",
+            "materia": "Admon De Redes",
+            "maestro": "Martinez Martinez Oscar Humberto"
+          },
+          "miercoles": "Libre",
+          "jueves": {
+            "grupo": "Bf8/C",
+            "materia": "Admon De Redes",
+            "maestro": "Martinez Martinez Oscar Humberto"
+          },
+          "viernes": "Libre"
+        }
+      ]
+    },
+    {
+      "aula": "LS2",
+      "horario": [
+        {
+          "hora": "07:00-08:00",
+          "lunes": {
+            "grupo": "F7/B",
+            "materia": "Prog. Avanzada",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "martes": {
+            "grupo": "F7/B",
+            "materia": "Prog. Avanzada",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "miercoles": {
+            "grupo": "F7/B",
+            "materia": "Prog. Avanzada",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "jueves": {
+            "grupo": "F7/B",
+            "materia": "Prog. Avanzada",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "viernes": {
+            "grupo": "F7/B",
+            "materia": "Prog. Avanzada",
+            "maestro": "Navarro Rodriguez Juan G."
+          }
+        },
+        {
+          "hora": "08:00",
+          "lunes": {
+            "grupo": "E12/C",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "martes": {
+            "grupo": "E12/C",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "miercoles": {
+            "grupo": "E12/C",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "jueves": {
+            "grupo": "E12/C",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "viernes": {
+            "grupo": "Ej1/D",
+            "materia": "Prog Basica",
+            "maestro": "Castillo Hernandez Leticia"
+          }
+        },
+        {
+          "hora": "09:00",
+          "lunes": {
+            "grupo": "C5/D",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Perez Liset"
+          },
+          "martes": {
+            "grupo": "C5/D",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Perez Liset"
+          },
+          "miercoles": {
+            "grupo": "C5/D",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Perez Liset"
+          },
+          "jueves": {
+            "grupo": "C5/D",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Perez Liset"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "10:00",
+          "lunes": {
+            "grupo": "EF3/B",
+            "materia": "Sist Operativos",
+            "maestro": "Carroon Valerio Aide N."
+          },
+          "martes": {
+            "grupo": "EF3/B",
+            "materia": "Sist Operativos",
+            "maestro": "Carroon Valerio Aide Natziely"
+          },
+          "miercoles": {
+            "grupo": "EF3/B",
+            "materia": "Sist Operativos",
+            "maestro": "Carroon Valerio Aide Natziely"
+          },
+          "jueves": {
+            "grupo": "EF3/B",
+            "materia": "Sist Operativos",
+            "maestro": "Carroon Valerio Aide Natziely"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "11:00",
+          "lunes": {
+            "grupo": "Ad2/C",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "González Martínez Alejandra"
+          },
+          "martes": {
+            "grupo": "Ad2/C",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "González Martínez Alejandra"
+          },
+          "miercoles": {
+            "grupo": "Ad2/C",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "González Martínez Alejandra"
+          },
+          "jueves": {
+            "grupo": "Ad2/C",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "González Martínez Alejandra"
+          },
+          "viernes": {
+            "grupo": "Ad2/C",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "González Martínez Alejandra"
+          }
+        },
+        {
+          "hora": "12:00",
+          "lunes": {
+            "grupo": "Ad2/B",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "González Martínez Alejandra"
+          },
+          "martes": {
+            "grupo": "Ad2/B",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "González Martínez Alejandra"
+          },
+          "miercoles": {
+            "grupo": "Ad2/B",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "González Martínez Alejandra"
+          },
+          "jueves": {
+            "grupo": "Ad2/B",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "González Martínez Alejandra"
+          },
+          "viernes": {
+            "grupo": "Ad2/B",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "González Martínez Alejandra"
+          }
+        },
+        {
+          "hora": "13:00",
+          "lunes": {
+            "grupo": "F77/K",
+            "materia": "Prog Avanzada",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "martes": {
+            "grupo": "F77/K",
+            "materia": "Prog Avanzada",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "miercoles": {
+            "grupo": "F77/K",
+            "materia": "Prog Avanzada",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "jueves": {
+            "grupo": "F77/K",
+            "materia": "Prog Avanzada",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "viernes": {
+            "grupo": "Ej1/3",
+            "materia": "Prog Basica",
+            "maestro": "Castillo Hernandez Leticia"
+          }
+        },
+        {
+          "hora": "14:00",
+          "lunes": {
+            "grupo": "Ad2/A",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "martes": {
+            "grupo": "Ad2/A",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "miercoles": {
+            "grupo": "Ad2/A",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "jueves": {
+            "grupo": "Ad2/A",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "Navarro Rodriguez Juan G."
+          },
+          "viernes": {
+            "grupo": "Ad2/A",
+            "materia": "Soft Aplic.Ejec",
+            "maestro": "Navarro Rodriguez Juan G."
+          }
+        },
+        {
+          "hora": "15:00",
+          "lunes": {
+            "grupo": "LJB/J",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "martes": {
+            "grupo": "LJB/J",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "miercoles": {
+            "grupo": "LJB/J",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "jueves": {
+            "grupo": "LJB/J",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "viernes": {
+            "grupo": "LJB/J",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          }
+        },
+        {
+          "hora": "16:00",
+          "lunes": {
+            "grupo": "LJB/A",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "martes": {
+            "grupo": "LJB/A",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "miercoles": {
+            "grupo": "LJB/A",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "jueves": {
+            "grupo": "LJB/A",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "viernes": {
+            "grupo": "LJB/A",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          }
+        },
+        {
+          "hora": "17:00",
+          "lunes": {
+            "grupo": "LJB/C",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "martes": {
+            "grupo": "LJB/C",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "miercoles": {
+            "grupo": "LJB/C",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "jueves": {
+            "grupo": "LJB/C",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          },
+          "viernes": {
+            "grupo": "LJB/C",
+            "materia": "Redes Indust.",
+            "maestro": "Flores Sanmiguel Francisco"
+          }
+        },
+        {
+          "hora": "18:00",
+          "lunes": {
+            "grupo": "LJB/E",
+            "materia": "Redes Indust.",
+            "maestro": "González Roblero Neider"
+          },
+          "martes": {
+            "grupo": "LJB/E",
+            "materia": "Redes Indust.",
+            "maestro": "González Roblero Neider"
+          },
+          "miercoles": {
+            "grupo": "LJB/E",
+            "materia": "Redes Indust.",
+            "maestro": "González Roblero Neider"
+          },
+          "jueves": {
+            "grupo": "LJB/E",
+            "materia": "Redes Indust.",
+            "maestro": "González Roblero Neider"
+          },
+          "viernes": {
+            "grupo": "LJB/E",
+            "materia": "Redes Indust.",
+            "maestro": "González Roblero Neider"
+          }
+        },
+        {
+          "hora": "19:00",
+          "lunes": {
+            "grupo": "LJB/B",
+            "materia": "Redes Indust.",
+            "maestro": "González Roblero Neider"
+          },
+          "martes": {
+            "grupo": "LJB/B",
+            "materia": "Redes Indust.",
+            "maestro": "González Roblero Neider"
+          },
+          "miercoles": {
+            "grupo": "LJB/B",
+            "materia": "Redes Indust.",
+            "maestro": "González Roblero Neider"
+          },
+          "jueves": {
+            "grupo": "LJB/B",
+            "materia": "Redes Indust.",
+            "maestro": "González Roblero Neider"
+          },
+          "viernes": {
+            "grupo": "LJB/B",
+            "materia": "Redes Indust.",
+            "maestro": "González Roblero Neider"
+          }
+        },
+        {
+          "hora": "20:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        }
+      ]
+    },
+    {
+      "aula": "LC2",
+      "horario": [
+        {
+          "hora": "07:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        },
+        {
+          "hora": "08:00",
+          "lunes": {
+            "grupo": "Df6/B",
+            "materia": "Graficación",
+            "maestro": "Piña Villanueva Martha Patricia"
+          },
+          "martes": {
+            "grupo": "Df6/B",
+            "materia": "Graficación",
+            "maestro": "Piña Villanueva Martha Patricia"
+          },
+          "miercoles": {
+            "grupo": "Bf1/T",
+            "materia": "Fund De Prog",
+            "maestro": "Torres Oyervides Sandra Marisol"
+          },
+          "jueves": {
+            "grupo": "Bf1/T",
+            "materia": "Fund De Prog",
+            "maestro": "Torres Oyervides Sandra Marisol"
+          },
+          "viernes": {
+            "grupo": "Bf1/T",
+            "materia": "Fund De Prog",
+            "maestro": "Torres Oyervides Sandra Marisol"
+          }
+        },
+        {
+          "hora": "08:30",
+          "lunes": null,
+          "martes": null,
+          "miercoles": {
+            "grupo": "Ad2/I",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Torres Oyervides Sandra Marisol"
+          },
+          "jueves": {
+            "grupo": "Ad2/I",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Torres Oyervides Sandra Marisol"
+          },
+          "viernes": {
+            "grupo": "Ad2/I",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Torres Oyervides Sandra Marisol"
+          }
+        },
+        {
+          "hora": "09:00",
+          "lunes": {
+            "grupo": "Df6/D",
+            "materia": "Graficación",
+            "maestro": "Piña Villanueva Martha Patricia"
+          },
+          "martes": {
+            "grupo": "Df6/D",
+            "materia": "Graficación",
+            "maestro": "Piña Villanueva Martha Patricia"
+          },
+          "miercoles": {
+            "grupo": "Ch4/C",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "jueves": {
+            "grupo": "Ch4/C",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "10:00",
+          "lunes": "Libre (ALGORITMOS)",
+          "martes": "Libre (ALGORITMOS)",
+          "miercoles": {
+            "grupo": "Ch4/A",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "jueves": {
+            "grupo": "Ch4/A",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "11:00",
+          "lunes": {
+            "materia": "Fundamentos de Investigacion",
+            "maestro": "Olga Lidia Vidal Vazquez"
+          },
+          "martes": {
+            "materia": "Fundamentos de Investigacion",
+            "maestro": "Olga Lidia Vidal Vazquez"
+          },
+          "miercoles": {
+            "grupo": "Fj7/A",
+            "materia": "Prog Avanzada",
+            "maestro": "Piña Villanueva Martha Patricia"
+          },
+          "jueves": {
+            "grupo": "Fj7/A",
+            "materia": "Prog Avanzada",
+            "maestro": "Piña Villanueva Martha Patricia"
+          },
+          "viernes": {
+            "grupo": "Fj7/A",
+            "materia": "Prog Avanzada",
+            "maestro": "Piña Villanueva Martha Patricia"
+          }
+        },
+        {
+          "hora": "12:00",
+          "lunes": {
+            "grupo": "Ch4/I",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Ochoa Morales Monica Lucia"
+          },
+          "martes": {
+            "grupo": "Ch4/I",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Ochoa Morales Monica Lucia"
+          },
+          "miercoles": {
+            "grupo": "Fj7/I",
+            "materia": "Prog Avanzada",
+            "maestro": "Piña Villanueva Martha Patricia"
+          },
+          "jueves": {
+            "grupo": "Fj7/I",
+            "materia": "Prog Avanzada",
+            "maestro": "Piña Villanueva Martha Patricia"
+          },
+          "viernes": {
+            "grupo": "Fj7/I",
+            "materia": "Prog Avanzada",
+            "maestro": "Piña Villanueva Martha Patricia"
+          }
+        },
+        {
+          "hora": "13:00",
+          "lunes": {
+            "grupo": "Ch4/K",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "martes": {
+            "grupo": "Ch4/K",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "miercoles": {
+            "grupo": "Ch4/K",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "jueves": {
+            "grupo": "Ch4/K",
+            "materia": "Alg. Leng. Prog",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "14:00",
+          "lunes": {
+            "grupo": "Ad2/G",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "martes": {
+            "grupo": "Ad2/G",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "miercoles": {
+            "grupo": "Ad2/G",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "jueves": {
+            "grupo": "Ad2/G",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "viernes": {
+            "grupo": "Ad2/G",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Vazquez Covarrubias Flavio"
+          }
+        },
+        {
+          "hora": "15:00",
+          "lunes": {
+            "grupo": "Ad2/H",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "martes": {
+            "grupo": "Ad2/H",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "miercoles": {
+            "grupo": "Ad2/H",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "jueves": {
+            "grupo": "Ad2/H",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Vazquez Covarrubias Flavio"
+          },
+          "viernes": {
+            "grupo": "Ad2/H",
+            "materia": "Soft.Aplic.Ejec",
+            "maestro": "Vazquez Covarrubias Flavio"
+          }
+        },
+        {
+          "hora": "16:00",
+          "lunes": {
+            "grupo": "El2/F",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Torres Ovalle Socrates"
+          },
+          "martes": {
+            "grupo": "El2/F",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Torres Ovalle Socrates"
+          },
+          "miercoles": {
+            "grupo": "El2/F",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Torres Ovalle Socrates"
+          },
+          "jueves": {
+            "grupo": "El2/F",
+            "materia": "Alg. Y Progr.",
+            "maestro": "Torres Ovalle Socrates"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "17:00",
+          "lunes": {
+            "grupo": "Ff8/D",
+            "materia": "Prog.Logica Y F",
+            "maestro": "Torres Ovalle Socrates"
+          },
+          "martes": {
+            "grupo": "Ff8/D",
+            "materia": "Prog.Logica Y F",
+            "maestro": "Torres Ovalle Socrates"
+          },
+          "miercoles": {
+            "grupo": "Ff8/D",
+            "materia": "Prog.Logica Y F",
+            "maestro": "Torres Ovalle Socrates"
+          },
+          "jueves": {
+            "grupo": "Ff8/D",
+            "materia": "Prog.Logica Y F",
+            "maestro": "Torres Ovalle Socrates"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "18:00-22:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        }
+      ]
+    },
+    {
+      "aula": "LS3",
+      "horario": [
+        {
+          "hora": "07:00-08:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        },
+        {
+          "hora": "09:00",
+          "lunes": {
+            "grupo": "Ef4/B",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Aguirre Garcia Jesús Enrique"
+          },
+          "martes": {
+            "grupo": "Ef4/B",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Aguirre Garcia Jesús Enrique"
+          },
+          "miercoles": {
+            "grupo": "Ef4/B",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Aguirre Garcia Jesús Enrique"
+          },
+          "jueves": {
+            "grupo": "Ef4/B",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Aguirre Garcia Jesús Enrique"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "10:00",
+          "lunes": {
+            "grupo": "Ef4/D",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Aguirre Garcia Jesús Enrique"
+          },
+          "martes": {
+            "grupo": "Ef4/D",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Aguirre Garcia Jesús Enrique"
+          },
+          "miercoles": {
+            "grupo": "Ef4/D",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Aguirre Garcia Jesús Enrique"
+          },
+          "jueves": {
+            "grupo": "Ef4/D",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Aguirre Garcia Jesús Enrique"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "11:00",
+          "lunes": {
+            "grupo": "Jf6/A",
+            "materia": "Habilidades Devops",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "martes": {
+            "grupo": "Jf6/A",
+            "materia": "Habilidades Devops",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "miercoles": {
+            "grupo": "Jf6/A",
+            "materia": "Habilidades Devops",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "jueves": {
+            "grupo": "Jf6/A",
+            "materia": "Habilidades Devops",
+            "maestro": "Valdivia Lugo Eduardo"
+          },
+          "viernes": {
+            "grupo": "Jf6/A",
+            "materia": "Habilidades Devops",
+            "maestro": "Valdivia Lugo Eduardo"
+          }
+        },
+        {
+          "hora": "12:00",
+          "lunes": {
+            "grupo": "Ef4/A",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Castañuela Fuentes Luis Enrique"
+          },
+          "martes": {
+            "grupo": "Ef4/A",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Castañuela Fuentes Luis Enrique"
+          },
+          "miercoles": {
+            "grupo": "Ef4/A",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Castañuela Fuentes Luis Enrique"
+          },
+          "jueves": {
+            "grupo": "Ef4/A",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Castañuela Fuentes Luis Enrique"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "13:00",
+          "lunes": {
+            "grupo": "Ef4/C",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Castañuela Fuentes Luis Enrique"
+          },
+          "martes": {
+            "grupo": "Ef4/C",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Castañuela Fuentes Luis Enrique"
+          },
+          "miercoles": {
+            "grupo": "Ef4/C",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Castañuela Fuentes Luis Enrique"
+          },
+          "jueves": {
+            "grupo": "Ef4/C",
+            "materia": "Taller Sis. Op.",
+            "maestro": "Castañuela Fuentes Luis Enrique"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "14:00-22:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        }
+      ]
+    },
+    {
+      "aula": "LS4",
+      "horario": [
+        {
+          "hora": "07:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        },
+        {
+          "hora": "08:00",
+          "lunes": {
+            "grupo": "Cf6/B",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "martes": {
+            "grupo": "Cf6/B",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "miercoles": {
+            "grupo": "Cf6/B",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "jueves": {
+            "grupo": "Cf6/B",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "viernes": {
+            "grupo": "Cf6/B",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          }
+        },
+        {
+          "hora": "09:00",
+          "lunes": {
+            "grupo": "Cf6/A",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "martes": {
+            "grupo": "Cf6/A",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "miercoles": {
+            "grupo": "Cf6/A",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "jueves": {
+            "grupo": "Cf6/A",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "viernes": {
+            "grupo": "Cf6/A",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          }
+        },
+        {
+          "hora": "10:00",
+          "lunes": {
+            "grupo": "Cf5/C",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "martes": {
+            "grupo": "Cf5/C",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "miercoles": {
+            "grupo": "Cf5/C",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "jueves": {
+            "grupo": "Cf5/C",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "11:00",
+          "lunes": {
+            "grupo": "Cf5/A",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "martes": {
+            "grupo": "Cf5/A",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "miercoles": {
+            "grupo": "Cf5/A",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "jueves": {
+            "grupo": "Cf5/A",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "12:00",
+          "lunes": {
+            "grupo": "Cf5/B",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "martes": {
+            "grupo": "Cf5/B",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "miercoles": {
+            "grupo": "Cf5/B",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "jueves": {
+            "grupo": "Cf5/B",
+            "materia": "Tall. Base Datos",
+            "maestro": "Mancinas Pérez Liset"
+          },
+          "viernes": "Libre"
+        },
+        {
+          "hora": "13:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        },
+        {
+          "hora": "14:00",
+          "lunes": {
+            "grupo": "Cf6/C",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "martes": {
+            "grupo": "Cf6/C",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "miercoles": {
+            "grupo": "Cf6/C",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "jueves": {
+            "grupo": "Cf6/C",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          },
+          "viernes": {
+            "grupo": "Cf6/B",
+            "materia": "Admon. Base Dato",
+            "maestro": "Gallegos Martínez José"
+          }
+        },
+        {
+          "hora": "15:00",
+          "lunes": {
+            "grupo": "Df4/C",
+            "materia": "Fund. Base De D",
+            "maestro": "Gallegos Martínez José"
+          },
+          "martes": {
+            "grupo": "Df4/C",
+            "materia": "Fund. Base De D",
+            "maestro": "Gallegos Martínez José"
+          },
+          "miercoles": {
+            "grupo": "Df4/C",
+            "materia": "Fund. Base De D",
+            "maestro": "Gallegos Martínez José"
+          },
+          "jueves": {
+            "grupo": "Df4/C",
+            "materia": "Fund. Base De D",
+            "maestro": "Gallegos Martínez José"
+          },
+          "viernes": {
+            "grupo": "Df4/C",
+            "materia": "Fund. Base De D",
+            "maestro": "Gallegos Martínez José"
+          }
+        },
+        {
+          "hora": "16:00",
+          "lunes": {
+            "grupo": "Ej1/I",
+            "materia": "Prog. Básica",
+            "maestro": "García Hernández Héctor"
+          },
+          "martes": {
+            "grupo": "Ej1/I",
+            "materia": "Prog. Básica",
+            "maestro": "García Hernández Héctor"
+          },
+          "miercoles": {
+            "grupo": "Ej1/I",
+            "materia": "Prog. Básica",
+            "maestro": "García Hernández Héctor"
+          },
+          "jueves": {
+            "grupo": "Ej1/I",
+            "materia": "Prog. Básica",
+            "maestro": "García Hernández Héctor"
+          },
+          "viernes": {
+            "grupo": "Ej1/I",
+            "materia": "Prog. Básica",
+            "maestro": "García Hernández Héctor"
+          }
+        },
+        {
+          "hora": "17:00",
+          "lunes": {
+            "grupo": "Ad2/F",
+            "materia": "Soft. Aplic. Ejec",
+            "maestro": "García Hernández Héctor"
+          },
+          "martes": {
+            "grupo": "Ad2/F",
+            "materia": "Soft. Aplic. Ejec",
+            "maestro": "García Hernández Héctor"
+          },
+          "miercoles": {
+            "grupo": "Ad2/F",
+            "materia": "Soft. Aplic. Ejec",
+            "maestro": "García Hernández Héctor"
+          },
+          "jueves": {
+            "grupo": "Ad2/F",
+            "materia": "Soft. Aplic. Ejec",
+            "maestro": "García Hernández Héctor"
+          },
+          "viernes": {
+            "grupo": "Ad2/F",
+            "materia": "Soft. Aplic. Ejec",
+            "maestro": "García Hernández Héctor"
+          }
+        },
+        {
+          "hora": "18:00",
+          "lunes": {
+            "grupo": "Ad2/E",
+            "materia": "Soft. Aplic. Ejec",
+            "maestro": "García Hernández Héctor"
+          },
+          "martes": {
+            "grupo": "Ad2/E",
+            "materia": "Soft. Aplic. Ejec",
+            "maestro": "García Hernández Héctor"
+          },
+          "miercoles": {
+            "grupo": "Ad2/E",
+            "materia": "Soft. Aplic. Ejec",
+            "maestro": "García Hernández Héctor"
+          },
+          "jueves": {
+            "grupo": "Ad2/E",
+            "materia": "Soft. Aplic. Ejec",
+            "maestro": "García Hernández Héctor"
+          },
+          "viernes": {
+            "grupo": "Ad2/E",
+            "materia": "Soft. Aplic. Ejec",
+            "maestro": "García Hernández Héctor"
+          }
+        },
+        {
+          "hora": "19:00-22:00",
+          "lunes": "Libre",
+          "martes": "Libre",
+          "miercoles": "Libre",
+          "jueves": "Libre",
+          "viernes": "Libre"
+        }
+      ]
+    }
+  ],
+  "programa_asesorias": {
+    "periodo": "Agosto-Diciembre 2024",
+    "departamento": "Sistemas y Computación",
+    "maestros": [
+      {
+        "nombre": "Alejandra González Martínez",
+        "asesorias_materias": {
+          "hora": "16-17",
+          "dias": "lunes, martes y miércoles"
+        },
+        "asesorias_residencias": {
+          "hora": "14-15",
+          "dias": "lunes, martes y miércoles"
+        },
+        "tutorias": {
+          "hora": "16-17",
+          "dias": "jueves y viernes"
+        },
+        "lugar": "cubículo 18"
+      },
+      {
+        "nombre": "Alejandro Soto Treviño",
+        "asesorias_materias": {
+          "hora": "8-9",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": null,
+        "tutorias": {
+          "hora": "10-11",
+          "dias": "lunes, martes y miércoles"
+        },
+        "lugar": "aula"
+      },
+      {
+        "nombre": "Alfredo Salazar García",
+        "asesorias_materias": {
+          "hora": "14-15",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "16-17",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "15-16",
+          "dias": "lunes, martes y miércoles"
+        },
+        "lugar": "aula"
+      },
+      {
+        "nombre": "Ana Laura Vazquez Esquivel",
+        "asesorias_materias": {
+          "hora": "17-18",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "18-19",
+          "dias": "lunes a jueves"
+        },
+        "tutorias": null,
+        "lugar": "cubículo 12"
+      },
+      {
+        "nombre": "Araceli Campos Ortiz",
+        "asesorias_materias": {
+          "hora": "14-15",
+          "dias": "jueves y viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "14-15",
+          "dias": "lunes, martes y miércoles"
+        },
+        "tutorias": null,
+        "lugar": "cubículo 19"
+      },
+      {
+        "nombre": "Arturo Alejandro Domínguez Mtz.",
+        "asesorias_materias": {
+          "hora": "14-15",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "13-14",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "15-16",
+          "dias": "lunes, martes y miércoles"
+        },
+        "lugar": "cubículo 08"
+      },
+      {
+        "nombre": "Carmen Mélida Hernández Calderón",
+        "asesorias_materias": [
+          {
+            "hora": "15-16",
+            "dias": "viernes"
+          },
+          {
+            "hora": "17-18",
+            "dias": "lunes a miércoles"
+          },
+          {
+            "hora": "18-19",
+            "dias": "jueves"
+          }
+        ],
+        "asesorias_residencias": [
+          {
+            "hora": "19-21",
+            "dias": "lunes"
+          },
+          {
+            "hora": "19-20",
+            "dias": "martes, miércoles y jueves"
+          }
+        ],
+        "tutorias": null,
+        "lugar": "aula"
+      },
+      {
+        "nombre": "David Ándres Váldes Martínez",
+        "asesorias_materias": {
+          "hora": "12-13",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "14-15",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": null,
+        "lugar": "cubículo 02"
+      },
+      {
+        "nombre": "Ernesto Liñan García",
+        "asesorias_materias": {
+          "hora": "11-15",
+          "dias": "lunes"
+        },
+        "asesorias_residencias": null,
+        "tutorias": null,
+        "lugar": "aula"
+      },
+      {
+        "nombre": "Federico Emmanuel Rivera Torres",
+        "asesorias_materias": {
+          "hora": "9-10",
+          "dias": "lunes, martes y viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "8-9",
+          "dias": "lunes a jueves"
+        },
+        "tutorias": null,
+        "lugar": "aula"
+      },
+      {
+        "nombre": "Federico Quintana Maldonado",
+        "asesorias_materias": {
+          "hora": "17-18",
+          "dias": "lunes a jueves"
+        },
+        "asesorias_residencias": null,
+        "tutorias": null,
+        "lugar": "aula"
+      },
+      {
+        "nombre": "Francisco Javier De Leon Macías",
+        "asesorias_materias": {
+          "hora": "17-19",
+          "dias": "lunes y martes"
+        },
+        "asesorias_residencias": {
+          "hora": "19-21",
+          "dias": "lunes y martes"
+        },
+        "tutorias": null,
+        "lugar": "aula"
+      },
+      {
+        "nombre": "Héctor García Hernández",
+        "asesorias_materias": {
+          "hora": "14-15",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "19-20",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "12-13",
+          "dias": "lunes a miércoles y viernes"
+        },
+        "lugar": "aula"
+      },
+      {
+        "nombre": "Helue De la Barrera Gómez",
+        "asesorias_materias": {
+          "hora": "10-11",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "14-15",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "13-14",
+          "dias": "lunes, martes y miércoles"
+        },
+        "lugar": "cubículo 05"
+      },
+      {
+        "nombre": "Hilda Azucena Escobedo Villarreal",
+        "asesorias_materias": {
+          "hora": "15-18",
+          "dias": "lunes y martes"
+        },
+        "asesorias_residencias": {
+          "hora": "8-9",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "9-12",
+          "dias": "viernes"
+        },
+        "lugar": "cubículo 20"
+      },
+      {
+        "nombre": "Jesús David Flores Cortés",
+        "asesorias_materias": {
+          "hora": "9-10",
+          "dias": "lunes, martes y miércoles"
+        },
+        "asesorias_residencias": null,
+        "tutorias": null,
+        "lugar": "aula"
+      },
+      {
+        "nombre": "Jesús Enrique Aguirre García",
+        "asesorias_materias": {
+          "hora": "9-12",
+          "dias": "viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "19-20",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "16-18",
+          "dias": "viernes"
+        },
+        "lugar": "cubículo 14"
+      },
+      {
+        "nombre": "Jonam Leonel Sánchez Cuevas",
+        "asesorias_materias": [
+          {
+            "hora": "18-19",
+            "dias": "lunes"
+          },
+          {
+            "hora": "18-20",
+            "dias": "martes"
+          }
+        ],
+        "asesorias_residencias": {
+          "hora": "19-20",
+          "dias": "lunes, miércoles, jueves y viernes"
+        },
+        "tutorias": null,
+        "lugar": "cubículo 01"
+      },
+      {
+        "nombre": "José Gallegos Martínez",
+        "asesorias_materias": {
+          "hora": "12-13",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "15-16",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "10-11",
+          "dias": "lunes, martes y miércoles"
+        },
+        "lugar": "cubículo 13"
+      },
+      {
+        "nombre": "berto Navarro Rodríguez",
+        "asesorias_materias": {
+          "hora": "8-9",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "12-13",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "11-12",
+          "dias": "lunes, martes y miércoles"
+        },
+        "lugar": "cubículo 20"
+      },
+      {
+        "nombre": "ustro De la O",
+        "asesorias_materias": {
+          "hora": "14-15",
+          "dias": "miércoles y jueves"
+        },
+        "asesorias_residencias": {
+          "hora": "16-17",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "14-15",
+          "dias": "lunes y martes"
+        },
+        "lugar": "cubículo 04"
+      },
+      {
+        "nombre": "s Contreras Gaytán",
+        "asesorias_materias": {
+          "hora": "13-14",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "14-15",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "7-8",
+          "dias": "miércoles, jueves y viernes"
+        },
+        "lugar": "cubículo 04"
+      },
+      {
+        "nombre": "nagaly Moreno Rubio",
+        "asesorias_materias": {
+          "hora": "14-15",
+          "dias": "jueves y viernes"
+        },
+        "asesorias_residencias": [
+          {
+            "hora": "15-16",
+            "dias": "lunes"
+          },
+          {
+            "hora": "16-18",
+            "dias": "viernes"
+          }
+        ],
+        "tutorias": {
+          "hora": "14-15",
+          "dias": "lunes, martes y miércoles"
+        },
+        "lugar": "cubículo 19"
+      },
+      {
+        "nombre": "abrera Chagoyan",
+        "asesorias_materias": {
+          "hora": "8-9",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "7-8",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": [
+          {
+            "hora": "14-15",
+            "dias": "jueves y viernes"
+          }
+        ],
+        "lugar": "cubículo 17"
+      },
+      {
+        "nombre": "astillo hernández",
+        "asesorias_materias": {
+          "hora": "10-11",
+          "dias": "lunes, martes y miércoles"
+        },
+        "asesorias_residencias": {
+          "hora": "11-12",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "10-11 y 12-13",
+          "dias": "jueves y viernes"
+        },
+        "lugar": "cubículo 04"
+      },
+      {
+        "nombre": "ancinas Pérez",
+        "asesorias_materias": {
+          "hora": "15-16",
+          "dias": "lunes a jueves"
+        },
+        "asesorias_residencias": {
+          "hora": "14-15",
+          "dias": "lunes a jueves"
+        },
+        "tutorias": null,
+        "lugar": "cubículo 04"
+      },
+      {
+        "nombre": "que Castañuela Fuentes",
+        "asesorias_materias": {
+          "hora": "14-15",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "7-8",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "8-12",
+          "dias": "viernes"
+        },
+        "lugar": "cubículo 15"
+      },
+      {
+        "nombre": "o Vargas López",
+        "asesorias_materias": {
+          "hora": "11-12",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "13-14",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "12-13",
+          "dias": "miércoles, jueves y viernes"
+        },
+        "lugar": "cubículo 03"
+      },
+      {
+        "nombre": "berto Jauregui Sánchez",
+        "asesorias_materias": {
+          "hora": "20-21",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": null,
+        "tutorias": null,
+        "lugar": "cubículo 03"
+      },
+      {
+        "nombre": "Patricia Alvarez Sandoval",
+        "asesorias_materias": {
+          "hora": "14-15",
+          "dias": "miércoles, jueves y viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "7-8",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": null,
+        "lugar": "aula"
+      },
+      {
+        "nombre": "Patricia Piña Villanueva",
+        "asesorias_materias": {
+          "hora": "13-14",
+          "dias": "lunes a jueves"
+        },
+        "asesorias_residencias": {
+          "hora": "15-16",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "11-14",
+          "dias": "viernes"
+        },
+        "lugar": "cubículo 11"
+      },
+      {
+        "nombre": "a Vidal Vazquez",
+        "asesorias_materias": [
+          {
+            "hora": "11-12",
+            "dias": "lunes a jueves"
+          },
+          {
+            "hora": "14-15",
+            "dias": "viernes"
+          }
+        ],
+        "asesorias_residencias": {
+          "hora": "13-14",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "12-13",
+          "dias": "miércoles, jueves y viernes"
+        },
+        "lugar": "cubículo 18"
+      },
+      {
+        "nombre": "artinez Martínez",
+        "asesorias_materias": {
+          "hora": "16-18",
+          "dias": "martes y jueves"
+        },
+        "asesorias_residencias": null,
+        "tutorias": null,
+        "lugar": "cubículo 03"
+      },
+      {
+        "nombre": "anrique Peña",
+        "asesorias_materias": {
+          "hora": "14-15",
+          "dias": "lunes, martes y miércoles"
+        },
+        "asesorias_residencias": null,
+        "tutorias": null,
+        "lugar": "aula"
+      },
+      {
+        "nombre": "Flores Cano",
+        "asesorias_materias": {
+          "hora": "11-12",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": {
+          "hora": "7-8",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": {
+          "hora": "9-11",
+          "dias": "viernes"
+        },
+        "lugar": "cubículo 10"
+      },
+      {
+        "nombre": "Pablo Avendaño Mendez",
+        "asesorias_materias": {
+          "hora": "13-14",
+          "dias": "lunes"
+        },
+        "asesorias_residencias": null,
+        "tutorias": null,
+        "lugar": "cubículo 02"
+      },
+      {
+        "nombre": "nchez Montes",
+        "asesorias_materias": {
+          "hora": "18-19",
+          "dias": "lunes a viernes"
+        },
+        "asesorias_residencias": null,
+        "tutorias": null,
+        "lugar": "aula"
+      },
+      {
+        "nombre": "Karina Sorkee Quiroz",
+        "asesorias_materias": [
+          {
+            "hora": "9-10",
+            "dias": "lunes y martes"
+          },
+          {
+            "hora": "10-11",
+            "dias": "miércoles y jueves"
+          }
+        ],
+        "asesorias_residencias": null,
+        "tutorias": null,
+        "lugar": "aula"
+      },
+      {
+        "nombre": "turo Mendoza Morales",
+        "asesorias_materias": [
+          {
+            "hora": "11-12",
+            "dias": "lunes, martes y miércoles"
+          },
+          {
+            "hora": "13-14",
+            "dias": "viernes"
+          }
+        ],
+        "asesorias_residencias": {
+          "hora": "18-19",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": null,
+        "lugar": "cubículo 10"
+      },
+      {
+        "nombre": "Mexicano Reyes",
+        "asesorias_materias": {
+          "hora": "15-16",
+          "dias": "lunes a jueves"
+        },
+        "asesorias_residencias": {
+          "hora": "16-17",
+          "dias": "lunes a viernes"
+        },
+        "tutorias": null,
+        "lugar": "cubículo 09"
+      }
+    ]
+  }
+}

@@ -30,13 +30,21 @@ const sections = [
     { id: "buzon", label: "Buzón", group: "Info" },
 ];
 
-const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"];
+const groups = [
+    "Académico",
+    "Institucional",
+    "Recursos",
+    "Actividades",
+    "Info",
+];
 ---
 
 <Layout title={`${lab.nombre} – ITS`} description={lab.descripcionCorta}>
-
     <!-- ═══════════════════════════════════════════════════════════ HERO -->
-    <section class="lab-hero" style={`--c: ${lab.color}; --cs: ${lab.colorSecundario}`}>
+    <section
+        class="lab-hero"
+        style={`--c: ${lab.color}; --cs: ${lab.colorSecundario}`}
+    >
         <canvas class="lab-canvas" id="lab-canvas"></canvas>
         <div class="hero-grid-bg"></div>
         <div class="hero-orb ho-1"></div>
@@ -44,7 +52,14 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
 
         <div class="hero-inner">
             <a href="/" class="back-link">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                >
                     <path d="M19 12H5M12 5l-7 7 7 7"></path>
                 </svg>
                 Todos los laboratorios
@@ -78,20 +93,45 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
 
             <div class="hero-pills">
                 <span class="hpill">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <circle cx="12" cy="12" r="10"></circle><polyline
+                            points="12 6 12 12 16 14"></polyline>
                     </svg>
                     {lab.horario.lunesViernes}
                 </span>
                 <span class="hpill">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                        ></path><circle cx="12" cy="7" r="4"></circle>
                     </svg>
                     {lab.contacto.responsable}
                 </span>
                 <span class="hpill">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                    <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                        ></path><polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
                     {lab.contacto.email}
                 </span>
@@ -100,8 +140,15 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
 
         <!-- Scroll hint -->
         <div class="hero-scroll-hint">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"/>
+            <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgba(255,255,255,0.5)"
+                stroke-width="2"
+            >
+                <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
         </div>
     </section>
@@ -111,67 +158,95 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         <!-- Row 1: group pills -->
         <div class="nav-groups">
             <div class="ng-inner">
-                {groups.map((g, gi) => (
-                    <button
-                        class={`group-btn${gi === 0 ? ' active' : ''}`}
-                        data-group={g}
-                        style={`--c: ${lab.color}`}
-                    >
-                        {g}
-                    </button>
-                ))}
+                {
+                    groups.map((g, gi) => (
+                        <button
+                            class={`group-btn${gi === 0 ? " active" : ""}`}
+                            data-group={g}
+                            style={`--c: ${lab.color}`}
+                        >
+                            {g}
+                        </button>
+                    ))
+                }
             </div>
         </div>
         <!-- Row 2: section tabs for active group -->
         <div class="nav-sections">
             <div class="ns-inner">
-                {groups.map((g, gi) => (
-                    <div class={`section-row${gi === 0 ? ' active' : ''}`} data-group={g}>
-                        {sections
-                            .filter((s) => s.group === g)
-                            .map((s, si) => (
-                                <button
-                                    class={`tab-btn${gi === 0 && si === 0 ? ' active' : ''}`}
-                                    data-target={s.id}
-                                    style={`--c: ${lab.color}`}
-                                >
-                                    {s.label}
-                                </button>
-                            ))}
-                    </div>
-                ))}
+                {
+                    groups.map((g, gi) => (
+                        <div
+                            class={`section-row${gi === 0 ? " active" : ""}`}
+                            data-group={g}
+                        >
+                            {sections
+                                .filter((s) => s.group === g)
+                                .map((s, si) => (
+                                    <button
+                                        class={`tab-btn${
+                                            gi === 0 && si === 0
+                                                ? " active"
+                                                : ""
+                                        }`}
+                                        data-target={s.id}
+                                        style={`--c: ${lab.color}`}
+                                    >
+                                        {s.label}
+                                    </button>
+                                ))}
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </nav>
 
     <!-- ═══════════════════════════════════════════════════ PANELS -->
     <div class="panels-area container">
-
         <!-- PRACTICAS -->
         <section class="panel active" id="panel-practicas">
             <div class="panel-head">
                 <span class="ph-bar" style={`background:${lab.color}`}></span>
                 <h2>Prácticas de laboratorio</h2>
-                <span class="badge" style={`background:${lab.color}18;color:${lab.color}`}>
+                <span
+                    class="badge"
+                    style={`background:${lab.color}18;color:${lab.color}`}
+                >
                     {lab.practicas.length} prácticas
                 </span>
             </div>
             <div class="practicas-grid">
-                {lab.practicas.map((p) => (
-                    <div class="practica-card" style={`--c:${lab.color}`}>
-                        <div class="p-num" style={`background:${lab.color}`}>{p.numero}</div>
-                        <div class="p-body">
-                            <h3>{p.nombre}</h3>
-                            <p>{p.descripcion}</p>
-                            <div class="p-dur">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                {p.duracion}
+                {
+                    lab.practicas.map((p) => (
+                        <div class="practica-card" style={`--c:${lab.color}`}>
+                            <div
+                                class="p-num"
+                                style={`background:${lab.color}`}
+                            >
+                                {p.numero}
+                            </div>
+                            <div class="p-body">
+                                <h3>{p.nombre}</h3>
+                                <p>{p.descripcion}</p>
+                                <div class="p-dur">
+                                    <svg
+                                        width="12"
+                                        height="12"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
+                                    </svg>
+                                    {p.duracion}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                }
             </div>
         </section>
 
@@ -196,13 +271,332 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 </div>
             </div>
             <div class="obs-box">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={lab.color} stroke-width="2">
+                <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke={lab.color}
+                    stroke-width="2"
+                >
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="8" x2="12" y2="12"></line>
                     <line x1="12" y1="16" x2="12.01" y2="16"></line>
                 </svg>
                 <p>{lab.horario.observaciones}</p>
             </div>
+
+            {
+                lab.horariosDetallados && (
+                    <div class="horarios-detallados" style={`--c:${lab.color}`}>
+                        <div class="hd-header">
+                            <h3>Horarios por aula</h3>
+                            <span class="hd-periodo">
+                                {lab.horariosDetallados.periodo}
+                            </span>
+                        </div>
+
+                        <div class="hd-aula-tabs" id="hd-aula-tabs">
+                            {lab.horariosDetallados.aulas.map((a, i) => (
+                                <button
+                                    class={`hd-aula-btn${
+                                        i === 0 ? " active" : ""
+                                    }`}
+                                    data-aula-idx={i}
+                                    style={`--c:${lab.color}`}
+                                >
+                                    {a.aula}
+                                </button>
+                            ))}
+                        </div>
+
+                        <div class="hd-tables-wrap" id="hd-tables-wrap">
+                            {lab.horariosDetallados.aulas.map((a, ai) => (
+                                <div
+                                    class={`hd-table-container${
+                                        ai === 0 ? " active" : ""
+                                    }`}
+                                    data-aula-table={ai}
+                                >
+                                    <div class="hd-table-scroll">
+                                        <table class="hd-table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="hd-th-hora">
+                                                        Hora
+                                                    </th>
+                                                    <th>Lunes</th>
+                                                    <th>Martes</th>
+                                                    <th>Miércoles</th>
+                                                    <th>Jueves</th>
+                                                    <th>Viernes</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {a.horario.map((franja) => (
+                                                    <tr>
+                                                        <td class="hd-td-hora">
+                                                            {franja.hora}
+                                                        </td>
+                                                        {(
+                                                            [
+                                                                "lunes",
+                                                                "martes",
+                                                                "miercoles",
+                                                                "jueves",
+                                                                "viernes",
+                                                            ] as const
+                                                        ).map((dia) => {
+                                                            const celda =
+                                                                franja[dia];
+                                                            if (
+                                                                celda ===
+                                                                    null ||
+                                                                celda ===
+                                                                    undefined
+                                                            ) {
+                                                                return (
+                                                                    <td class="hd-td-libre">
+                                                                        <span class="hd-libre">
+                                                                            —
+                                                                        </span>
+                                                                    </td>
+                                                                );
+                                                            }
+                                                            if (
+                                                                typeof celda ===
+                                                                "string"
+                                                            ) {
+                                                                const isLibre =
+                                                                    celda
+                                                                        .toLowerCase()
+                                                                        .includes(
+                                                                            "libre"
+                                                                        );
+                                                                return (
+                                                                    <td
+                                                                        class={
+                                                                            isLibre
+                                                                                ? "hd-td-libre"
+                                                                                : "hd-td-clase"
+                                                                        }
+                                                                    >
+                                                                        <span
+                                                                            class={
+                                                                                isLibre
+                                                                                    ? "hd-libre"
+                                                                                    : "hd-materia"
+                                                                            }
+                                                                        >
+                                                                            {
+                                                                                celda
+                                                                            }
+                                                                        </span>
+                                                                    </td>
+                                                                );
+                                                            }
+                                                            return (
+                                                                <td class="hd-td-clase">
+                                                                    <div class="hd-clase-info">
+                                                                        <span class="hd-materia">
+                                                                            {
+                                                                                celda.materia
+                                                                            }
+                                                                        </span>
+                                                                        {celda.grupo && (
+                                                                            <span class="hd-grupo">
+                                                                                {
+                                                                                    celda.grupo
+                                                                                }
+                                                                            </span>
+                                                                        )}
+                                                                        <span class="hd-maestro">
+                                                                            {
+                                                                                celda.maestro
+                                                                            }
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                            );
+                                                        })}
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {lab.horariosDetallados.programa_asesorias && (
+                            <details class="hd-asesorias-details">
+                                <summary style={`--c:${lab.color}`}>
+                                    <svg
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                                    </svg>
+                                    Programa de asesorías —{" "}
+                                    {
+                                        lab.horariosDetallados
+                                            .programa_asesorias.periodo
+                                    }
+                                </summary>
+                                <div class="hd-asesorias-grid">
+                                    {lab.horariosDetallados.programa_asesorias.maestros.map(
+                                        (m) => (
+                                            <div class="hd-asesoria-card">
+                                                <div
+                                                    class="hd-asesoria-nombre"
+                                                    style={`--c:${lab.color}`}
+                                                >
+                                                    {m.nombre}
+                                                </div>
+                                                <div class="hd-asesoria-body">
+                                                    {m.asesorias_materias && (
+                                                        <div class="hd-asesoria-item">
+                                                            <span class="hd-asesoria-label">
+                                                                Asesorías
+                                                                materias
+                                                            </span>
+                                                            {Array.isArray(
+                                                                m.asesorias_materias
+                                                            ) ? (
+                                                                m.asesorias_materias.map(
+                                                                    (a) => (
+                                                                        <span class="hd-asesoria-val">
+                                                                            {
+                                                                                a.hora
+                                                                            }{" "}
+                                                                            hrs
+                                                                            —{" "}
+                                                                            {
+                                                                                a.dias
+                                                                            }
+                                                                        </span>
+                                                                    )
+                                                                )
+                                                            ) : (
+                                                                <span class="hd-asesoria-val">
+                                                                    {
+                                                                        m
+                                                                            .asesorias_materias
+                                                                            .hora
+                                                                    }{" "}
+                                                                    hrs —{" "}
+                                                                    {
+                                                                        m
+                                                                            .asesorias_materias
+                                                                            .dias
+                                                                    }
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                    {m.asesorias_residencias && (
+                                                        <div class="hd-asesoria-item">
+                                                            <span class="hd-asesoria-label">
+                                                                Asesorías
+                                                                residencias
+                                                            </span>
+                                                            {Array.isArray(
+                                                                m.asesorias_residencias
+                                                            ) ? (
+                                                                m.asesorias_residencias.map(
+                                                                    (a) => (
+                                                                        <span class="hd-asesoria-val">
+                                                                            {
+                                                                                a.hora
+                                                                            }{" "}
+                                                                            hrs
+                                                                            —{" "}
+                                                                            {
+                                                                                a.dias
+                                                                            }
+                                                                        </span>
+                                                                    )
+                                                                )
+                                                            ) : (
+                                                                <span class="hd-asesoria-val">
+                                                                    {
+                                                                        m
+                                                                            .asesorias_residencias
+                                                                            .hora
+                                                                    }{" "}
+                                                                    hrs —{" "}
+                                                                    {
+                                                                        m
+                                                                            .asesorias_residencias
+                                                                            .dias
+                                                                    }
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                    {m.tutorias && (
+                                                        <div class="hd-asesoria-item">
+                                                            <span class="hd-asesoria-label">
+                                                                Tutorías
+                                                            </span>
+                                                            {Array.isArray(
+                                                                m.tutorias
+                                                            ) ? (
+                                                                m.tutorias.map(
+                                                                    (a) => (
+                                                                        <span class="hd-asesoria-val">
+                                                                            {
+                                                                                a.hora
+                                                                            }{" "}
+                                                                            hrs
+                                                                            —{" "}
+                                                                            {
+                                                                                a.dias
+                                                                            }
+                                                                        </span>
+                                                                    )
+                                                                )
+                                                            ) : (
+                                                                <span class="hd-asesoria-val">
+                                                                    {
+                                                                        m
+                                                                            .tutorias
+                                                                            .hora
+                                                                    }{" "}
+                                                                    hrs —{" "}
+                                                                    {
+                                                                        m
+                                                                            .tutorias
+                                                                            .dias
+                                                                    }
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                    <div class="hd-asesoria-item">
+                                                        <span class="hd-asesoria-label">
+                                                            Lugar
+                                                        </span>
+                                                        <span class="hd-asesoria-val">
+                                                            {m.lugar}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    )}
+                                </div>
+                            </details>
+                        )}
+                    </div>
+                )
+            }
         </section>
 
         <!-- SALAS -->
@@ -212,22 +606,36 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 <h2>Salas disponibles</h2>
             </div>
             <div class="aulas-list">
-                {lab.aulas.map((a) => (
-                    <div class="aula-row">
-                        <div class="aula-id" style={`background:${lab.color}`}>{a.id}</div>
-                        <div class="aula-info">
-                            <strong>{a.nombre}</strong>
-                            <p>{a.descripcion}</p>
+                {
+                    lab.aulas.map((a) => (
+                        <div class="aula-row">
+                            <div
+                                class="aula-id"
+                                style={`background:${lab.color}`}
+                            >
+                                {a.id}
+                            </div>
+                            <div class="aula-info">
+                                <strong>{a.nombre}</strong>
+                                <p>{a.descripcion}</p>
+                            </div>
+                            <div class="aula-cap">
+                                <svg
+                                    width="14"
+                                    height="14"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                </svg>
+                                {a.capacidad}
+                            </div>
                         </div>
-                        <div class="aula-cap">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                            </svg>
-                            {a.capacidad}
-                        </div>
-                    </div>
-                ))}
+                    ))
+                }
             </div>
         </section>
 
@@ -245,7 +653,9 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                     </ul>
                 </div>
                 <div class="list-box">
-                    <h3 style={`color:${lab.color}`}>Materias que usan el lab</h3>
+                    <h3 style={`color:${lab.color}`}>
+                        Materias que usan el lab
+                    </h3>
                     <ul class="dot-list" style={`--c:${lab.color}`}>
                         {lab.materias.map((m) => <li>{m}</li>)}
                     </ul>
@@ -289,12 +699,16 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 <h2>Valores institucionales</h2>
             </div>
             <div class="valores-grid">
-                {lab.valores.map((v, i) => (
-                    <div class="valor-tile" style={`--c:${lab.color}`}>
-                        <div class="v-num">{String(i + 1).padStart(2, "0")}</div>
-                        <p>{v}</p>
-                    </div>
-                ))}
+                {
+                    lab.valores.map((v, i) => (
+                        <div class="valor-tile" style={`--c:${lab.color}`}>
+                            <div class="v-num">
+                                {String(i + 1).padStart(2, "0")}
+                            </div>
+                            <p>{v}</p>
+                        </div>
+                    ))
+                }
             </div>
         </section>
 
@@ -308,8 +722,16 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 <p>{lab.historia}</p>
             </div>
             <div class="ubicacion-row">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={lab.color} stroke-width="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke={lab.color}
+                    stroke-width="2"
+                >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
                     <circle cx="12" cy="10" r="3"></circle>
                 </svg>
                 <span>{lab.ubicacion}</span>
@@ -335,23 +757,32 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 <div class="org-row">
                     <div class="org-col">
                         <div class="org-col-title">Coordinadores</div>
-                        {lab.organizacion.coordinadores.map((c) => (
-                            <div class="org-person">
-                                <div class="org-avatar sm" style={`background:${lab.color}20;color:${lab.color}`}>
-                                    {c.charAt(0)}
+                        {
+                            lab.organizacion.coordinadores.map((c) => (
+                                <div class="org-person">
+                                    <div
+                                        class="org-avatar sm"
+                                        style={`background:${lab.color}20;color:${lab.color}`}
+                                    >
+                                        {c.charAt(0)}
+                                    </div>
+                                    <span>{c}</span>
                                 </div>
-                                <span>{c}</span>
-                            </div>
-                        ))}
+                            ))
+                        }
                     </div>
                     <div class="org-col">
                         <div class="org-col-title">Técnicos</div>
-                        {lab.organizacion.tecnicos.map((t) => (
-                            <div class="org-person">
-                                <div class="org-avatar sm">{t.charAt(0)}</div>
-                                <span>{t}</span>
-                            </div>
-                        ))}
+                        {
+                            lab.organizacion.tecnicos.map((t) => (
+                                <div class="org-person">
+                                    <div class="org-avatar sm">
+                                        {t.charAt(0)}
+                                    </div>
+                                    <span>{t}</span>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
             </div>
@@ -362,18 +793,28 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
             <div class="panel-head">
                 <span class="ph-bar" style={`background:${lab.color}`}></span>
                 <h2>Equipamiento</h2>
-                <span class="badge" style={`background:${lab.color}18;color:${lab.color}`}>
+                <span
+                    class="badge"
+                    style={`background:${lab.color}18;color:${lab.color}`}
+                >
                     {lab.equipo.length} elementos
                 </span>
             </div>
             <div class="equipo-grid">
-                {lab.equipo.map((e) => (
-                    <div class="eq-card" style={`--c:${lab.color}`}>
-                        <div class="eq-qty" style={`background:${lab.color}`}>{e.cantidad}</div>
-                        <h4>{e.nombre}</h4>
-                        <p>{e.descripcion}</p>
-                    </div>
-                ))}
+                {
+                    lab.equipo.map((e) => (
+                        <div class="eq-card" style={`--c:${lab.color}`}>
+                            <div
+                                class="eq-qty"
+                                style={`background:${lab.color}`}
+                            >
+                                {e.cantidad}
+                            </div>
+                            <h4>{e.nombre}</h4>
+                            <p>{e.descripcion}</p>
+                        </div>
+                    ))
+                }
             </div>
         </section>
 
@@ -384,16 +825,28 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 <h2>Certificaciones</h2>
             </div>
             <div class="cert-list">
-                {lab.certificaciones.map((c) => (
-                    <div class="cert-row">
-                        <div class="cert-check" style={`color:${lab.color};border-color:${lab.color}`}>✓</div>
-                        <div class="cert-info">
-                            <strong>{c.nombre}</strong>
-                            <span class="cert-org" style={`color:${lab.color}`}>{c.organismo}</span>
-                            <p>{c.descripcion}</p>
+                {
+                    lab.certificaciones.map((c) => (
+                        <div class="cert-row">
+                            <div
+                                class="cert-check"
+                                style={`color:${lab.color};border-color:${lab.color}`}
+                            >
+                                ✓
+                            </div>
+                            <div class="cert-info">
+                                <strong>{c.nombre}</strong>
+                                <span
+                                    class="cert-org"
+                                    style={`color:${lab.color}`}
+                                >
+                                    {c.organismo}
+                                </span>
+                                <p>{c.descripcion}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                }
             </div>
         </section>
 
@@ -404,15 +857,22 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 <h2>Eventos</h2>
             </div>
             <div class="event-list">
-                {lab.eventos.map((e) => (
-                    <div class="event-row">
-                        <div class="event-date" style={`background:${lab.color}`}>{e.fecha}</div>
-                        <div class="event-info">
-                            <strong>{e.nombre}</strong>
-                            <p>{e.descripcion}</p>
+                {
+                    lab.eventos.map((e) => (
+                        <div class="event-row">
+                            <div
+                                class="event-date"
+                                style={`background:${lab.color}`}
+                            >
+                                {e.fecha}
+                            </div>
+                            <div class="event-info">
+                                <strong>{e.nombre}</strong>
+                                <p>{e.descripcion}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                }
             </div>
         </section>
 
@@ -423,15 +883,17 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 <h2>Concursos</h2>
             </div>
             <div class="event-list">
-                {lab.concursos.map((c) => (
-                    <div class="event-row">
-                        <div class="event-date nivel">{c.nivel}</div>
-                        <div class="event-info">
-                            <strong>{c.nombre}</strong>
-                            <p>{c.descripcion}</p>
+                {
+                    lab.concursos.map((c) => (
+                        <div class="event-row">
+                            <div class="event-date nivel">{c.nivel}</div>
+                            <div class="event-info">
+                                <strong>{c.nombre}</strong>
+                                <p>{c.descripcion}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                }
             </div>
         </section>
 
@@ -442,15 +904,17 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 <h2>Congresos</h2>
             </div>
             <div class="event-list">
-                {lab.congresos.map((c) => (
-                    <div class="event-row">
-                        <div class="event-date nivel">{c.nivel}</div>
-                        <div class="event-info">
-                            <strong>{c.nombre}</strong>
-                            <p>{c.descripcion}</p>
+                {
+                    lab.congresos.map((c) => (
+                        <div class="event-row">
+                            <div class="event-date nivel">{c.nivel}</div>
+                            <div class="event-info">
+                                <strong>{c.nombre}</strong>
+                                <p>{c.descripcion}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                }
             </div>
         </section>
 
@@ -462,12 +926,16 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 <span class="badge warn">Lectura obligatoria</span>
             </div>
             <div class="reg-list">
-                {lab.reglamento.map((r, i) => (
-                    <div class="reg-row">
-                        <div class="reg-n" style={`color:${lab.color}`}>{i + 1}</div>
-                        <p>{r}</p>
-                    </div>
-                ))}
+                {
+                    lab.reglamento.map((r, i) => (
+                        <div class="reg-row">
+                            <div class="reg-n" style={`color:${lab.color}`}>
+                                {i + 1}
+                            </div>
+                            <p>{r}</p>
+                        </div>
+                    ))
+                }
             </div>
         </section>
 
@@ -478,14 +946,27 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 <h2>Ubicación</h2>
             </div>
             <div class="ubic-card" style={`border-left-color:${lab.color}`}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={lab.color} stroke-width="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke={lab.color}
+                    stroke-width="2"
+                >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
                     <circle cx="12" cy="10" r="3"></circle>
                 </svg>
                 <div>
                     <strong>{lab.nombre}</strong>
                     <p>{lab.ubicacion}</p>
-                    <a href="https://maps.google.com/?q=Instituto+Tecnologico+de+Saltillo" target="_blank" class="map-btn" style={`background:${lab.color}`}>
+                    <a
+                        href="https://maps.google.com/?q=Instituto+Tecnologico+de+Saltillo"
+                        target="_blank"
+                        class="map-btn"
+                        style={`background:${lab.color}`}
+                    >
                         Ver en Google Maps →
                     </a>
                 </div>
@@ -505,7 +986,11 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
                 </div>
                 <div class="contact-card" style={`--c:${lab.color}`}>
                     <div class="cc-label">Correo electrónico</div>
-                    <a href={`mailto:${lab.contacto.email}`} class="cc-val link" style={`color:${lab.color}`}>
+                    <a
+                        href={`mailto:${lab.contacto.email}`}
+                        class="cc-val link"
+                        style={`color:${lab.color}`}
+                    >
                         {lab.contacto.email}
                     </a>
                 </div>
@@ -529,15 +1014,23 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
             <div class="buzon-wrap">
                 <p class="buzon-desc">{lab.buzonSugerencias}</p>
                 <div class="buzon-form">
-                    <textarea id="sug-text" placeholder="Escribe tu sugerencia aquí..." rows="5"></textarea>
+                    <textarea
+                        id="sug-text"
+                        placeholder="Escribe tu sugerencia aquí..."
+                        rows="5"></textarea>
                     <div class="buzon-row">
-                        <input id="sug-name" type="text" placeholder="Tu nombre (opcional)" />
-                        <button id="sug-btn" style={`background:${lab.color}`}>Enviar sugerencia</button>
+                        <input
+                            id="sug-name"
+                            type="text"
+                            placeholder="Tu nombre (opcional)"
+                        />
+                        <button id="sug-btn" style={`background:${lab.color}`}
+                            >Enviar sugerencia</button
+                        >
                     </div>
                 </div>
             </div>
         </section>
-
     </div>
 </Layout>
 
@@ -572,11 +1065,21 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         position: absolute;
         inset: 0;
         z-index: 0;
-        background-image:
-            linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-image: linear-gradient(
+                rgba(255, 255, 255, 0.04) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.04) 1px,
+                transparent 1px
+            );
         background-size: 48px 48px;
-        mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+        mask-image: radial-gradient(
+            ellipse 80% 80% at 50% 50%,
+            black 30%,
+            transparent 100%
+        );
     }
 
     .hero-orb {
@@ -588,22 +1091,30 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         animation: orbDrift 9s ease-in-out infinite alternate;
     }
     .ho-1 {
-        width: 420px; height: 420px;
+        width: 420px;
+        height: 420px;
         background: var(--c);
         opacity: 0.18;
-        top: -100px; right: 5%;
+        top: -100px;
+        right: 5%;
         animation-delay: 0s;
     }
     .ho-2 {
-        width: 280px; height: 280px;
+        width: 280px;
+        height: 280px;
         background: var(--cs, #f59e0b);
         opacity: 0.12;
-        bottom: -60px; left: 8%;
+        bottom: -60px;
+        left: 8%;
         animation-delay: -4s;
     }
     @keyframes orbDrift {
-        from { transform: translate(0, 0) scale(1); }
-        to   { transform: translate(30px, -20px) scale(1.1); }
+        from {
+            transform: translate(0, 0) scale(1);
+        }
+        to {
+            transform: translate(30px, -20px) scale(1.1);
+        }
     }
 
     .hero-inner {
@@ -619,20 +1130,22 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
-        color: rgba(255,255,255,0.6);
+        color: rgba(255, 255, 255, 0.6);
         text-decoration: none;
         font-size: 0.84rem;
         margin-bottom: 2rem;
         transition: color 0.2s;
         letter-spacing: 0.01em;
     }
-    .back-link:hover { color: rgba(255,255,255,0.9); }
+    .back-link:hover {
+        color: rgba(255, 255, 255, 0.9);
+    }
 
     .hero-tag {
         display: inline-block;
-        background: rgba(255,255,255,0.12);
-        border: 1px solid rgba(255,255,255,0.2);
-        color: rgba(255,255,255,0.9);
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.9);
         padding: 0.3rem 1rem;
         border-radius: 100px;
         font-size: 0.76rem;
@@ -648,11 +1161,11 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         line-height: 1.1;
         letter-spacing: -0.03em;
         margin-bottom: 1rem;
-        text-shadow: 0 2px 40px rgba(0,0,0,0.3);
+        text-shadow: 0 2px 40px rgba(0, 0, 0, 0.3);
     }
 
     .hero-desc {
-        color: rgba(255,255,255,0.72);
+        color: rgba(255, 255, 255, 0.72);
         font-size: clamp(0.95rem, 1.5vw, 1.1rem);
         line-height: 1.7;
         max-width: 600px;
@@ -667,8 +1180,8 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         gap: 0;
         flex-wrap: wrap;
         margin-bottom: 2rem;
-        background: rgba(255,255,255,0.07);
-        border: 1px solid rgba(255,255,255,0.13);
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.13);
         border-radius: 16px;
         padding: 1.25rem 2rem;
         backdrop-filter: blur(10px);
@@ -693,14 +1206,14 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
     }
     .hstat-l {
         font-size: 0.73rem;
-        color: rgba(255,255,255,0.55);
+        color: rgba(255, 255, 255, 0.55);
         text-transform: uppercase;
         letter-spacing: 0.06em;
     }
     .hstat-sep {
         width: 1px;
         height: 40px;
-        background: rgba(255,255,255,0.15);
+        background: rgba(255, 255, 255, 0.15);
         flex-shrink: 0;
         margin: 0 1rem;
     }
@@ -716,9 +1229,9 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
-        background: rgba(255,255,255,0.1);
-        border: 1px solid rgba(255,255,255,0.18);
-        color: rgba(255,255,255,0.85);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.85);
         padding: 0.35rem 0.9rem;
         border-radius: 100px;
         font-size: 0.82rem;
@@ -735,8 +1248,13 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         animation: bounceDown 2s ease-in-out infinite;
     }
     @keyframes bounceDown {
-        0%, 100% { transform: translateX(-50%) translateY(0); }
-        50%       { transform: translateX(-50%) translateY(6px); }
+        0%,
+        100% {
+            transform: translateX(-50%) translateY(0);
+        }
+        50% {
+            transform: translateX(-50%) translateY(6px);
+        }
     }
 
     /* ── TAB NAV ──────────────────────────────────────────────────── */
@@ -746,7 +1264,7 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         z-index: 100;
         background: var(--bg-card);
         border-bottom: 1px solid var(--border);
-        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
     }
 
     /* Row 1 – group pills */
@@ -788,7 +1306,9 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
     }
 
     /* Row 2 – section tabs */
-    .nav-sections { overflow: hidden; }
+    .nav-sections {
+        overflow: hidden;
+    }
     .ns-inner {
         max-width: 1200px;
         margin: 0 auto;
@@ -800,8 +1320,12 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         overflow-x: auto;
         scrollbar-width: none;
     }
-    .section-row::-webkit-scrollbar { display: none; }
-    .section-row.active { display: flex; }
+    .section-row::-webkit-scrollbar {
+        display: none;
+    }
+    .section-row.active {
+        display: flex;
+    }
 
     .tab-btn {
         flex-shrink: 0;
@@ -818,7 +1342,9 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         white-space: nowrap;
         margin-bottom: -1px;
     }
-    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn:hover {
+        color: var(--text-primary);
+    }
     .tab-btn.active {
         color: var(--c);
         font-weight: 600;
@@ -835,11 +1361,19 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         display: none;
         animation: fadeIn 0.28s ease;
     }
-    .panel.active { display: block; }
+    .panel.active {
+        display: block;
+    }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to   { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .panel-head {
@@ -871,7 +1405,10 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         font-weight: 600;
         flex-shrink: 0;
     }
-    .badge.warn { background: #fef3c7; color: #92400e; }
+    .badge.warn {
+        background: #fef3c7;
+        color: #92400e;
+    }
 
     /* ── PRACTICAS ────────────────────────────────────────────────── */
     .practicas-grid {
@@ -886,16 +1423,18 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         border: 1px solid var(--border);
         border-radius: 14px;
         padding: 1.25rem 1.5rem;
-        transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s, background 0.3s;
+        transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s,
+            background 0.3s;
     }
     .practica-card:hover {
-        box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
         border-color: color-mix(in srgb, var(--c) 35%, transparent);
         transform: translateX(4px);
     }
     .p-num {
         flex-shrink: 0;
-        width: 42px; height: 42px;
+        width: 42px;
+        height: 42px;
         border-radius: 10px;
         color: #fff;
         font-weight: 800;
@@ -942,7 +1481,10 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         text-align: center;
         transition: background 0.3s, border-color 0.3s;
     }
-    .h-card.closed { border-top-color: #d1d5db; opacity: 0.6; }
+    .h-card.closed {
+        border-top-color: #d1d5db;
+        opacity: 0.6;
+    }
     .h-day {
         font-size: 0.8rem;
         color: var(--text-secondary);
@@ -950,7 +1492,11 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         text-transform: uppercase;
         letter-spacing: 0.06em;
     }
-    .h-time { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); }
+    .h-time {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-primary);
+    }
     .obs-box {
         display: flex;
         align-items: flex-start;
@@ -964,11 +1510,277 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         line-height: 1.6;
         transition: background 0.3s;
     }
-    .obs-box svg { flex-shrink: 0; margin-top: 2px; }
-    .obs-box p { margin: 0; }
+    .obs-box svg {
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .obs-box p {
+        margin: 0;
+    }
+
+    /* ── HORARIOS DETALLADOS ──────────────────────────────────────── */
+    .horarios-detallados {
+        margin-top: 2rem;
+        border-top: 1px solid var(--border);
+        padding-top: 2rem;
+    }
+    .hd-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+        flex-wrap: wrap;
+    }
+    .hd-header h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0;
+    }
+    .hd-periodo {
+        background: var(--c);
+        color: #fff;
+        font-size: 0.76rem;
+        font-weight: 600;
+        padding: 0.3rem 0.9rem;
+        border-radius: 100px;
+        letter-spacing: 0.02em;
+    }
+
+    .hd-aula-tabs {
+        display: flex;
+        gap: 0.4rem;
+        margin-bottom: 1.25rem;
+        overflow-x: auto;
+        padding-bottom: 0.35rem;
+    }
+    .hd-aula-btn {
+        padding: 0.45rem 1.1rem;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        font-size: 0.84rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-family: inherit;
+        transition: all 0.2s;
+        white-space: nowrap;
+    }
+    .hd-aula-btn:hover {
+        color: var(--text-primary);
+        border-color: var(--c);
+    }
+    .hd-aula-btn.active {
+        background: var(--c);
+        color: #fff;
+        border-color: var(--c);
+        box-shadow: 0 2px 10px color-mix(in srgb, var(--c) 35%, transparent);
+    }
+
+    .hd-table-container {
+        display: none;
+        animation: hdFadeIn 0.3s ease;
+    }
+    .hd-table-container.active {
+        display: block;
+    }
+    @keyframes hdFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hd-table-scroll {
+        overflow-x: auto;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--bg-card);
+    }
+
+    .hd-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.8rem;
+        min-width: 700px;
+    }
+    .hd-table thead {
+        background: color-mix(in srgb, var(--c) 10%, var(--bg-surface));
+    }
+    .hd-table th {
+        padding: 0.75rem 0.65rem;
+        text-align: center;
+        font-weight: 700;
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--c);
+        border-bottom: 2px solid var(--border);
+        white-space: nowrap;
+    }
+    .hd-th-hora {
+        width: 70px;
+        text-align: center;
+    }
+    .hd-table td {
+        padding: 0.55rem 0.5rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+        text-align: center;
+    }
+    .hd-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+    .hd-table tbody tr:hover {
+        background: color-mix(in srgb, var(--c) 4%, transparent);
+    }
+
+    .hd-td-hora {
+        font-weight: 700;
+        color: var(--text-primary);
+        font-size: 0.82rem;
+        white-space: nowrap;
+        text-align: center;
+        background: color-mix(in srgb, var(--c) 5%, var(--bg-surface));
+    }
+    .hd-td-libre {
+        color: var(--text-secondary);
+        opacity: 0.5;
+    }
+    .hd-libre {
+        font-size: 0.78rem;
+        color: var(--text-secondary);
+    }
+    .hd-td-clase {
+        background: color-mix(in srgb, var(--c) 5%, transparent);
+    }
+
+    .hd-clase-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        text-align: left;
+    }
+    .hd-materia {
+        font-weight: 600;
+        font-size: 0.78rem;
+        color: var(--text-primary);
+        line-height: 1.25;
+    }
+    .hd-grupo {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--c);
+        background: color-mix(in srgb, var(--c) 12%, transparent);
+        padding: 0.1rem 0.35rem;
+        border-radius: 4px;
+        display: inline-block;
+        width: fit-content;
+    }
+    .hd-maestro {
+        font-size: 0.7rem;
+        color: var(--text-secondary);
+        line-height: 1.3;
+    }
+
+    /* Asesorías collapsible */
+    .hd-asesorias-details {
+        margin-top: 1.5rem;
+    }
+    .hd-asesorias-details summary {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.93rem;
+        color: var(--c);
+        padding: 0.75rem 1rem;
+        background: color-mix(in srgb, var(--c) 8%, var(--bg-card));
+        border: 1px solid color-mix(in srgb, var(--c) 20%, var(--border));
+        border-radius: 12px;
+        transition: background 0.2s;
+        list-style: none;
+    }
+    .hd-asesorias-details summary::-webkit-details-marker {
+        display: none;
+    }
+    .hd-asesorias-details summary::after {
+        content: "+";
+        margin-left: auto;
+        font-size: 1.2rem;
+        font-weight: 400;
+        transition: transform 0.2s;
+    }
+    .hd-asesorias-details[open] summary::after {
+        content: "-";
+    }
+    .hd-asesorias-details summary:hover {
+        background: color-mix(in srgb, var(--c) 14%, var(--bg-card));
+    }
+
+    .hd-asesorias-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 0.75rem;
+        margin-top: 1rem;
+        padding: 0.25rem;
+    }
+    .hd-asesoria-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: box-shadow 0.2s, background 0.3s;
+    }
+    .hd-asesoria-card:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+    .hd-asesoria-nombre {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        background: color-mix(in srgb, var(--c) 8%, var(--bg-surface));
+        border-bottom: 1px solid var(--border);
+    }
+    .hd-asesoria-body {
+        padding: 0.65rem 0.9rem;
+    }
+    .hd-asesoria-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        padding: 0.25rem 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .hd-asesoria-item:last-child {
+        border-bottom: none;
+    }
+    .hd-asesoria-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--text-secondary);
+    }
+    .hd-asesoria-val {
+        font-size: 0.8rem;
+        color: var(--text-primary);
+        line-height: 1.4;
+    }
 
     /* ── SALAS ────────────────────────────────────────────────────── */
-    .aulas-list { display: grid; gap: 0.75rem; }
+    .aulas-list {
+        display: grid;
+        gap: 0.75rem;
+    }
     .aula-row {
         display: flex;
         align-items: flex-start;
@@ -988,7 +1800,9 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         border-radius: 7px;
         margin-top: 2px;
     }
-    .aula-info { flex: 1; }
+    .aula-info {
+        flex: 1;
+    }
     .aula-info strong {
         font-size: 0.95rem;
         color: var(--text-primary);
@@ -1027,8 +1841,15 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         padding: 1.5rem;
         transition: background 0.3s, border-color 0.3s;
     }
-    .list-box h3 { font-size: 1rem; margin-bottom: 0.75rem; }
-    .dot-list { list-style: none; display: grid; gap: 0.45rem; }
+    .list-box h3 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    .dot-list {
+        list-style: none;
+        display: grid;
+        gap: 0.45rem;
+    }
     .dot-list li {
         display: flex;
         align-items: center;
@@ -1038,17 +1859,23 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         padding: 0.35rem 0;
         border-bottom: 1px solid var(--border);
     }
-    .dot-list li:last-child { border-bottom: none; }
+    .dot-list li:last-child {
+        border-bottom: none;
+    }
     .dot-list li::before {
         content: "";
-        width: 7px; height: 7px;
+        width: 7px;
+        height: 7px;
         border-radius: 50%;
         background: var(--c);
         flex-shrink: 0;
     }
 
     /* ── MISION/VISION ────────────────────────────────────────────── */
-    .mv-grid { display: grid; gap: 1.25rem; }
+    .mv-grid {
+        display: grid;
+        gap: 1.25rem;
+    }
     .mv-block {
         background: var(--bg-card);
         border: 1px solid var(--border);
@@ -1065,7 +1892,12 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         font-weight: 600;
         margin-bottom: 0.5rem;
     }
-    .mv-block p { color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem; margin: 0; }
+    .mv-block p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        font-size: 0.95rem;
+        margin: 0;
+    }
 
     /* ── OBJETIVOS ────────────────────────────────────────────────── */
     .obj-list {
@@ -1111,7 +1943,9 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         padding: 1.35rem 1rem;
         transition: box-shadow 0.2s, background 0.3s;
     }
-    .valor-tile:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .valor-tile:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
     .v-num {
         font-size: 2.2rem;
         font-weight: 800;
@@ -1121,7 +1955,12 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         margin-bottom: 0.45rem;
         font-family: "Poppins", sans-serif;
     }
-    .valor-tile p { font-size: 0.88rem; color: var(--text-primary); line-height: 1.6; margin: 0; }
+    .valor-tile p {
+        font-size: 0.88rem;
+        color: var(--text-primary);
+        line-height: 1.6;
+        margin: 0;
+    }
 
     /* ── HISTORIA ─────────────────────────────────────────────────── */
     .historia-box {
@@ -1133,7 +1972,12 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         margin-bottom: 1rem;
         transition: background 0.3s;
     }
-    .historia-box p { color: var(--text-secondary); line-height: 1.85; font-size: 0.95rem; margin: 0; }
+    .historia-box p {
+        color: var(--text-secondary);
+        line-height: 1.85;
+        font-size: 0.95rem;
+        margin: 0;
+    }
     .ubicacion-row {
         display: flex;
         align-items: flex-start;
@@ -1143,7 +1987,10 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
     }
 
     /* ── ORGANIZACION ─────────────────────────────────────────────── */
-    .org-tree { display: grid; gap: 1.25rem; }
+    .org-tree {
+        display: grid;
+        gap: 1.25rem;
+    }
     .org-jefe {
         display: flex;
         align-items: center;
@@ -1156,7 +2003,8 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         transition: background 0.3s;
     }
     .org-avatar {
-        width: 44px; height: 44px;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
         color: #fff;
         font-weight: 700;
@@ -1167,14 +2015,28 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         flex-shrink: 0;
     }
     .org-avatar.sm {
-        width: 34px; height: 34px;
+        width: 34px;
+        height: 34px;
         font-size: 0.9rem;
         background: var(--bg-surface);
         color: var(--text-secondary);
     }
-    .org-role { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); }
-    .org-name { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
-    .org-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .org-role {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-secondary);
+    }
+    .org-name {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    .org-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+    }
     .org-col {
         background: var(--bg-card);
         border: 1px solid var(--border);
@@ -1199,7 +2061,9 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         padding: 0.35rem 0;
         border-bottom: 1px solid var(--border);
     }
-    .org-person:last-child { border-bottom: none; }
+    .org-person:last-child {
+        border-bottom: none;
+    }
 
     /* ── EQUIPO ───────────────────────────────────────────────────── */
     .equipo-grid {
@@ -1216,23 +2080,36 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         transition: box-shadow 0.2s, background 0.3s, border-color 0.2s;
     }
     .eq-card:hover {
-        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
         border-color: color-mix(in srgb, var(--c) 30%, transparent);
     }
     .eq-qty {
         position: absolute;
-        top: -10px; right: 1rem;
+        top: -10px;
+        right: 1rem;
         color: #fff;
         font-weight: 700;
         font-size: 0.78rem;
         padding: 0.2rem 0.55rem;
         border-radius: 100px;
     }
-    .eq-card h4 { font-size: 0.93rem; color: var(--text-primary); margin-bottom: 0.35rem; }
-    .eq-card p { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+    .eq-card h4 {
+        font-size: 0.93rem;
+        color: var(--text-primary);
+        margin-bottom: 0.35rem;
+    }
+    .eq-card p {
+        font-size: 0.84rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
 
     /* ── CERTIFICACIONES ──────────────────────────────────────────── */
-    .cert-list { display: grid; gap: 1rem; }
+    .cert-list {
+        display: grid;
+        gap: 1rem;
+    }
     .cert-row {
         display: flex;
         align-items: flex-start;
@@ -1245,7 +2122,8 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
     }
     .cert-check {
         flex-shrink: 0;
-        width: 36px; height: 36px;
+        width: 36px;
+        height: 36px;
         border: 2px solid;
         border-radius: 50%;
         display: flex;
@@ -1254,7 +2132,12 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         font-weight: 700;
         font-size: 0.95rem;
     }
-    .cert-info strong { font-size: 0.95rem; color: var(--text-primary); display: block; margin-bottom: 0.15rem; }
+    .cert-info strong {
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        display: block;
+        margin-bottom: 0.15rem;
+    }
     .cert-org {
         font-size: 0.78rem;
         font-weight: 600;
@@ -1263,10 +2146,18 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         display: block;
         margin-bottom: 0.3rem;
     }
-    .cert-info p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+    .cert-info p {
+        font-size: 0.87rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
 
     /* ── EVENTOS / CONCURSOS / CONGRESOS ──────────────────────────── */
-    .event-list { display: grid; gap: 1rem; }
+    .event-list {
+        display: grid;
+        gap: 1rem;
+    }
     .event-row {
         display: flex;
         align-items: flex-start;
@@ -1287,12 +2178,27 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         white-space: nowrap;
         margin-top: 2px;
     }
-    .event-date.nivel { background: #6b7280; }
-    .event-info strong { font-size: 0.95rem; color: var(--text-primary); display: block; margin-bottom: 0.25rem; }
-    .event-info p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+    .event-date.nivel {
+        background: #6b7280;
+    }
+    .event-info strong {
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+    .event-info p {
+        font-size: 0.87rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
 
     /* ── REGLAMENTO ───────────────────────────────────────────────── */
-    .reg-list { display: grid; gap: 0.75rem; }
+    .reg-list {
+        display: grid;
+        gap: 0.75rem;
+    }
     .reg-row {
         display: flex;
         align-items: flex-start;
@@ -1303,8 +2209,18 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         padding: 1rem 1.25rem;
         transition: background 0.3s;
     }
-    .reg-n { font-size: 1.3rem; font-weight: 800; flex-shrink: 0; line-height: 1.4; }
-    .reg-row p { font-size: 0.92rem; color: var(--text-primary); line-height: 1.6; margin: 0; }
+    .reg-n {
+        font-size: 1.3rem;
+        font-weight: 800;
+        flex-shrink: 0;
+        line-height: 1.4;
+    }
+    .reg-row p {
+        font-size: 0.92rem;
+        color: var(--text-primary);
+        line-height: 1.6;
+        margin: 0;
+    }
 
     /* ── UBICACION ────────────────────────────────────────────────── */
     .ubic-card {
@@ -1318,9 +2234,22 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         padding: 2rem;
         transition: background 0.3s;
     }
-    .ubic-card svg { flex-shrink: 0; margin-top: 2px; }
-    .ubic-card strong { font-size: 1rem; color: var(--text-primary); display: block; margin-bottom: 0.35rem; }
-    .ubic-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
+    .ubic-card svg {
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .ubic-card strong {
+        font-size: 1rem;
+        color: var(--text-primary);
+        display: block;
+        margin-bottom: 0.35rem;
+    }
+    .ubic-card p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
     .map-btn {
         display: inline-block;
         color: #fff;
@@ -1331,7 +2260,9 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         font-weight: 600;
         transition: opacity 0.2s;
     }
-    .map-btn:hover { opacity: 0.85; }
+    .map-btn:hover {
+        opacity: 0.85;
+    }
 
     /* ── CONTACTO ─────────────────────────────────────────────────── */
     .contacto-grid {
@@ -1355,13 +2286,28 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         margin-bottom: 0.3rem;
         font-weight: 600;
     }
-    .cc-val { font-size: 0.97rem; font-weight: 600; color: var(--text-primary); }
-    .cc-val.link { text-decoration: none; }
-    .cc-val.link:hover { text-decoration: underline; }
+    .cc-val {
+        font-size: 0.97rem;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    .cc-val.link {
+        text-decoration: none;
+    }
+    .cc-val.link:hover {
+        text-decoration: underline;
+    }
 
     /* ── BUZON ────────────────────────────────────────────────────── */
-    .buzon-wrap { max-width: 660px; }
-    .buzon-desc { color: var(--text-secondary); font-size: 0.93rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .buzon-wrap {
+        max-width: 660px;
+    }
+    .buzon-desc {
+        color: var(--text-secondary);
+        font-size: 0.93rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
     .buzon-form {
         background: var(--bg-card);
         border: 1px solid var(--border);
@@ -1383,8 +2329,14 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         outline: none;
         transition: border-color 0.2s, background 0.3s, color 0.3s;
     }
-    .buzon-form textarea:focus { border-color: var(--c, #2563eb); }
-    .buzon-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .buzon-form textarea:focus {
+        border-color: var(--c, #2563eb);
+    }
+    .buzon-row {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
     .buzon-row input {
         flex: 1;
         min-width: 150px;
@@ -1398,7 +2350,9 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         outline: none;
         transition: border-color 0.2s, background 0.3s, color 0.3s;
     }
-    .buzon-row input:focus { border-color: var(--c, #2563eb); }
+    .buzon-row input:focus {
+        border-color: var(--c, #2563eb);
+    }
     #sug-btn {
         color: #fff;
         border: none;
@@ -1410,39 +2364,90 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         transition: opacity 0.2s;
         font-family: inherit;
     }
-    #sug-btn:hover { opacity: 0.88; }
+    #sug-btn:hover {
+        opacity: 0.88;
+    }
 
     /* ── RESPONSIVE ───────────────────────────────────────────────── */
     @media (max-width: 900px) {
-        .lab-hero { padding: 5rem 0 4rem; }
-        .hero-inner { padding: 0 1.25rem; }
-        .hero-stats { padding: 1rem 1.25rem; gap: 0; }
-        .hstat-sep { margin: 0 0.6rem; height: 30px; }
-        .hstat-n { font-size: 1.5rem; }
-        .horario-cards { grid-template-columns: 1fr; }
-        .two-col { grid-template-columns: 1fr; }
-        .org-row { grid-template-columns: 1fr; }
+        .lab-hero {
+            padding: 5rem 0 4rem;
+        }
+        .hero-inner {
+            padding: 0 1.25rem;
+        }
+        .hero-stats {
+            padding: 1rem 1.25rem;
+            gap: 0;
+        }
+        .hstat-sep {
+            margin: 0 0.6rem;
+            height: 30px;
+        }
+        .hstat-n {
+            font-size: 1.5rem;
+        }
+        .horario-cards {
+            grid-template-columns: 1fr;
+        }
+        .two-col {
+            grid-template-columns: 1fr;
+        }
+        .org-row {
+            grid-template-columns: 1fr;
+        }
     }
     @media (max-width: 640px) {
-        .practicas-grid { grid-template-columns: 1fr; }
-        .practica-card { flex-direction: column; gap: 0.75rem; }
-        .aula-row { flex-wrap: wrap; }
-        .hero-stats { flex-wrap: wrap; gap: 0.75rem; }
-        .hstat-sep { display: none; }
-        .hstat { min-width: 70px; flex: none; }
-        .panels-area { padding-top: 1.5rem; }
+        .practicas-grid {
+            grid-template-columns: 1fr;
+        }
+        .practica-card {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .aula-row {
+            flex-wrap: wrap;
+        }
+        .hero-stats {
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .hstat-sep {
+            display: none;
+        }
+        .hstat {
+            min-width: 70px;
+            flex: none;
+        }
+        .panels-area {
+            padding-top: 1.5rem;
+        }
+        .hd-asesorias-grid {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 
 <script>
     // ── HERO PARTICLES ─────────────────────────────────────────────────────
     (function () {
-        const canvas = document.getElementById("lab-canvas") as HTMLCanvasElement | null;
+        const canvas = document.getElementById(
+            "lab-canvas"
+        ) as HTMLCanvasElement | null;
         if (!canvas) return;
         const ctx = canvas.getContext("2d")!;
-        const N = 50, D = 110;
-        let W = 0, H = 0;
-        interface P { x: number; y: number; vx: number; vy: number; r: number; a: number; }
+        const N = 50,
+            D = 110;
+        let W = 0,
+            H = 0;
+        interface P {
+            x: number;
+            y: number;
+            vx: number;
+            vy: number;
+            r: number;
+            a: number;
+        }
         let pts: P[] = [];
 
         function init() {
@@ -1461,7 +2466,8 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         function frame() {
             ctx.clearRect(0, 0, W, H);
             for (const p of pts) {
-                p.x += p.vx; p.y += p.vy;
+                p.x += p.vx;
+                p.y += p.vy;
                 if (p.x < 0 || p.x > W) p.vx *= -1;
                 if (p.y < 0 || p.y > H) p.vy *= -1;
                 ctx.beginPath();
@@ -1471,13 +2477,16 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
             }
             for (let i = 0; i < N; i++) {
                 for (let j = i + 1; j < N; j++) {
-                    const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+                    const dx = pts[i].x - pts[j].x,
+                        dy = pts[i].y - pts[j].y;
                     const d = Math.sqrt(dx * dx + dy * dy);
                     if (d < D) {
                         ctx.beginPath();
                         ctx.moveTo(pts[i].x, pts[i].y);
                         ctx.lineTo(pts[j].x, pts[j].y);
-                        ctx.strokeStyle = `rgba(255,255,255,${0.08 * (1 - d / D)})`;
+                        ctx.strokeStyle = `rgba(255,255,255,${
+                            0.08 * (1 - d / D)
+                        })`;
                         ctx.lineWidth = 0.5;
                         ctx.stroke();
                     }
@@ -1486,12 +2495,14 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
             requestAnimationFrame(frame);
         }
 
-        init(); frame();
+        init();
+        frame();
         window.addEventListener("resize", init);
     })();
 
     // ── NAVIGATION ─────────────────────────────────────────────────────────
-    const groupBtns = document.querySelectorAll<HTMLButtonElement>(".group-btn");
+    const groupBtns =
+        document.querySelectorAll<HTMLButtonElement>(".group-btn");
     const sectionRows = document.querySelectorAll<HTMLElement>(".section-row");
     const tabBtns = document.querySelectorAll<HTMLButtonElement>(".tab-btn");
     const panels = document.querySelectorAll<HTMLElement>(".panel");
@@ -1502,9 +2513,14 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
         panels.forEach((p) => p.classList.remove("active"));
         btn.classList.add("active");
         document.getElementById(`panel-${target}`)?.classList.add("active");
-        btn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        btn.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+        });
         const tabNav = document.getElementById("tab-nav");
-        const navBottom = (tabNav?.getBoundingClientRect().bottom ?? 0) + window.scrollY;
+        const navBottom =
+            (tabNav?.getBoundingClientRect().bottom ?? 0) + window.scrollY;
         window.scrollTo({ top: navBottom - 10, behavior: "smooth" });
     }
 
@@ -1514,7 +2530,9 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
             groupBtns.forEach((b) => b.classList.remove("active"));
             sectionRows.forEach((r) => r.classList.remove("active"));
             btn.classList.add("active");
-            const row = document.querySelector<HTMLElement>(`.section-row[data-group="${group}"]`);
+            const row = document.querySelector<HTMLElement>(
+                `.section-row[data-group="${group}"]`
+            );
             row?.classList.add("active");
             // Auto-activate first tab in the new group
             const firstTab = row?.querySelector<HTMLButtonElement>(".tab-btn");
@@ -1542,4 +2560,27 @@ const groups = ["Académico", "Institucional", "Recursos", "Actividades", "Info"
             ta.focus();
         }
     });
+
+    // ── HORARIOS DETALLADOS – TAB SWITCHING ─────────────────────────────────
+    const hdAulaTabs = document.getElementById("hd-aula-tabs");
+    if (hdAulaTabs) {
+        const aulaBtns =
+            hdAulaTabs.querySelectorAll<HTMLButtonElement>(".hd-aula-btn");
+        const aulaContainers = document.querySelectorAll<HTMLElement>(
+            ".hd-table-container"
+        );
+
+        aulaBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const idx = btn.dataset.aulaIdx;
+                aulaBtns.forEach((b) => b.classList.remove("active"));
+                aulaContainers.forEach((c) => c.classList.remove("active"));
+                btn.classList.add("active");
+                const target = document.querySelector<HTMLElement>(
+                    `.hd-table-container[data-aula-table="${idx}"]`
+                );
+                target?.classList.add("active");
+            });
+        });
+    }
 </script>

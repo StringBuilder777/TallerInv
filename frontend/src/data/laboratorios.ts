@@ -1,3 +1,5 @@
+import horariosData from './horarios_ITS_Sistemas.json';
+
 export interface Practica {
     numero: number;
     nombre: string;
@@ -34,6 +36,45 @@ export interface Aula {
     nombre: string;
     capacidad: number;
     descripcion: string;
+}
+
+export interface HorarioClase {
+    grupo?: string;
+    materia: string;
+    maestro: string;
+}
+
+export interface FranjaHoraria {
+    hora: string;
+    lunes: HorarioClase | string | null;
+    martes: HorarioClase | string | null;
+    miercoles: HorarioClase | string | null;
+    jueves: HorarioClase | string | null;
+    viernes: HorarioClase | string | null;
+}
+
+export interface AulaHorario {
+    aula: string;
+    horario: FranjaHoraria[];
+}
+
+export interface AsesoriaMaestro {
+    nombre: string;
+    asesorias_materias: { hora: string; dias: string } | { hora: string; dias: string }[] | null;
+    asesorias_residencias: { hora: string; dias: string } | { hora: string; dias: string }[] | null;
+    tutorias: { hora: string; dias: string } | { hora: string; dias: string }[] | null;
+    lugar: string;
+}
+
+export interface HorariosDetallados {
+    institucion: string;
+    periodo: string;
+    aulas: AulaHorario[];
+    programa_asesorias?: {
+        periodo: string;
+        departamento: string;
+        maestros: AsesoriaMaestro[];
+    };
 }
 
 export interface Laboratorio {
@@ -86,6 +127,9 @@ export interface Laboratorio {
     congresos: Concurso[];
     certificaciones: Certificacion[];
     buzonSugerencias: string;
+
+    // Horarios detallados (opcional, solo para labs con data)
+    horariosDetallados?: HorariosDetallados;
 }
 
 export const laboratorios: Laboratorio[] = [
@@ -204,6 +248,7 @@ export const laboratorios: Laboratorio[] = [
             { nombre: "AWS Academy", organismo: "Amazon Web Services", descripcion: "Formación oficial en computación en la nube, arquitectura y servicios AWS." },
         ],
         buzonSugerencias: "Envía tus sugerencias, quejas o propuestas de mejora a: buzon.sistemas@its.edu.mx o mediante el formato físico disponible en recepción del laboratorio.",
+        horariosDetallados: horariosData as unknown as HorariosDetallados,
     },
 
     {
@@ -433,5 +478,5 @@ export const laboratorios: Laboratorio[] = [
 ];
 
 export function getLabBySlug(slug: string): Laboratorio | undefined {
-  return laboratorios.find((lab) => lab.slug === slug);
+    return laboratorios.find((lab) => lab.slug === slug);
 }
