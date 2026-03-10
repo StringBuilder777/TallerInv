@@ -1,4 +1,12 @@
 import horariosData from './horarios_ITS_Sistemas.json';
+import quimicaData from './laboratorio_quimica.json';
+import reglFisQuiData from './reglamento_fis_qui.json';
+
+function normalizarDia(val: string | string[] | null): string | null {
+    if (val === null || val === undefined) return null;
+    if (Array.isArray(val)) return val.join(' / ');
+    return val;
+}
 
 export interface Practica {
     numero: number;
@@ -110,10 +118,12 @@ export interface Laboratorio {
         observaciones: string;
     };
     reglamento: string[];
+    reglamentoDetallado?: { numero: number; titulo: string; descripcion: string | null }[];
     aulas: Aula[];
 
     // Recursos
     equipo: Equipo[];
+    mostrarOrganizacion?: boolean;
     organizacion: {
         jefe: string;
         coordinadores: string[];
@@ -315,10 +325,10 @@ export const laboratorios: Laboratorio[] = [
         historia: "Establecido en 1972 como parte de los laboratorios fundadores del ITS, el Laboratorio de Física ha sido pilar en la formación básica de todos los ingenieros de la institución. Su primera dotación incluyó equipos de mecánica y óptica básica. En 2010 fue completamente renovado con fondos Promep, incorporando equipos digitales de última generación. En 2018 se incorporó la sala de electromagnetismo avanzada con osciloscopios digitales Tektronix.",
         ubicacion: "República, 25260 Saltillo, Coah.",
         contacto: {
-            responsable: "Dra. Patricia Elizondo Villanueva",
+            responsable: "Departamento de Ciencias Básicas",
             email: "sonia.yi@saltillo.tecnm.mx",
-            telefono: "(844) 123-4568",
-            extension: "Ext. 215",
+            telefono: "844 288-94-60 / 844 402-0840",
+            extension: "Consultar en Subdirección Académica",
         },
         carreras: [
             "Ingeniería en Sistemas Computacionales",
@@ -334,14 +344,14 @@ export const laboratorios: Laboratorio[] = [
             "Física General (SCF-1006) – Ing. en Sistemas Computacionales",
             "Física (INC-1013) – Ing. Industrial",
             "Fundamentos de Física (GEC-0909) – Ing. en Gestión Empresarial",
-            "Mecánica Clásica (AEF-1042) – Ing. en Materiales, Eléctrica, Electrónica, Nanotecnología, Química, Logística, Biomédica",
+            "Mecánica Clásica (AEF-1042) – Ing. en Materiales, Eléctrica, Electrónica, Mecánica, Mecatrónica",
         ],
 
         horario: {
-            lunesViernes: "7:00 – 20:00 hrs",
-            sabado: "8:00 – 13:00 hrs",
+            lunesViernes: "A petición del maestro",
+            sabado: "A petición del maestro",
             domingo: "Cerrado",
-            observaciones: "Prácticas programadas con mín. 72 hrs. de anticipación. Uso de bata obligatorio.",
+            observaciones: "El laboratorio se asigna a petición del maestro con un mínimo de 72 hrs. de anticipación. Uso de bata obligatorio.",
         },
         reglamento: [
             "Uso obligatorio de lentes de seguridad y bata de laboratorio.",
@@ -352,6 +362,7 @@ export const laboratorios: Laboratorio[] = [
             "No mover equipos sin autorización del responsable.",
             "El cabello largo debe recogerse durante las prácticas.",
         ],
+        reglamentoDetallado: reglFisQuiData.reglamento_laboratorio_quimica,
         aulas: [
             { id: "F-1", nombre: "Sala de Mecánica", capacidad: 24, descripcion: "Equipada con pistas de aire, péndulos, resortes, balanzas analíticas y sensores de movimiento." },
             { id: "F-2", nombre: "Sala de Electricidad y Magnetismo", capacidad: 20, descripcion: "Osciloscopios digitales, generadores de señal, multímetros, fuentes de poder y kits de circuitos." },
@@ -366,10 +377,11 @@ export const laboratorios: Laboratorio[] = [
             { nombre: "Láseres de diodo He-Ne", cantidad: 8, descripcion: "Para prácticas de óptica: difracción, interferencia y reflexión." },
             { nombre: "Fuentes de poder variables", cantidad: 15, descripcion: "0-30V DC, 5A para circuitos eléctricos." },
         ],
+        mostrarOrganizacion: false,
         organizacion: {
-            jefe: "Dra. Patricia Elizondo Villanueva",
-            coordinadores: ["M.C. Hugo Salazar Ortiz"],
-            tecnicos: ["Ing. Fernanda Reyes", "Ing. Marco Villanueva"],
+            jefe: "Departamento de Ciencias Básicas",
+            coordinadores: [],
+            tecnicos: [],
         },
 
         practicas: [
@@ -446,10 +458,10 @@ export const laboratorios: Laboratorio[] = [
             "Ingeniería en Materiales",
         ],
         materias: [
-            "Química (AEC-1058) – Ing. Eléctrica, Electrónica, Electromecánica, Sistemas Computacionales, Mecatrónica, Civil, Aeronáutica",
+            "Química (AEC-1058) – Ing. Eléctrica, Electrónica, Sistemas Computacionales, Mecatrónica",
             "Química (INC-1025) – Ing. Industrial",
             "Química (MEC-1026) – Ing. Mecánica",
-            "Química (AEF-1057) – Ing. en Materiales, Ing. Bioquímica",
+            "Química (AEF-1057) – Ing. en Materiales",
             "Fundamentos de Química (GEF-0910) – Ing. en Gestión Empresarial",
             "Química Orgánica (MAC-1024) – Ing. en Materiales",
             "Equilibrio Fisicoquímico (MAC-1010) – Ing. en Materiales",
@@ -478,6 +490,7 @@ export const laboratorios: Laboratorio[] = [
             "11. Lavarse las manos al término de la sesión de laboratorio.",
             "12. Conocer en dónde se ubican los elementos de seguridad: salida de emergencia, extintores, regaderas y lavabos.",
         ],
+        reglamentoDetallado: reglFisQuiData.reglamento_laboratorio_quimica,
         aulas: [
             { id: "Q-1", nombre: "Laboratorio de Química", capacidad: 20, descripcion: "Mesas de trabajo con conexiones de gas, agua y electricidad. Equipo de seguridad disponible: lentes, guantes, mascarillas, campanas de extracción, extintores, regaderas y lavabos de emergencia." },
         ],
@@ -524,6 +537,23 @@ export const laboratorios: Laboratorio[] = [
             { nombre: "Plan de Emergencias Químicas", organismo: "Protección Civil Coahuila", descripcion: "Personal capacitado y plan de acción ante emergencias por derrames o exposición a sustancias." },
         ],
         buzonSugerencias: "Para quejas, sugerencias o propuestas de mejora, contactar a Sonia Judith Rivera López (Secretaría del Laboratorio) o enviar correo a: sonia.yi@saltillo.tecnm.mx. También se dispone de buzón físico de sugerencias en el edificio administrativo del campus y sistema de quejas en el portal oficial saltillo.tecnm.mx.",
+        horariosDetallados: {
+            institucion: quimicaData.institucion.nombre,
+            periodo: quimicaData.laboratorio.periodo,
+            aulas: [
+                {
+                    aula: "Laboratorio de Química",
+                    horario: quimicaData.laboratorio.horario_docentes.map((f) => ({
+                        hora: f.hora,
+                        lunes: normalizarDia(f.lunes as string | string[] | null),
+                        martes: normalizarDia(f.martes as string | string[] | null),
+                        miercoles: normalizarDia(f.miercoles as string | string[] | null),
+                        jueves: normalizarDia(f.jueves as string | string[] | null),
+                        viernes: normalizarDia(f.viernes as string | string[] | null),
+                    })),
+                },
+            ],
+        } as unknown as HorariosDetallados,
     },
 ];
 

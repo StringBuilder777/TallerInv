@@ -18,7 +18,7 @@ const sections = [
     { id: "objetivos", label: "Objetivos", group: "Institucional" },
     { id: "valores", label: "Valores", group: "Institucional" },
     { id: "historia", label: "Historia", group: "Institucional" },
-    { id: "organizacion", label: "Organización", group: "Recursos" },
+    ...(lab.mostrarOrganizacion !== false ? [{ id: "organizacion", label: "Organización", group: "Recursos" }] : []),
     { id: "equipo", label: "Equipamiento", group: "Recursos" },
     { id: "certificaciones", label: "Certificaciones", group: "Actividades" },
     { id: "eventos", label: "Eventos", group: "Actividades" },
@@ -248,6 +248,416 @@ const groups = [
                     ))
                 }
             </div>
+
+            {
+                lab.slug === "sistemas" && (
+                    <div class="lab-gallery" id="practicas-gallery">
+                        <div class="gallery-label" style={`color:${lab.color}`}>
+                            <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <rect
+                                    x="3"
+                                    y="3"
+                                    width="18"
+                                    height="18"
+                                    rx="2"
+                                />
+                                <circle cx="8.5" cy="8.5" r="1.5" />
+                                <polyline points="21 15 16 10 5 21" />
+                            </svg>
+                            Galería de Prácticas
+                        </div>
+                        <div class="gallery-grid">
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Img_lab_sis/salonlc1/routersswitch1.jfif"
+                                data-caption="Routers y Switches – Práctica de Redes"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Img_lab_sis/salonlc1/routersswitch1.jfif"
+                                                alt="Routers y Switches – Práctica de Redes"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Routers y Switches – Práctica de
+                                                Redes
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+
+            {
+                lab.slug === "quimica" && (
+                    <div class="lab-gallery" id="quimica-gallery">
+                        <div class="gallery-label" style={`color:${lab.color}`}>
+                            <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <rect
+                                    x="3"
+                                    y="3"
+                                    width="18"
+                                    height="18"
+                                    rx="2"
+                                />
+                                <circle cx="8.5" cy="8.5" r="1.5" />
+                                <polyline points="21 15 16 10 5 21" />
+                            </svg>
+                            Galería del Laboratorio
+                        </div>
+                        <div class="gallery-grid">
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Fotos_quimica/quimicas/laboratorioquimica.jfif"
+                                data-caption="Laboratorio de Química"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Fotos_quimica/quimicas/laboratorioquimica.jfif"
+                                                alt="Laboratorio de Química"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Laboratorio de Química
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Fotos_quimica/quimicas/quimicasafuera.jfif"
+                                data-caption="Vista exterior del laboratorio"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Fotos_quimica/quimicas/quimicasafuera.jfif"
+                                                alt="Vista exterior del laboratorio"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Vista exterior del laboratorio
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Fotos_quimica/materialquimicas5/materialquimicas.jfif"
+                                data-caption="Material de laboratorio"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Fotos_quimica/materialquimicas5/materialquimicas.jfif"
+                                                alt="Material de laboratorio"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Material de laboratorio
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Fotos_quimica/materialquimicas5/materialquimicas5.jfif"
+                                data-caption="Equipamiento químico"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Fotos_quimica/materialquimicas5/materialquimicas5.jfif"
+                                                alt="Equipamiento químico"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Equipamiento químico
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Fotos_quimica/materialquimicas5/materialquimicas8.jfif"
+                                data-caption="Instrumentos de medición"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Fotos_quimica/materialquimicas5/materialquimicas8.jfif"
+                                                alt="Instrumentos de medición"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Instrumentos de medición
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Fotos_quimica/materialquimicas5/materialquimicas12.jfif"
+                                data-caption="Cristalería de laboratorio"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Fotos_quimica/materialquimicas5/materialquimicas12.jfif"
+                                                alt="Cristalería de laboratorio"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Cristalería de laboratorio
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+
+            {
+                lab.slug === "fisica" && (
+                    <div class="lab-gallery" id="fisica-gallery">
+                        <div class="gallery-label" style={`color:${lab.color}`}>
+                            <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <rect
+                                    x="3"
+                                    y="3"
+                                    width="18"
+                                    height="18"
+                                    rx="2"
+                                />
+                                <circle cx="8.5" cy="8.5" r="1.5" />
+                                <polyline points="21 15 16 10 5 21" />
+                            </svg>
+                            Galería del Laboratorio
+                        </div>
+                        <div class="gallery-grid">
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Fotos_fisica/LabFi.jpeg"
+                                data-caption="Laboratorio de Física"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Fotos_fisica/LabFi.jpeg"
+                                                alt="Laboratorio de Física"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Laboratorio de Física
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Fotos_fisica/labFisi.jpeg"
+                                data-caption="Área de trabajo del laboratorio"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Fotos_fisica/labFisi.jpeg"
+                                                alt="Área de trabajo del laboratorio"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Área de trabajo del laboratorio
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Fotos_fisica/AfueraFi.jpeg"
+                                data-caption="Vista exterior del laboratorio"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Fotos_fisica/AfueraFi.jpeg"
+                                                alt="Vista exterior del laboratorio"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Vista exterior del laboratorio
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Fotos_fisica/AFUFI.jpeg"
+                                data-caption="Entrada al laboratorio"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Fotos_fisica/AFUFI.jpeg"
+                                                alt="Entrada al laboratorio"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Entrada al laboratorio
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
         </section>
 
         <!-- HORARIO -->
@@ -672,6 +1082,42 @@ const groups = [
                     ))
                 }
             </div>
+
+            {lab.slug === "sistemas" && (
+                <div class="lab-gallery" id="salones-gallery">
+                    <div class="gallery-label" style={`color:${lab.color}`}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        Galería – Salones del Laboratorio
+                    </div>
+                    <div class="gallery-grid">
+                        {[
+                            { src: "/Img_lab_sis/salonlc1/salonlc1.jfif",    caption: "Salón LC1" },
+                            { src: "/Img_lab_sis/salonlc1/salacomputo.jfif", caption: "Sala de Cómputo" },
+                            { src: "/Img_lab_sis/salonlc1/salacomputo3.jfif",caption: "Sala de Cómputo – Vista 3" },
+                            { src: "/Img_lab_sis/salonlc1/aulals2.jfif",     caption: "Aula LS2" },
+                            { src: "/Img_lab_sis/salonlc1/salonls1.jfif",    caption: "Salón LS1" },
+                            { src: "/Img_lab_sis/salonlc1/salonls2.jfif",    caption: "Salón LS2" },
+                            { src: "/Img_lab_sis/salonlc1/salonls3.jfif",    caption: "Salón LS3" },
+                            { src: "/Img_lab_sis/salonlc1/salonls4.jfif",    caption: "Salón LS4" },
+                            { src: "/Img_lab_sis/salonlc1/salonls5.jfif",    caption: "Salón LS5" },
+                        ].map((item) => (
+                            <div class="atropos gallery-atropos" data-src={item.src} data-caption={item.caption}>
+                                <div class="atropos-scale"><div class="atropos-rotate">
+                                    <div class="atropos-inner gallery-atropos-inner">
+                                        <img src={item.src} alt={item.caption} loading="lazy" data-atropos-offset="5"/>
+                                        <div class="gallery-atropos-overlay" data-atropos-offset="8" style={`background:linear-gradient(135deg,${lab.color}40,transparent)`}/>
+                                        <div class="gallery-atropos-caption" data-atropos-offset="14">{item.caption}</div>
+                                    </div>
+                                </div></div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </section>
 
         <!-- CARRERAS Y MATERIAS -->
@@ -696,6 +1142,64 @@ const groups = [
                     </ul>
                 </div>
             </div>
+
+            {lab.slug === "sistemas" && (
+                <div class="especialidades-wrap" style={`--c:${lab.color}`}>
+                    <div class="esp-title">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                        Especialidades – Ing. en Sistemas Computacionales
+                    </div>
+                    <div class="esp-links">
+                        <a
+                            href="https://its-site-bucket.s3.us-west-2.amazonaws.com/RETICULA_SISTEMAS_MODULO_Dev_OPS_93_8ed7eb9acb.pdf"
+                            target="_blank"
+                            rel="noopener"
+                            class="esp-link"
+                        >
+                            <div class="esp-link-icon" style={`background:${lab.color}18;color:${lab.color}`}>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                </svg>
+                            </div>
+                            <div class="esp-link-info">
+                                <span class="esp-link-name">Módulo Dev OPS</span>
+                                <span class="esp-link-sub">Retícula · PDF</span>
+                            </div>
+                            <svg class="esp-link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://its-site-bucket.s3.us-west-2.amazonaws.com/RETICULA_SISTEMAS_MODULO_TECNOLOGIAS_INTELIGENTES_86_ed64cbd7de.pdf"
+                            target="_blank"
+                            rel="noopener"
+                            class="esp-link"
+                        >
+                            <div class="esp-link-icon" style={`background:${lab.color}18;color:${lab.color}`}>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                </svg>
+                            </div>
+                            <div class="esp-link-info">
+                                <span class="esp-link-name">Módulo Tecnologías Inteligentes</span>
+                                <span class="esp-link-sub">Retícula · PDF</span>
+                            </div>
+                            <svg class="esp-link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            )}
         </section>
 
         <!-- MISION Y VISION -->
@@ -753,7 +1257,7 @@ const groups = [
                 <span class="ph-bar" style={`background:${lab.color}`}></span>
                 <h2>Historia del laboratorio</h2>
             </div>
-            <div class="historia-layout">
+            <div class={`historia-layout${lab.slug !== "sistemas" ? " historia-solo" : ""}`}>
                 <!-- Texto -->
                 <div class="historia-text-col">
                     <div
@@ -779,7 +1283,8 @@ const groups = [
                         <span>{lab.ubicacion}</span>
                     </div>
                 </div>
-                <!-- Imagen con Atropos 3D -->
+                <!-- Imagen con Atropos 3D (solo sistemas) -->
+                {lab.slug === "sistemas" && (
                 <div class="historia-img-col">
                     <div class="atropos historia-atropos" id="historia-atropos">
                         <div class="atropos-scale">
@@ -824,10 +1329,47 @@ const groups = [
                         </div>
                     </div>
                 </div>
+                )}
             </div>
+
+            {lab.slug === "sistemas" && (
+                <div class="lab-gallery" id="campus-gallery">
+                    <div class="gallery-label" style={`color:${lab.color}`}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        Galería – Exterior e Instalaciones
+                    </div>
+                    <div class="gallery-grid">
+                        {[
+                            { src: "/Img_lab_sis/salonlc1/laboratorioafuera.jfif",   caption: "Laboratorio – Exterior" },
+                            { src: "/Img_lab_sis/salonlc1/laboratorioentrada.jfif",  caption: "Entrada del Laboratorio" },
+                            { src: "/Img_lab_sis/salonlc1/primervistazolab.jfif",    caption: "Primera Vista del Lab" },
+                            { src: "/Img_lab_sis/salonlc1/vistaarriba.jfif",         caption: "Vista Superior" },
+                            { src: "/Img_lab_sis/salonlc1/centroabajo.jfif",         caption: "Centro – Planta Baja" },
+                            { src: "/Img_lab_sis/salonlc1/oficinasabajo.jfif",       caption: "Oficinas – Planta Baja" },
+                            { src: "/Img_lab_sis/salonlc1/oficinasarriba.jfif",      caption: "Oficinas – Planta Alta" },
+                            { src: "/Img_lab_sis/salonlc1/salaimpresion.jfif",       caption: "Sala de Impresión" },
+                        ].map((item) => (
+                            <div class="atropos gallery-atropos" data-src={item.src} data-caption={item.caption}>
+                                <div class="atropos-scale"><div class="atropos-rotate">
+                                    <div class="atropos-inner gallery-atropos-inner">
+                                        <img src={item.src} alt={item.caption} loading="lazy" data-atropos-offset="5"/>
+                                        <div class="gallery-atropos-overlay" data-atropos-offset="8" style={`background:linear-gradient(135deg,${lab.color}40,transparent)`}/>
+                                        <div class="gallery-atropos-caption" data-atropos-offset="14">{item.caption}</div>
+                                    </div>
+                                </div></div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </section>
 
         <!-- ORGANIZACION -->
+        {(lab.mostrarOrganizacion !== false) && (
         <section class="panel" id="panel-organizacion">
             <div class="panel-head">
                 <span class="ph-bar" style={`background:${lab.color}`}></span>
@@ -876,6 +1418,7 @@ const groups = [
                 </div>
             </div>
         </section>
+        )}
 
         <!-- EQUIPO -->
         <section class="panel" id="panel-equipo">
@@ -905,6 +1448,197 @@ const groups = [
                     ))
                 }
             </div>
+
+            {
+                lab.slug === "sistemas" && (
+                    <div class="lab-gallery" id="equipo-gallery">
+                        <div class="gallery-label" style={`color:${lab.color}`}>
+                            <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <rect
+                                    x="3"
+                                    y="3"
+                                    width="18"
+                                    height="18"
+                                    rx="2"
+                                />
+                                <circle cx="8.5" cy="8.5" r="1.5" />
+                                <polyline points="21 15 16 10 5 21" />
+                            </svg>
+                            Galería de Equipamiento
+                        </div>
+                        <div class="gallery-grid">
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Img_lab_sis/salonlc1/routersswitch2.jfif"
+                                data-caption="Routers y Switches – Vista 2"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Img_lab_sis/salonlc1/routersswitch2.jfif"
+                                                alt="Routers y Switches – Vista 2"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Routers y Switches – Vista 2
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Img_lab_sis/salonlc1/routersswitch3.jfif"
+                                data-caption="Routers y Switches – Vista 3"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Img_lab_sis/salonlc1/routersswitch3.jfif"
+                                                alt="Routers y Switches – Vista 3"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Routers y Switches – Vista 3
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Img_lab_sis/salonlc1/routersswitch4.jfif"
+                                data-caption="Routers y Switches – Vista 4"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Img_lab_sis/salonlc1/routersswitch4.jfif"
+                                                alt="Routers y Switches – Vista 4"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Routers y Switches – Vista 4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Img_lab_sis/salonlc1/equiposcomputo.jfif"
+                                data-caption="Equipos de Cómputo – Salón LC1"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Img_lab_sis/salonlc1/equiposcomputo.jfif"
+                                                alt="Equipos de Cómputo – Salón LC1"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Equipos de Cómputo – Salón LC1
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="atropos gallery-atropos"
+                                data-src="/Img_lab_sis/salonlc1/equiposlanix.jfif"
+                                data-caption="Equipos Lanix – Salón LC1"
+                            >
+                                <div class="atropos-scale">
+                                    <div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img
+                                                src="/Img_lab_sis/salonlc1/equiposlanix.jfif"
+                                                alt="Equipos Lanix – Salón LC1"
+                                                loading="lazy"
+                                                data-atropos-offset="5"
+                                            />
+                                            <div
+                                                class="gallery-atropos-overlay"
+                                                data-atropos-offset="8"
+                                                style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                            />
+                                            <div
+                                                class="gallery-atropos-caption"
+                                                data-atropos-offset="14"
+                                            >
+                                                Equipos Lanix – Salón LC1
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {[
+                                { src: "/Img_lab_sis/salonlc1/salonls5redes.jfif", caption: "Salón LS5 – Redes" },
+                                { src: "/Img_lab_sis/salonlc1/practicaredes.jfif", caption: "Práctica de Redes" },
+                                { src: "/Img_lab_sis/salonlc1/salonvrlab.jfif",    caption: "Salón VR Lab" },
+                                { src: "/Img_lab_sis/salonlc1/salonvrlab2.jfif",   caption: "Salón VR Lab – Vista 2" },
+                            ].map((item) => (
+                                <div class="atropos gallery-atropos" data-src={item.src} data-caption={item.caption}>
+                                    <div class="atropos-scale"><div class="atropos-rotate">
+                                        <div class="atropos-inner gallery-atropos-inner">
+                                            <img src={item.src} alt={item.caption} loading="lazy" data-atropos-offset="5"/>
+                                            <div class="gallery-atropos-overlay" data-atropos-offset="8" style={`background:linear-gradient(135deg,${lab.color}40,transparent)`}/>
+                                            <div class="gallery-atropos-caption" data-atropos-offset="14">{item.caption}</div>
+                                        </div>
+                                    </div></div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
         </section>
 
         <!-- CERTIFICACIONES -->
@@ -1015,8 +1749,19 @@ const groups = [
                 <span class="badge warn">Lectura obligatoria</span>
             </div>
             <div class="reg-list">
-                {
-                    lab.reglamento.map((r, i) => (
+                {lab.reglamentoDetallado
+                    ? lab.reglamentoDetallado.map((r) => (
+                        <div class="reg-row">
+                            <div class="reg-n" style={`color:${lab.color}`}>
+                                {r.numero}
+                            </div>
+                            <div class="reg-body">
+                                <strong class="reg-titulo">{r.titulo}</strong>
+                                {r.descripcion && <p class="reg-desc">{r.descripcion}</p>}
+                            </div>
+                        </div>
+                    ))
+                    : lab.reglamento.map((r, i) => (
                         <div class="reg-row">
                             <div class="reg-n" style={`color:${lab.color}`}>
                                 {i + 1}
@@ -1026,6 +1771,328 @@ const groups = [
                     ))
                 }
             </div>
+
+            {
+                lab.slug === "sistemas" && (
+                    <>
+                        {/* ── Recursos y documentos ──────────────────── */}
+                        <div class="info-recursos" style={`--c:${lab.color}`}>
+                            <div class="ir-title">
+                                <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <polyline points="14 2 14 8 20 8" />
+                                </svg>
+                                Recursos y documentos
+                            </div>
+                            <div class="ir-links">
+                                <a
+                                    href="https://tecnmsaltillo-my.sharepoint.com/personal/eduardo_vl_saltillo_tecnm_mx/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Feduardo%5Fvl%5Fsaltillo%5Ftecnm%5Fmx%2FDocuments%2Fcompartido%20LABCOM%2FManuales%2FManual%20de%20uso%20de%20Switch%20Cisco%202960%2Epdf&parent=%2Fpersonal%2Feduardo%5Fvl%5Fsaltillo%5Ftecnm%5Fmx%2FDocuments%2Fcompartido%20LABCOM%2FManuales&ga=1"
+                                    target="_blank"
+                                    rel="noopener"
+                                    class="ir-link"
+                                >
+                                    <div
+                                        class="ir-link-icon"
+                                        style={`background:${lab.color}18;color:${lab.color}`}
+                                    >
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                    </div>
+                                    <div class="ir-link-info">
+                                        <span class="ir-link-name">
+                                            Manual de uso – Switch Cisco 2960
+                                        </span>
+                                        <span class="ir-link-type">
+                                            PDF · SharePoint
+                                        </span>
+                                    </div>
+                                    <svg
+                                        class="ir-link-arrow"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        <polyline points="15 3 21 3 21 9" />
+                                        <line x1="10" y1="14" x2="21" y2="3" />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="https://tecnmsaltillo-my.sharepoint.com/personal/eduardo_vl_saltillo_tecnm_mx/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Feduardo%5Fvl%5Fsaltillo%5Ftecnm%5Fmx%2FDocuments%2Fcompartido%20LABCOM%2FManuales%2FManual%20de%20uso%20para%20Pc%20Hp%20Slim%2Epdf&parent=%2Fpersonal%2Feduardo%5Fvl%5Fsaltillo%5Ftecnm%5Fmx%2FDocuments%2Fcompartido%20LABCOM%2FManuales&ga=1"
+                                    target="_blank"
+                                    rel="noopener"
+                                    class="ir-link"
+                                >
+                                    <div
+                                        class="ir-link-icon"
+                                        style={`background:${lab.color}18;color:${lab.color}`}
+                                    >
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                    </div>
+                                    <div class="ir-link-info">
+                                        <span class="ir-link-name">
+                                            Manual de uso – PC HP Slim
+                                        </span>
+                                        <span class="ir-link-type">
+                                            PDF · SharePoint
+                                        </span>
+                                    </div>
+                                    <svg
+                                        class="ir-link-arrow"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        <polyline points="15 3 21 3 21 9" />
+                                        <line x1="10" y1="14" x2="21" y2="3" />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="https://tecnmsaltillo-my.sharepoint.com/personal/eduardo_vl_saltillo_tecnm_mx/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Feduardo%5Fvl%5Fsaltillo%5Ftecnm%5Fmx%2FDocuments%2Fcompartido%20LABCOM%2FReglamento%20General%20del%20Laboratotio%20de%20C%C3%B3mputo%2Epdf&parent=%2Fpersonal%2Feduardo%5Fvl%5Fsaltillo%5Ftecnm%5Fmx%2FDocuments%2Fcompartido%20LABCOM&ga=1"
+                                    target="_blank"
+                                    rel="noopener"
+                                    class="ir-link"
+                                >
+                                    <div
+                                        class="ir-link-icon"
+                                        style={`background:${lab.color}18;color:${lab.color}`}
+                                    >
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path d="M9 11l3 3L22 4" />
+                                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                                        </svg>
+                                    </div>
+                                    <div class="ir-link-info">
+                                        <span class="ir-link-name">
+                                            Reglamento General del Laboratorio
+                                            de Cómputo
+                                        </span>
+                                        <span class="ir-link-type">
+                                            PDF · SharePoint
+                                        </span>
+                                    </div>
+                                    <svg
+                                        class="ir-link-arrow"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        <polyline points="15 3 21 3 21 9" />
+                                        <line x1="10" y1="14" x2="21" y2="3" />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="https://drive.google.com/file/d/1aLGnGE1Tz1FYOzH6pH8U1kBkr-IFLVLd/view?usp=drivesdk"
+                                    target="_blank"
+                                    rel="noopener"
+                                    class="ir-link"
+                                >
+                                    <div
+                                        class="ir-link-icon"
+                                        style={`background:#ea433518;color:#ea4335`}
+                                    >
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                                        </svg>
+                                    </div>
+                                    <div class="ir-link-info">
+                                        <span class="ir-link-name">
+                                            Documento de investigación – Lab
+                                            Cómputo
+                                        </span>
+                                        <span class="ir-link-type">
+                                            PDF · Google Drive
+                                        </span>
+                                    </div>
+                                    <svg
+                                        class="ir-link-arrow"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        <polyline points="15 3 21 3 21 9" />
+                                        <line x1="10" y1="14" x2="21" y2="3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* ── Galería informativa ────────────────────── */}
+                        <div class="lab-gallery" id="info-gallery">
+                            <div
+                                class="gallery-label"
+                                style={`color:${lab.color}`}
+                            >
+                                <svg
+                                    width="14"
+                                    height="14"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="3"
+                                        width="18"
+                                        height="18"
+                                        rx="2"
+                                    />
+                                    <circle cx="8.5" cy="8.5" r="1.5" />
+                                    <polyline points="21 15 16 10 5 21" />
+                                </svg>
+                                Avisos e información del laboratorio
+                            </div>
+                            <div class="gallery-grid">
+                                {[
+                                    {
+                                        src: "/Img_lab_sis/salonlc1/planproteccion.jfif",
+                                        caption: "Plan de Protección",
+                                    },
+                                    {
+                                        src: "/Img_lab_sis/salonlc1/qrreglamento.jfif",
+                                        caption: "QR – Reglamento",
+                                    },
+                                    {
+                                        src: "/Img_lab_sis/salonlc1/registroymanual.jfif",
+                                        caption: "Registro y Manual",
+                                    },
+                                    {
+                                        src: "/Img_lab_sis/salonlc1/registroymanual2.jfif",
+                                        caption: "Registro y Manual 2",
+                                    },
+                                    {
+                                        src: "/Img_lab_sis/salonlc1/reglasalimentossalacomputo.jfif",
+                                        caption:
+                                            "Reglas de Alimentos – Sala de Cómputo",
+                                    },
+                                    {
+                                        src: "/Img_lab_sis/salonlc1/avisosarriba.jfif",
+                                        caption: "Avisos",
+                                    },
+                                ].map((item) => (
+                                    <div
+                                        class="atropos gallery-atropos"
+                                        data-src={item.src}
+                                        data-caption={item.caption}
+                                    >
+                                        <div class="atropos-scale">
+                                            <div class="atropos-rotate">
+                                                <div class="atropos-inner gallery-atropos-inner">
+                                                    <img
+                                                        src={item.src}
+                                                        alt={item.caption}
+                                                        loading="lazy"
+                                                        data-atropos-offset="5"
+                                                    />
+                                                    <div
+                                                        class="gallery-atropos-overlay"
+                                                        data-atropos-offset="8"
+                                                        style={`background: linear-gradient(135deg, ${lab.color}40, transparent)`}
+                                                    />
+                                                    <div
+                                                        class="gallery-atropos-caption"
+                                                        data-atropos-offset="14"
+                                                    >
+                                                        {item.caption}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* ── Galería – Instalaciones ────────────────── */}
+                        <div class="lab-gallery" id="instalaciones-gallery">
+                            <div class="gallery-label" style={`color:${lab.color}`}>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                                    <polyline points="21 15 16 10 5 21"/>
+                                </svg>
+                                Galería – Instalaciones del Laboratorio
+                            </div>
+                            <div class="gallery-grid">
+                                {[
+                                    { src: "/Img_lab_sis/salonlc1/tablero.jfif",         caption: "Tablero" },
+                                    { src: "/Img_lab_sis/salonlc1/tableroeventos.jfif",   caption: "Tablero de Eventos" },
+                                    { src: "/Img_lab_sis/salonlc1/tablerov.jfif",         caption: "Tablero – Vista" },
+                                    { src: "/Img_lab_sis/salonlc1/bañosarriba.jfif",      caption: "Baños – Planta Alta" },
+                                    { src: "/Img_lab_sis/salonlc1/bañosabajo.jfif",       caption: "Baños – Planta Baja" },
+                                    { src: "/Img_lab_sis/salonlc1/avisosarriba.jfif",     caption: "Avisos Planta Alta" },
+                                ].map((item) => (
+                                    <div class="atropos gallery-atropos" data-src={item.src} data-caption={item.caption}>
+                                        <div class="atropos-scale"><div class="atropos-rotate">
+                                            <div class="atropos-inner gallery-atropos-inner">
+                                                <img src={item.src} alt={item.caption} loading="lazy" data-atropos-offset="5"/>
+                                                <div class="gallery-atropos-overlay" data-atropos-offset="8" style={`background:linear-gradient(135deg,${lab.color}40,transparent)`}/>
+                                                <div class="gallery-atropos-caption" data-atropos-offset="14">{item.caption}</div>
+                                            </div>
+                                        </div></div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </>
+                )
+            }
         </section>
 
         <!-- UBICACION -->
@@ -2073,6 +3140,79 @@ const groups = [
         flex-shrink: 0;
     }
 
+    /* ── ESPECIALIDADES SISTEMAS ─────────────────────────────────── */
+    .especialidades-wrap {
+        margin-top: 1.75rem;
+        border-top: 1px solid var(--border);
+        padding-top: 1.5rem;
+    }
+    .esp-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--c);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 1rem;
+    }
+    .esp-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+    @media (max-width: 600px) {
+        .esp-links { grid-template-columns: 1fr; }
+    }
+    .esp-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.85rem 1rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        text-decoration: none;
+        transition: border-color 0.2s, background 0.2s, transform 0.15s;
+        cursor: pointer;
+    }
+    .esp-link:hover {
+        border-color: var(--c);
+        background: color-mix(in srgb, var(--c) 5%, var(--bg-card));
+        transform: translateY(-2px);
+    }
+    .esp-link-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .esp-link-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+    }
+    .esp-link-name {
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    .esp-link-sub {
+        font-size: 0.78rem;
+        color: var(--text-secondary);
+    }
+    .esp-link-arrow {
+        color: var(--text-secondary);
+        flex-shrink: 0;
+        transition: color 0.2s;
+    }
+    .esp-link:hover .esp-link-arrow { color: var(--c); }
+
     /* ── MISION/VISION ────────────────────────────────────────────── */
     .mv-grid {
         display: grid;
@@ -2171,6 +3311,9 @@ const groups = [
         gap: 2rem;
         align-items: start;
     }
+    .historia-layout.historia-solo {
+        grid-template-columns: 1fr;
+    }
     @media (max-width: 768px) {
         .historia-layout {
             grid-template-columns: 1fr;
@@ -2253,6 +3396,188 @@ const groups = [
         font-weight: 500;
         letter-spacing: 0.02em;
         pointer-events: none;
+    }
+
+    /* ── GALERÍA DE IMÁGENES ──────────────────────────────────────── */
+    .lab-gallery {
+        margin-top: 2rem;
+    }
+    .gallery-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        opacity: 0.85;
+    }
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.85rem;
+    }
+    .gallery-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        aspect-ratio: 4/3;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+    }
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.35s ease;
+    }
+    .gallery-item:hover img {
+        transform: scale(1.06);
+    }
+    .gallery-item-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.42);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+        color: #fff;
+    }
+    .gallery-item:hover .gallery-item-overlay {
+        opacity: 1;
+    }
+
+    /* Atropos gallery cards */
+    .gallery-atropos {
+        --atropos-perspective: 600px;
+        border-radius: 14px;
+        aspect-ratio: 4/3;
+        cursor: pointer;
+    }
+    .gallery-atropos-inner {
+        border-radius: 14px;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 4/3;
+        border: 1px solid var(--border);
+    }
+    .gallery-atropos-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 14px;
+    }
+    .gallery-atropos-overlay {
+        position: absolute;
+        inset: 0;
+        border-radius: 14px;
+        pointer-events: none;
+    }
+    .gallery-atropos-caption {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.58);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        color: #fff;
+        border-radius: 8px;
+        padding: 0.4rem 0.7rem;
+        font-size: 0.78rem;
+        font-weight: 500;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .gallery-atropos:hover .gallery-atropos-caption,
+    .gallery-atropos.atropos-active .gallery-atropos-caption {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Lightbox */
+    .gallery-lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.88);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    .gallery-lightbox.open {
+        display: flex;
+    }
+    .gallery-lightbox img {
+        max-width: 90vw;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    }
+    .gallery-lightbox-caption {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    .gallery-lightbox-close {
+        position: absolute;
+        top: 1.25rem;
+        right: 1.5rem;
+        background: rgba(255, 255, 255, 0.12);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #fff;
+        transition: background 0.2s;
+    }
+    .gallery-lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+    .gallery-lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.12);
+        border: none;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #fff;
+        transition: background 0.2s;
+    }
+    .gallery-lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+    .gallery-lightbox-prev {
+        left: 1rem;
+    }
+    .gallery-lightbox-next {
+        right: 1rem;
     }
 
     /* ── ORGANIZACION ─────────────────────────────────────────────── */
@@ -2483,6 +3808,24 @@ const groups = [
         font-weight: 800;
         flex-shrink: 0;
         line-height: 1.4;
+    }
+    .reg-body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .reg-titulo {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        text-transform: capitalize;
+        line-height: 1.4;
+    }
+    .reg-desc {
+        font-size: 0.87rem;
+        color: var(--text-secondary);
+        line-height: 1.65;
+        margin: 0;
     }
     .reg-row p {
         font-size: 0.92rem;
@@ -2743,6 +4086,138 @@ const groups = [
             rotateXMax: 12,
             rotateYMax: 12,
         });
+    })();
+
+    // ── LIGHTBOX GALERÍA ─────────────────────────────────────────────
+    (function initGallery() {
+        // Crear el lightbox en el DOM
+        const lb = document.createElement("div");
+        lb.className = "gallery-lightbox";
+        lb.id = "gallery-lightbox";
+        lb.innerHTML = `
+            <button class="gallery-lightbox-close" id="lb-close" aria-label="Cerrar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <button class="gallery-lightbox-nav gallery-lightbox-prev" id="lb-prev" aria-label="Anterior">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+            <img id="lb-img" src="" alt="" />
+            <p class="gallery-lightbox-caption" id="lb-caption"></p>
+            <button class="gallery-lightbox-nav gallery-lightbox-next" id="lb-next" aria-label="Siguiente">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+        `;
+        document.body.appendChild(lb);
+
+        let items: { src: string; caption: string }[] = [];
+        let current = 0;
+
+        function open(gallery: HTMLElement, idx: number) {
+            items = Array.from(
+                gallery.querySelectorAll<HTMLElement>(".gallery-item")
+            ).map((el) => ({
+                src: el.dataset.src || "",
+                caption: el.dataset.caption || "",
+            }));
+            current = idx;
+            show();
+        }
+
+        function show() {
+            const lb = document.getElementById("gallery-lightbox")!;
+            const img = document.getElementById("lb-img") as HTMLImageElement;
+            const cap = document.getElementById("lb-caption")!;
+            img.src = items[current].src;
+            cap.textContent = `${items[current].caption} (${current + 1}/${
+                items.length
+            })`;
+            lb.classList.add("open");
+            document.body.style.overflow = "hidden";
+        }
+
+        function close() {
+            document
+                .getElementById("gallery-lightbox")!
+                .classList.remove("open");
+            document.body.style.overflow = "";
+        }
+
+        document.getElementById("lb-close")?.addEventListener("click", close);
+        lb.addEventListener("click", (e) => {
+            if (e.target === lb) close();
+        });
+        document.getElementById("lb-prev")?.addEventListener("click", () => {
+            current = (current - 1 + items.length) % items.length;
+            show();
+        });
+        document.getElementById("lb-next")?.addEventListener("click", () => {
+            current = (current + 1) % items.length;
+            show();
+        });
+        document.addEventListener("keydown", (e) => {
+            if (
+                !document
+                    .getElementById("gallery-lightbox")!
+                    .classList.contains("open")
+            )
+                return;
+            if (e.key === "Escape") close();
+            if (e.key === "ArrowLeft") {
+                current = (current - 1 + items.length) % items.length;
+                show();
+            }
+            if (e.key === "ArrowRight") {
+                current = (current + 1) % items.length;
+                show();
+            }
+        });
+
+        document
+            .querySelectorAll<HTMLElement>(".lab-gallery")
+            .forEach((gallery) => {
+                gallery
+                    .querySelectorAll<HTMLElement>(".gallery-atropos")
+                    .forEach((card, idx) => {
+                        // init Atropos 3D on each card
+                        Atropos({
+                            el: card,
+                            activeOffset: 30,
+                            shadowScale: 1.04,
+                            rotateXMax: 14,
+                            rotateYMax: 14,
+                        });
+                        // open lightbox on click of inner area
+                        card.querySelector(
+                            ".gallery-atropos-inner"
+                        )?.addEventListener("click", () => {
+                            // rebuild items from this gallery's atropos cards
+                            items = Array.from(
+                                gallery.querySelectorAll<HTMLElement>(
+                                    ".gallery-atropos"
+                                )
+                            ).map((el) => ({
+                                src: el.dataset.src || "",
+                                caption: el.dataset.caption || "",
+                            }));
+                            current = idx;
+                            show();
+                        });
+                    });
+                // fallback for non-atropos .gallery-item (kept for safety)
+                gallery
+                    .querySelectorAll<HTMLElement>(".gallery-item")
+                    .forEach((item, idx) => {
+                        item.addEventListener("click", () =>
+                            open(gallery, idx)
+                        );
+                    });
+            });
     })();
 
     // ── HERO PARTICLES ─────────────────────────────────────────────────────

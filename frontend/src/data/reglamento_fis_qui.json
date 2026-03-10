@@ -1,0 +1,75 @@
+{
+    "institucion": {
+        "nombre": "Instituto Tecnológico de Saltillo",
+        "red": "Tecnológico Nacional de México",
+        "departamento": "Departamento de Ciencias Básicas"
+    },
+    "reglamento_laboratorio_quimica": [
+        {
+            "numero": 1,
+            "titulo": "TRABAJAR ÚNICAMENTE CON LA SUPERVISIÓN DEL MAESTRO",
+            "descripcion": "Su mejor protección contra accidentes es la presencia del maestro, que estará vigilando en todo momento y al existir alguna situación de peligro, será quien pueda sobre llevar de manera adecuada esta emergencia."
+        },
+        {
+            "numero": 2,
+            "titulo": "ASISTIR PUNTUALMENTE EN EL HORARIO CORRESPONDIENTE DEL LABORATORIO.",
+            "descripcion": null
+        },
+        {
+            "numero": 3,
+            "titulo": "USAR BATA OBLIGATORIAMENTE, Y EL EQUIPO DE SEGURIDAD CUANDO SEA NECESARIO (LENTES, GUANTE, MASCARILLAS)",
+            "descripcion": "Con esto puedes evitar accidentes tales como salpicaduras de ácidos y álcalis, los cuales pueden causar daño permanente en diferentes partes del cuerpo y en los ojos. Se debe asistir al laboratorio con la vestimenta adecuada (pantalón o falda larga, no short, no top ni blusas de tirantes), cabello recogido y zapato cerrado."
+        },
+        {
+            "numero": 4,
+            "titulo": "MANTENER EL ORDEN",
+            "descripcion": "No jugar, ni hacer bromas, para evitar accidentes."
+        },
+        {
+            "numero": 5,
+            "titulo": "NO COMER, BEBER, NI FUMAR",
+            "descripcion": "Podría ingerir sustancias que aún en pequeñas cantidades son tóxicas. Muchos solventes son fácilmente inflamables por el calor del cigarro."
+        },
+        {
+            "numero": 6,
+            "titulo": "NO INHALAR GASES Y VAPORES.",
+            "descripcion": "Cuando le indique el maestro que perciba el olor de una sustancia, abaníquese con su mano para atraer pequeñas cantidades hacia la nariz evitando la inhalación directa."
+        },
+        {
+            "numero": 7,
+            "titulo": "NO VERTER AGUA SOBRE EL ÁCIDO.",
+            "descripcion": "Si desea preparar una solución de algún ácido, vierta el ácido lentamente por las paredes del recipiente que contiene el agua."
+        },
+        {
+            "numero": 8,
+            "titulo": "CALENTAR CORRECTAMENTE LAS SUSTANCIAS.",
+            "descripcion": "Nunca caliente una sustancia en un tubo de ensayo que apunte hacia usted o hacia otra persona."
+        },
+        {
+            "numero": 9,
+            "titulo": "REVISAR EL MATERIAL DE VIDRIO ANTES Y DESPUÉS DE TRABAJAR.",
+            "descripcion": "El material no debe estar estrellado, quebrado, ni sucio."
+        },
+        {
+            "numero": 10,
+            "titulo": "MANTENER LIMPIA EL ÁREA DE TRABAJO.",
+            "descripcion": "Para evitar accidentes, mantener despejada su mesa (no conectar en ella celulares) y tener lo necesario para limpiar inmediatamente cuando se derrame alguna sustancia."
+        },
+        {
+            "numero": 11,
+            "titulo": "LAVARSE LAS MANOS AL TÉRMINO DE LA SESIÓN DE LABORATORIO.",
+            "descripcion": null
+        },
+        {
+            "numero": 12,
+            "titulo": "CONOCER EN DONDE SE UBICAN LOS ELEMENTOS DE SEGURIDAD COMO SON: SALIDA DE EMERGENCIA, EXTINTORES, REGADERAS Y LAVABOS.",
+            "descripcion": null
+        }
+    ],
+    "mision_vision": {
+        "descripcion_general": "El Instituto Tecnológico de Saltillo forma parte del Tecnológico Nacional de México y tiene como función principal el apoyar a la industria, la empresa y la comunidad; proporcionando profesionales de los niveles de Ingeniería, Licenciatura y de Posgrado.",
+        "mision": "Impartir educación superior tecnológica de calidad, formando de manera integral profesionales competentes, con alto sentido de responsabilidad social, sólida formación en ciencia, tecnología e innovación, que contribuyan al desarrollo sustentable del país.",
+        "vision": "Ser una institución de educación superior tecnológica reconocida nacional e internacionalmente por sus programas académicos de alta calidad, la eficiencia de sus servicios y procesos y la elevada competitividad de sus egresados que impulsen y fortalezcan el desarrollo de México.",
+        "politica_calidad_ambiental": "En el Instituto Tecnológico de Saltillo satisfacemos las necesidades de nuestros estudiantes y partes interesadas, comprometidos con el desarrollo sustentable, la prevención de la contaminación y el cumplimiento con los requisitos legales y los suscritos aplicables, a través de la mejora continua de nuestros procesos y servicios educativos."
+    }
+}

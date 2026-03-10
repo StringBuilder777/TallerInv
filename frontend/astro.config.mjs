@@ -10,6 +10,7 @@ export default defineConfig({
                 // Allow serving files from the monorepo root node_modules
                 allow: [path.resolve('..')]
             }
-        }
+        },
+        assetsInclude: ['**/*.jfif'],
     }
 });
