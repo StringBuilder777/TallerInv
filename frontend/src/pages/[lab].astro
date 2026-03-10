@@ -12,7 +12,7 @@ const lab = getLabBySlug(slug!)!;
 const sections = [
     { id: "practicas", label: "Prácticas", group: "Académico" },
     { id: "horario", label: "Horario", group: "Académico" },
-    { id: "aulas", label: "Salas", group: "Académico" },
+    { id: "aulas", label: "Salones", group: "Académico" },
     { id: "carreras", label: "Carreras", group: "Académico" },
     { id: "mision", label: "Misión y Visión", group: "Institucional" },
     { id: "objetivos", label: "Objetivos", group: "Institucional" },
@@ -82,7 +82,7 @@ const groups = [
                 <div class="hstat-sep"></div>
                 <div class="hstat">
                     <span class="hstat-n">{lab.aulas.length}</span>
-                    <span class="hstat-l">Salas</span>
+                    <span class="hstat-l">Salones</span>
                 </div>
                 <div class="hstat-sep"></div>
                 <div class="hstat">
@@ -290,7 +290,7 @@ const groups = [
                 lab.horariosDetallados && (
                     <div class="horarios-detallados" style={`--c:${lab.color}`}>
                         <div class="hd-header">
-                            <h3>Horarios por aula</h3>
+                            <h3>Horarios por salón</h3>
                             <span class="hd-periodo">
                                 {lab.horariosDetallados.periodo}
                             </span>
@@ -599,12 +599,47 @@ const groups = [
             }
         </section>
 
-        <!-- SALAS -->
+        <!-- SALONES -->
         <section class="panel" id="panel-aulas">
             <div class="panel-head">
                 <span class="ph-bar" style={`background:${lab.color}`}></span>
-                <h2>Salas disponibles</h2>
+                <h2>Salones disponibles</h2>
             </div>
+
+            {
+                lab.horariosDetallados && (
+                    <div
+                        class="salones-estado"
+                        id="salones-estado"
+                        style={`--c:${lab.color}`}
+                        data-horarios={JSON.stringify(
+                            lab.horariosDetallados.aulas
+                        )}
+                    >
+                        <div class="se-header">
+                            <div class="se-title">
+                                <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                Estado actual de salones
+                            </div>
+                            <span class="se-hora" id="se-hora">
+                                --:--
+                            </span>
+                        </div>
+                        <div class="se-grid" id="se-grid" />
+                    </div>
+                )
+            }
+
             <div class="aulas-list">
                 {
                     lab.aulas.map((a) => (
@@ -718,23 +753,77 @@ const groups = [
                 <span class="ph-bar" style={`background:${lab.color}`}></span>
                 <h2>Historia del laboratorio</h2>
             </div>
-            <div class="historia-box" style={`border-left-color:${lab.color}`}>
-                <p>{lab.historia}</p>
-            </div>
-            <div class="ubicacion-row">
-                <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke={lab.color}
-                    stroke-width="2"
-                >
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
-                    ></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-                <span>{lab.ubicacion}</span>
+            <div class="historia-layout">
+                <!-- Texto -->
+                <div class="historia-text-col">
+                    <div
+                        class="historia-box"
+                        style={`border-left-color:${lab.color}`}
+                    >
+                        <p>{lab.historia}</p>
+                    </div>
+                    <div class="ubicacion-row">
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke={lab.color}
+                            stroke-width="2"
+                        >
+                            <path
+                                d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                            ></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span>{lab.ubicacion}</span>
+                    </div>
+                </div>
+                <!-- Imagen con Atropos 3D -->
+                <div class="historia-img-col">
+                    <div class="atropos historia-atropos" id="historia-atropos">
+                        <div class="atropos-scale">
+                            <div class="atropos-rotate">
+                                <div
+                                    class="atropos-inner historia-atropos-inner"
+                                >
+                                    <img
+                                        src="/Afuera.jpeg"
+                                        alt="Vista exterior del Laboratorio de Sistemas Computacionales"
+                                        class="historia-foto"
+                                        data-atropos-offset="5"
+                                    />
+                                    <div
+                                        class="historia-foto-overlay"
+                                        data-atropos-offset="8"
+                                        style={`background: linear-gradient(135deg, ${lab.color}30, transparent)`}
+                                    >
+                                    </div>
+                                    <div
+                                        class="historia-foto-caption"
+                                        data-atropos-offset="12"
+                                    >
+                                        <svg
+                                            width="14"
+                                            height="14"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path
+                                                d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                                            ></path>
+                                            <circle cx="12" cy="10" r="3"
+                                            ></circle>
+                                        </svg>
+                                        ITS Saltillo – Campus
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1842,7 +1931,106 @@ const groups = [
         white-space: nowrap;
     }
 
-    /* ── CARRERAS ─────────────────────────────────────────────────── */
+    /* ── SALONES ESTADO ───────────────────────────────────────── */
+    .salones-estado {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.2rem 1.5rem;
+        margin-bottom: 1.4rem;
+    }
+    .se-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+    .se-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    .se-hora {
+        font-size: 0.85rem;
+        font-family: monospace;
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0.2rem 0.6rem;
+        color: var(--text-secondary);
+    }
+    .se-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 0.75rem;
+    }
+    .se-salon {
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        border: 1.5px solid;
+        transition: background 0.3s, border-color 0.3s;
+    }
+    .se-salon.libre {
+        background: #dcfce7;
+        border-color: #86efac;
+    }
+    :global([data-theme="dark"]) .se-salon.libre {
+        background: #14532d33;
+        border-color: #166534;
+    }
+    .se-salon.ocupado {
+        background: #fee2e2;
+        border-color: #fca5a5;
+    }
+    :global([data-theme="dark"]) .se-salon.ocupado {
+        background: #7f1d1d33;
+        border-color: #991b1b;
+    }
+    .se-salon-id {
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--text-primary);
+    }
+    .se-salon-badge {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
+    .libre .se-salon-badge {
+        color: #16a34a;
+    }
+    :global([data-theme="dark"]) .libre .se-salon-badge {
+        color: #4ade80;
+    }
+    .ocupado .se-salon-badge {
+        color: #dc2626;
+    }
+    :global([data-theme="dark"]) .ocupado .se-salon-badge {
+        color: #f87171;
+    }
+    .se-salon-clase {
+        font-size: 0.78rem;
+        color: var(--text-secondary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .se-fuera-horario {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        text-align: center;
+        padding: 0.5rem 0;
+        font-style: italic;
+    }
+
+    /* ── CARRERAS ──────────────────────────────────────────────── */
     .two-col {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -1977,13 +2165,28 @@ const groups = [
     }
 
     /* ── HISTORIA ─────────────────────────────────────────────────── */
+    .historia-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+    @media (max-width: 768px) {
+        .historia-layout {
+            grid-template-columns: 1fr;
+        }
+    }
+    .historia-text-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
     .historia-box {
         background: var(--bg-card);
         border: 1px solid var(--border);
         border-left: 4px solid;
         border-radius: 14px;
         padding: 1.75rem;
-        margin-bottom: 1rem;
         transition: background 0.3s;
     }
     .historia-box p {
@@ -1998,6 +2201,58 @@ const groups = [
         gap: 0.6rem;
         font-size: 0.9rem;
         color: var(--text-secondary);
+    }
+
+    /* ── ATROPOS imagen historia ──────────────────────────────────── */
+    .historia-img-col {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .historia-atropos {
+        width: 100%;
+        max-width: 480px;
+        border-radius: 18px;
+        --atropos-perspective: 800px;
+    }
+    .historia-atropos-inner {
+        border-radius: 18px;
+        overflow: hidden;
+        position: relative;
+        aspect-ratio: 4/3;
+    }
+    .historia-foto {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 18px;
+        transition: transform 0.3s ease;
+    }
+    .historia-foto-overlay {
+        position: absolute;
+        inset: 0;
+        border-radius: 18px;
+        pointer-events: none;
+    }
+    .historia-foto-caption {
+        position: absolute;
+        bottom: 14px;
+        left: 14px;
+        right: 14px;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: #fff;
+        border-radius: 10px;
+        padding: 0.5rem 0.85rem;
+        font-size: 0.82rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        pointer-events: none;
     }
 
     /* ── ORGANIZACION ─────────────────────────────────────────────── */
@@ -2474,6 +2729,22 @@ const groups = [
 </style>
 
 <script>
+    // ── ATROPOS 3D TILT (Historia) ─────────────────────────────────────────
+    import Atropos from "atropos";
+    import "atropos/css";
+
+    (function initAtropos() {
+        const el = document.getElementById("historia-atropos");
+        if (!el) return;
+        Atropos({
+            el,
+            activeOffset: 40,
+            shadowScale: 1.05,
+            rotateXMax: 12,
+            rotateYMax: 12,
+        });
+    })();
+
     // ── HERO PARTICLES ─────────────────────────────────────────────────────
     (function () {
         const canvas = document.getElementById(
@@ -2606,7 +2877,7 @@ const groups = [
         }
     });
 
-    // ── HORARIOS DETALLADOS – TAB SWITCHING ─────────────────────────────────
+    // ── HORARIOS DETALLADOS – TAB SWITCHING ─────────────────────────────────────
     const hdAulaTabs = document.getElementById("hd-aula-tabs");
     if (hdAulaTabs) {
         const aulaBtns =
@@ -2628,6 +2899,118 @@ const groups = [
             });
         });
     }
+
+    // ── SALONES EN HORARIO (estado en tiempo real) ──────────────────────────
+    (function initSalonesEstado() {
+        const widget = document.getElementById("salones-estado");
+        if (!widget) return;
+
+        const raw = widget.dataset.horarios;
+        if (!raw) return;
+        const aulas: Array<{
+            aula: string;
+            horario: Array<{
+                hora: string;
+                lunes: any;
+                martes: any;
+                miercoles: any;
+                jueves: any;
+                viernes: any;
+            }>;
+        }> = JSON.parse(raw);
+
+        const diasMap: Record<number, keyof typeof aulas[0]["horario"][0]> = {
+            1: "lunes",
+            2: "martes",
+            3: "miercoles",
+            4: "jueves",
+            5: "viernes",
+        };
+
+        function getClaseActual(aulaData: typeof aulas[0]) {
+            const now = new Date();
+            const dow = now.getDay(); // 0=dom, 1=lun ... 6=sab
+            const diaKey = diasMap[dow];
+            if (!diaKey) return null; // fin de semana
+
+            const h = now.getHours();
+            // Buscar la franja cuya hora en punto <= hora actual < siguiente franja
+            for (let i = 0; i < aulaData.horario.length; i++) {
+                const franjaH = parseInt(
+                    aulaData.horario[i].hora.split(":")[0],
+                    10
+                );
+                const nextH =
+                    i + 1 < aulaData.horario.length
+                        ? parseInt(
+                              aulaData.horario[i + 1].hora.split(":")[0],
+                              10
+                          )
+                        : franjaH + 1;
+                if (h >= franjaH && h < nextH) {
+                    const celda = (aulaData.horario[i] as any)[diaKey];
+                    return celda;
+                }
+            }
+            return null;
+        }
+
+        function isLibre(celda: any): boolean {
+            if (celda === null || celda === undefined) return true;
+            if (typeof celda === "string")
+                return celda.toLowerCase().includes("libre");
+            return false;
+        }
+
+        function render() {
+            const seHora = document.getElementById("se-hora");
+            const seGrid = document.getElementById("se-grid");
+            if (!seHora || !seGrid) return;
+
+            const now = new Date();
+            const dow = now.getDay();
+            const pad = (n: number) => String(n).padStart(2, "0");
+            seHora.textContent = `${pad(now.getHours())}:${pad(
+                now.getMinutes()
+            )}`;
+
+            if (!diasMap[dow]) {
+                seGrid.innerHTML = `<span class="se-fuera-horario">Fin de semana — laboratorio cerrado</span>`;
+                return;
+            }
+            const h = now.getHours();
+            // Lab abierto 7:00–21:00 aprox
+            if (h < 7 || h >= 21) {
+                seGrid.innerHTML = `<span class="se-fuera-horario">Fuera de horario de atención</span>`;
+                return;
+            }
+
+            seGrid.innerHTML = aulas
+                .map((a) => {
+                    const celda = getClaseActual(a);
+                    const libre = isLibre(celda);
+                    const badge = libre ? "Libre" : "En clase";
+                    const detail =
+                        !libre && typeof celda === "object" && celda
+                            ? celda.materia || ""
+                            : "";
+                    return `
+                    <div class="se-salon ${libre ? "libre" : "ocupado"}">
+                        <span class="se-salon-id">${a.aula}</span>
+                        <span class="se-salon-badge">${badge}</span>
+                        ${
+                            detail
+                                ? `<span class="se-salon-clase">${detail}</span>`
+                                : ""
+                        }
+                    </div>`;
+                })
+                .join("");
+        }
+
+        render();
+        setInterval(render, 60_000); // actualizar cada minuto
+    })();
 
     // ── LEAFLET MAP ─────────────────────────────────────────────────────────
     (function initMap() {

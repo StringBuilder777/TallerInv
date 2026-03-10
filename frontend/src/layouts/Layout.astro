@@ -35,10 +35,17 @@ const {
         <header class="header">
             <div class="header-content">
                 <a href="/" class="logo">
-                    <div class="logo-icon">ITS</div>
+                    <div class="logo-icon">
+                        <img
+                            src="/escudo.png"
+                            alt="Escudo ITS"
+                            class="logo-escudo"
+                        />
+                    </div>
                     <div class="logo-text">
-                        <span class="logo-title">Instituto Tecnológico</span>
-                        <span class="logo-subtitle">de Saltillo</span>
+                        <span class="logo-title"
+                            >Instituto Tecnológico de Saltillo</span
+                        >
                     </div>
                 </a>
                 <div class="header-right">
@@ -86,23 +93,14 @@ const {
                             <line x1="12" y1="21" x2="12" y2="23"></line>
                             <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"
                             ></line>
-                            <line
-                                x1="18.36"
-                                y1="18.36"
-                                x2="19.78"
-                                y2="19.78"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"
+                            ></line>
                             <line x1="1" y1="12" x2="3" y2="12"></line>
                             <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line
-                                x1="4.22"
-                                y1="19.78"
-                                x2="5.64"
-                                y2="18.36"></line>
-                            <line
-                                x1="18.36"
-                                y1="5.64"
-                                x2="19.78"
-                                y2="4.22"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"
+                            ></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"
+                            ></line>
                         </svg>
                     </button>
                 </div>
@@ -231,9 +229,7 @@ const {
                 color: var(--text-primary);
                 background: var(--bg-page);
                 line-height: 1.6;
-                transition:
-                    background-color 0.3s,
-                    color 0.3s;
+                transition: background-color 0.3s, color 0.3s;
             }
 
             h1,
@@ -282,24 +278,24 @@ const {
             }
 
             .logo-icon {
-                width: 44px;
-                height: 44px;
-                background: linear-gradient(135deg, #f59e0b, #d97706);
-                border-radius: 11px;
+                width: 48px;
+                height: 48px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-weight: 800;
-                font-size: 1rem;
-                color: white;
-                font-family: "Poppins", sans-serif;
-                box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
                 flex-shrink: 0;
+            }
+
+            .logo-escudo {
+                width: 48px;
+                height: 48px;
+                object-fit: contain;
+                filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
             }
 
             .logo-text {
                 display: flex;
-                flex-direction: column;
+                align-items: center;
             }
 
             .logo-title {
@@ -307,12 +303,7 @@ const {
                 font-size: 0.95rem;
                 color: white;
                 line-height: 1.2;
-            }
-
-            .logo-subtitle {
-                font-weight: 400;
-                font-size: 0.78rem;
-                color: rgba(255, 255, 255, 0.6);
+                white-space: nowrap;
             }
 
             .nav {
@@ -449,9 +440,7 @@ const {
                 border-radius: 16px;
                 padding: 2rem;
                 box-shadow: var(--shadow-md);
-                transition:
-                    transform 0.3s,
-                    box-shadow 0.3s;
+                transition: transform 0.3s, box-shadow 0.3s;
             }
 
             .card:hover {
@@ -495,9 +484,7 @@ const {
             .fade-up {
                 opacity: 0;
                 transform: translateY(28px);
-                transition:
-                    opacity 0.65s ease,
-                    transform 0.65s ease;
+                transition: opacity 0.65s ease, transform 0.65s ease;
             }
 
             .fade-up.in-view {

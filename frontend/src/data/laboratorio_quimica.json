@@ -3,130 +3,136 @@
     "nombre": "Instituto Tecnológico de Saltillo",
     "red": "Tecnológico Nacional de México",
     "departamento": "Departamento de Ciencias Básicas",
-    "mision": "Impartir educación superior tecnológica de calidad, formando de manera integral profesionales competentes, con alto sentido de responsabilidad social, sólida formación en ciencia, tecnología e innovación, que contribuyan al desarrollo sustentable del país.",
-    "vision": "Ser una institución de educación superior tecnológica reconocida nacional e internacionalmente por sus programas académicos de alta calidad, la eficiencia de sus servicios y procesos y la elevada competitividad de sus egresados que impulsen y fortalezcan el desarrollo de México.",
+    "mision": "Promover el desarrollo de la comunidad, a través de la formación de profesionistas de excelencia, capaces de responder de manera efectiva a las necesidades regionales con calidad, productividad y una visión nacional e internacional para el presente y el futuro.",
+    "vision": "Nos proponemos ser la mejor Institución de Educación Superior Tecnológica de Coahuila y del Sistema Nacional de Institutos Tecnológicos, mediante la generación de una cultura científica y tecnológica de excelencia con la participación de alumnos, maestros, personal de apoyo y de los sectores sociales y empresariales de nuestro entorno.",
     "politica_calidad_ambiental": "En el Instituto Tecnológico de Saltillo satisfacemos las necesidades de nuestros estudiantes y partes interesadas, comprometidos con el desarrollo sustentable, la prevención de la contaminación y el cumplimiento con los requisitos legales y los suscritos aplicables, a través de la mejora continua de nuestros procesos y servicios educativos."
   },
-
   "laboratorio": {
     "nombre": "Laboratorio de Química",
     "periodo": "Febrero - Junio 2026",
-
     "horario_docentes": [
       {
         "hora": "7am - 8am",
-        "lunes":     "Marisol Rangel",
-        "martes":    "Norma Hernadez",
+        "lunes": "Marisol Rangel",
+        "martes": "Norma Hernadez",
         "miercoles": null,
-        "jueves":    null,
-        "viernes":   null
+        "jueves": null,
+        "viernes": null
       },
       {
         "hora": "8am - 9am",
-        "lunes":     null,
-        "martes":    "Norma Hernadez",
+        "lunes": null,
+        "martes": "Norma Hernadez",
         "miercoles": "Hilda Torres",
-        "jueves":    null,
-        "viernes":   null
+        "jueves": null,
+        "viernes": null
       },
       {
         "hora": "9am - 10am",
-        "lunes":     null,
-        "martes":    "Norma Hernadez",
+        "lunes": null,
+        "martes": "Norma Hernadez",
         "miercoles": "Hilda Torres",
-        "jueves":    null,
-        "viernes":   null
+        "jueves": null,
+        "viernes": null
       },
       {
         "hora": "10am - 11am",
-        "lunes":     null,
-        "martes":    null,
+        "lunes": null,
+        "martes": null,
         "miercoles": "Hilda Torres",
-        "jueves":    null,
-        "viernes":   null
+        "jueves": null,
+        "viernes": null
       },
       {
         "hora": "11am - 12am",
-        "lunes":     "Marisol Rangel",
-        "martes":    "Norma Hernadez",
+        "lunes": "Marisol Rangel",
+        "martes": "Norma Hernadez",
         "miercoles": null,
-        "jueves":    null,
-        "viernes":   null
+        "jueves": null,
+        "viernes": null
       },
       {
         "hora": "12pm - 13pm",
-        "lunes":     null,
-        "martes":    "Norma Hernadez",
+        "lunes": null,
+        "martes": "Norma Hernadez",
         "miercoles": null,
-        "jueves":    null,
-        "viernes":   null
+        "jueves": null,
+        "viernes": null
       },
       {
         "hora": "13pm - 14pm",
-        "lunes":     "Marisol Rangel",
-        "martes":    null,
+        "lunes": "Marisol Rangel",
+        "martes": null,
         "miercoles": "Alma Cazares",
-        "jueves":    "Alejandra",
-        "viernes":   null
+        "jueves": "Alejandra",
+        "viernes": null
       },
       {
         "hora": "14pm - 15pm",
-        "lunes":     "Raymundo Garza",
-        "martes":    null,
+        "lunes": "Raymundo Garza",
+        "martes": null,
         "miercoles": "Alma",
-        "jueves":    "Alejandra",
-        "viernes":   null
+        "jueves": "Alejandra",
+        "viernes": null
       },
       {
         "hora": "15pm - 16pm",
-        "lunes":     "Raymundo Garza",
-        "martes":    null,
+        "lunes": "Raymundo Garza",
+        "martes": null,
         "miercoles": null,
-        "jueves":    ["Alejandra", "Victor M"],
-        "viernes":   null
+        "jueves": [
+          "Alejandra",
+          "Victor M"
+        ],
+        "viernes": null
       },
       {
         "hora": "16pm - 17pm",
-        "lunes":     "Raymundo",
-        "martes":    "Susana Aguirre",
+        "lunes": "Raymundo",
+        "martes": "Susana Aguirre",
         "miercoles": "Alma Cazares",
-        "jueves":    ["Alejandra", "Victor M"],
-        "viernes":   null
+        "jueves": [
+          "Alejandra",
+          "Victor M"
+        ],
+        "viernes": null
       },
       {
         "hora": "17pm - 18pm",
-        "lunes":     "Raymundo Garza",
-        "martes":    "Susana Aguirre",
+        "lunes": "Raymundo Garza",
+        "martes": "Susana Aguirre",
         "miercoles": "Karina Ayala",
-        "jueves":    ["Alejandra", "Victor M"],
-        "viernes":   null
+        "jueves": [
+          "Alejandra",
+          "Victor M"
+        ],
+        "viernes": null
       },
       {
         "hora": "18pm - 19pm",
-        "lunes":     "Raymundo Garza",
-        "martes":    "Susana Aguirre",
+        "lunes": "Raymundo Garza",
+        "martes": "Susana Aguirre",
         "miercoles": "Karina Ayala",
-        "jueves":    null,
-        "viernes":   null
+        "jueves": null,
+        "viernes": null
       },
       {
         "hora": "19pm - 20pm",
-        "lunes":     null,
-        "martes":    "Susana Aguirre",
+        "lunes": null,
+        "martes": "Susana Aguirre",
         "miercoles": "Karina Ayala",
-        "jueves":    null,
-        "viernes":   null
+        "jueves": null,
+        "viernes": null
       },
       {
         "hora": "20pm - 21pm",
-        "lunes":     null,
-        "martes":    null,
+        "lunes": null,
+        "martes": null,
         "miercoles": "Karina Ayala",
-        "jueves":    null,
-        "viernes":   null
+        "jueves": null,
+        "viernes": null
       }
     ],
-
     "docentes": [
       "Marisol Rangel",
       "Norma Hernadez",
@@ -138,7 +144,6 @@
       "Susana Aguirre",
       "Karina Ayala"
     ],
-
     "reglamento": [
       {
         "numero": 1,
