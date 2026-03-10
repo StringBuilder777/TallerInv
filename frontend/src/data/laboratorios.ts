@@ -162,11 +162,11 @@ export const laboratorios: Laboratorio[] = [
             "Inclusión y respeto a la diversidad",
             "Prevención de la contaminación y cuidado del medio ambiente",
         ],
-        historia: "El Instituto Tecnológico de Saltillo fue fundado en 1950 por decreto presidencial bajo el nombre de Instituto Tecnológico de Coahuila, tomando como modelo al IPN. En enero de 1951 inició actividades académicas con 314 estudiantes. En 1968 se redesignó como Instituto Tecnológico Regional de Coahuila, y en 1977 como Instituto Tecnológico Regional de Saltillo. En 1981 adoptó su nombre definitivo: Instituto Tecnológico de Saltillo (ITS). El espacio actual del laboratorio de cómputo originalmente funcionaba como oficinas administrativas de Sistemas Computacionales. El edificio era el Centro de Cómputo, el cual se dividió entre Centro de Cómputo y Laboratorio, pasando a ser el Laboratorio de Cómputo que opera actualmente. En los 2000s el ITS obtuvo la primera Recertificación ISO 9001:2000 en el Sistema Nacional de Educación Superior Tecnológica, siendo el primer plantel en recibirla. En 2006 contaba con 7,016 estudiantes y 424 profesores. A partir de 2014 se integró al Tecnológico Nacional de México (TecNM) como campus federal. En 2022 registró una matrícula de 7,825 estudiantes con 919 egresados. Actualmente la Dra. María Gloria Hinojosa Ruíz es directora del plantel.",
-        ubicacion: "Edificio del Depto. de Sistemas y Computación, Campus Principal ITS. Blvd. Venustiano Carranza #2400, Col. Tecnológico, C.P. 25280, Saltillo, Coahuila, México. Referencia: Colonia Tecnológico, frente al estadio de béisbol. Campus satélite: Campus Arteaga.",
+        historia: "El Instituto Tecnológico de Saltillo fue fundado en 1950 por decreto presidencial bajo el nombre de Instituto Tecnológico de Coahuila, tomando como modelo al IPN. En enero de 1951 inició actividades académicas con 314 estudiantes. En 1968 se redesignó como Instituto Tecnológico Regional de Coahuila, y en 1977 como Instituto Tecnológico Regional de Saltillo. En 1981 adoptó su nombre definitivo: Instituto Tecnológico de Saltillo (ITS). El espacio actual del laboratorio de cómputo originalmente funcionaba como oficinas administrativas de Sistemas Computacionales. El edificio era el Centro de Cómputo, el cual se dividió entre Centro de Cómputo y Laboratorio, pasando a ser el Laboratorio de Cómputo que opera actualmente. En los 2000s el ITS obtuvo la primera Recertificación ISO 9001:2000 en el Sistema Nacional de Educación Superior Tecnológica, siendo el primer plantel en recibirla. En 2006 contaba con 7,016 estudiantes y 424 profesores. A partir de 2014 se integró al Tecnológico Nacional de México (TecNM) como campus federal. En 2022 registró una matrícula de 7,825 estudiantes con 919 egresados. Actualmente, la Dra. María Gloria Hinojosa Ruiz es directora del plantel.",
+        ubicacion: "República, 25260 Saltillo, Coah.",
         contacto: {
             responsable: "Mendoza Morales Sergio Arturo",
-            email: "contacto@tecnm.mx",
+            email: "sonia.yi@saltillo.tecnm.mx",
             telefono: "844 288-94-60 / 844 402-0840",
             extension: "Consultar en Subdirección Académica",
         },
@@ -238,8 +238,8 @@ export const laboratorios: Laboratorio[] = [
         ],
         organizacion: {
             jefe: "Mendoza Morales Sergio Arturo – Jefe del Laboratorio",
-            coordinadores: ["Yuride Rivera – Secretaria"],
-            tecnicos: ["Ricardo Rodriguez – Aux. Soporte Técnico (Software)", "Gilberto Alemán – Aux. Soporte Técnico (Impresión)", "Flavio Cobarrubios – Aux. Soporte Técnico (Impresión)", "Israel Nojera – Soporte, Limpieza y Mantenimiento"],
+            coordinadores: ["Sonia Judith Rivera López – Secretaria"],
+            tecnicos: ["Ricardo Rodríguez – Aux. Soporte Técnico (Software)", "Gilberto Alemán – Aux. Soporte Técnico (Impresión)", "Flavio Covarrubias – Aux. Soporte Técnico (Impresión)", "Israel Nojera – Soporte, Limpieza y Mantenimiento"],
         },
 
         practicas: [
@@ -283,7 +283,7 @@ export const laboratorios: Laboratorio[] = [
             { nombre: "Premio Santander", organismo: "Banco Santander", descripcion: "Categoría Proyecto de Negocios con Impacto Social, otorgado a un estudiante del ITS." },
             { nombre: "Membresía TecNM", organismo: "Tecnológico Nacional de México", descripcion: "Integración al Tecnológico Nacional de México con reporte periódico de auditorías internas y certificaciones." },
         ],
-        buzonSugerencias: "Para quejas, sugerencias o propuestas de mejora, contactar a Yuride Rivera (Secretaría del Laboratorio) o enviar correo a: sonia.yi@saltillo.tecnm.mx. También se dispone de buzón físico de sugerencias en el edificio administrativo del campus y sistema de quejas en el portal oficial saltillo.tecnm.mx.",
+        buzonSugerencias: "Para quejas, sugerencias o propuestas de mejora, contactar a Sonia Judith Rivera López (Secretaría del Laboratorio) o enviar correo a: sonia.yi@saltillo.tecnm.mx. También se dispone de buzón físico de sugerencias en el edificio administrativo del campus y sistema de quejas en el portal oficial saltillo.tecnm.mx.",
         horariosDetallados: horariosData as unknown as HorariosDetallados,
     },
 
@@ -312,11 +312,11 @@ export const laboratorios: Laboratorio[] = [
             "Trabajo en equipo y colaboración",
             "Responsabilidad ambiental",
         ],
-        historia: "Establecido en 1972 como parte de los laboratorios fundadores del ITS, el Laboratorio de Física ha sido pilar en la formación básica de todos los ingenieros de la institución. Su primera dotación incluyó equipos de mecánica y óptica básica. En 2010 fue completamente renovado con fondos Promep, incorporating equipos digitales de última generación. En 2018 se incorporó la sala de electromagnetismo avanzada con osciloscopios digitales Tektronix.",
-        ubicacion: "Edificio C, Planta Alta – Campus Principal ITS. Blvd. Venustiano Carranza #2400, Col. Tecnológico, Saltillo, Coahuila.",
+        historia: "Establecido en 1972 como parte de los laboratorios fundadores del ITS, el Laboratorio de Física ha sido pilar en la formación básica de todos los ingenieros de la institución. Su primera dotación incluyó equipos de mecánica y óptica básica. En 2010 fue completamente renovado con fondos Promep, incorporando equipos digitales de última generación. En 2018 se incorporó la sala de electromagnetismo avanzada con osciloscopios digitales Tektronix.",
+        ubicacion: "República, 25260 Saltillo, Coah.",
         contacto: {
             responsable: "Dra. Patricia Elizondo Villanueva",
-            email: "lab.fisica@its.edu.mx",
+            email: "sonia.yi@saltillo.tecnm.mx",
             telefono: "(844) 123-4568",
             extension: "Ext. 215",
         },
@@ -341,12 +341,12 @@ export const laboratorios: Laboratorio[] = [
             lunesViernes: "7:00 – 20:00 hrs",
             sabado: "8:00 – 13:00 hrs",
             domingo: "Cerrado",
-            observaciones: "Prácticas programadas con mín. 72 hrs de anticipación. Uso de bata obligatorio.",
+            observaciones: "Prácticas programadas con mín. 72 hrs. de anticipación. Uso de bata obligatorio.",
         },
         reglamento: [
             "Uso obligatorio de lentes de seguridad y bata de laboratorio.",
             "Prohibido consumir alimentos y bebidas.",
-            "Manipular los equipos sólo bajo supervisión del técnico.",
+            "Manipular los equipos solo bajo supervisión del técnico.",
             "Reportar inmediatamente cualquier accidente o avería.",
             "Dejar el área de trabajo limpia y ordenada al finalizar.",
             "No mover equipos sin autorización del responsable.",
@@ -398,7 +398,7 @@ export const laboratorios: Laboratorio[] = [
             { nombre: "Pasco Scientific Training", organismo: "Pasco Scientific", descripcion: "Personal certificado en el uso y mantenimiento de equipos Pasco DataStudio." },
             { nombre: "Calibración de Instrumentos ISO 9001", organismo: "CENAM", descripcion: "Instrumentos de medición calibrados y trazables al patrón nacional de medidas." },
         ],
-        buzonSugerencias: "Comparte tus sugerencias enviando un correo a buzon.fisica@its.edu.mx o depositando tu nota en el buzón físico ubicado a la entrada del laboratorio.",
+        buzonSugerencias: "Para quejas, sugerencias o propuestas de mejora, contactar a Sonia Judith Rivera López (Secretaría del Laboratorio) o enviar correo a: sonia.yi@saltillo.tecnm.mx. También se dispone de buzón físico de sugerencias en el edificio administrativo del campus y sistema de quejas en el portal oficial saltillo.tecnm.mx.",
     },
 
     {
@@ -408,7 +408,7 @@ export const laboratorios: Laboratorio[] = [
         color: "#059669",
         colorSecundario: "#d1fae5",
         icono: "",
-        descripcionCorta: "Laboratorio del Departamento de Ciencias Básicas del ITS para experimentación química con normas estrictas de seguridad. Periodo actual: Febrero - Junio 2026.",
+        descripcionCorta: "Laboratorio del Departamento de Ciencias Básicas del ITS para experimentación química con normas estrictas de seguridad. Período actual: febrero – junio 2026.",
 
         mision: "Impartir educación superior tecnológica de calidad, formando de manera integral profesionales competentes, con alto sentido de responsabilidad social, sólida formación en ciencia, tecnología e innovación, que contribuyan al desarrollo sustentable del país.",
         vision: "Ser una institución de educación superior tecnológica reconocida nacional e internacionalmente por sus programas académicos de alta calidad, la eficiencia de sus servicios y procesos y la elevada competitividad de sus egresados que impulsen y fortalezcan el desarrollo de México.",
@@ -428,10 +428,10 @@ export const laboratorios: Laboratorio[] = [
             "Prevención de la contaminación y cuidado del medio ambiente",
         ],
         historia: "El Laboratorio de Química pertenece al Departamento de Ciencias Básicas del Instituto Tecnológico de Saltillo (TecNM – Campus Saltillo). El ITS fue fundado en 1950 y ha formado generaciones de ingenieros con sólidas bases científicas. El laboratorio ha evolucionado con la institución, incorporando equipamiento moderno y adoptando normas de seguridad y calidad ambiental conforme a la política institucional de prevención de la contaminación y cumplimiento de requisitos legales aplicables.",
-        ubicacion: "Departamento de Ciencias Básicas, Campus Principal ITS. Blvd. Venustiano Carranza #2400, Col. Tecnológico, C.P. 25280, Saltillo, Coahuila, México.",
+        ubicacion: "República, 25260 Saltillo, Coah.",
         contacto: {
             responsable: "Departamento de Ciencias Básicas",
-            email: "contacto@tecnm.mx",
+            email: "sonia.yi@saltillo.tecnm.mx",
             telefono: "844 288-94-60 / 844 402-0840",
             extension: "Consultar en Subdirección Académica",
         },
@@ -462,14 +462,14 @@ export const laboratorios: Laboratorio[] = [
             lunesViernes: "7:00 – 21:00 hrs",
             sabado: "Cerrado (salvo actividades especiales)",
             domingo: "Cerrado",
-            observaciones: "El horario de uso del laboratorio depende de la asignación de docentes por franja horaria. Turno matutino: 07:00 – 13:00 hrs. Turno vespertino: 13:00 – 21:00 hrs. Periodo actual: Febrero – Junio 2026.",
+            observaciones: "El horario de uso del laboratorio depende de la asignación de docentes por franja horaria. Turno matutino: 07:00 – 13:00 hrs. Turno vespertino: 13:00 – 21:00 hrs. Período actual: febrero – junio 2026.",
         },
         reglamento: [
             "1. Trabajar únicamente con la supervisión del maestro. Su mejor protección contra accidentes es la presencia del maestro, que estará vigilando en todo momento y al existir alguna situación de peligro, será quien pueda sobrellevar de manera adecuada esta emergencia.",
             "2. Asistir puntualmente en el horario correspondiente del laboratorio.",
             "3. Usar bata obligatoriamente, y el equipo de seguridad cuando sea necesario (lentes, guantes, mascarillas). Se debe asistir con vestimenta adecuada (pantalón o falda larga, no short, no top ni blusas de tirantes), cabello recogido y zapato cerrado.",
             "4. Mantener el orden. No jugar, ni hacer bromas, para evitar accidentes.",
-            "5. No comer, beber, ni fumar. Podría ingerir sustancias que aún en pequeñas cantidades son tóxicas. Muchos solventes son fácilmente inflamables por el calor del cigarro.",
+            "5. No comer, beber, ni fumar. Podría ingerir sustancias que, aún en pequeñas cantidades, son tóxicas. Muchos solventes son fácilmente inflamables por el calor del cigarro.",
             "6. No inhalar gases y vapores. Cuando le indique el maestro que perciba el olor de una sustancia, abanique con su mano para atraer pequeñas cantidades hacia la nariz evitando la inhalación directa.",
             "7. No verter agua sobre el ácido. Si desea preparar una solución de algún ácido, vierta el ácido lentamente por las paredes del recipiente que contiene el agua.",
             "8. Calentar correctamente las sustancias. Nunca caliente una sustancia en un tubo de ensayo que apunte hacia usted o hacia otra persona.",
@@ -493,7 +493,7 @@ export const laboratorios: Laboratorio[] = [
         organizacion: {
             jefe: "Departamento de Ciencias Básicas – ITS",
             coordinadores: ["Marisol Rangel", "Norma Hernández", "Hilda Torres"],
-            tecnicos: ["Alma Cazares", "Alejandra", "Víctor M.", "Raymundo Garza", "Susana Aguirre", "Karina Ayala"],
+            tecnicos: ["Alma Cázares", "Alejandra", "Víctor M.", "Raymundo Garza", "Susana Aguirre", "Karina Ayala"],
         },
 
         practicas: [
@@ -523,7 +523,7 @@ export const laboratorios: Laboratorio[] = [
             { nombre: "NOM-087-SEMARNAT – Residuos Peligrosos", organismo: "SEMARNAT", descripcion: "Laboratorio certificado en el manejo y disposición correcta de residuos peligrosos biológico-infecciosos." },
             { nombre: "Plan de Emergencias Químicas", organismo: "Protección Civil Coahuila", descripcion: "Personal capacitado y plan de acción ante emergencias por derrames o exposición a sustancias." },
         ],
-        buzonSugerencias: "En el Instituto Tecnológico de Saltillo satisfacemos las necesidades de nuestros estudiantes y partes interesadas, comprometidos con el desarrollo sustentable, la prevención de la contaminación y el cumplimiento con los requisitos legales aplicables. Envía tus propuestas o reportes de seguridad a contacto@tecnm.mx o al buzón físico en el edificio administrativo del campus. Portal: saltillo.tecnm.mx",
+        buzonSugerencias: "Para quejas, sugerencias o propuestas de mejora, contactar a Sonia Judith Rivera López (Secretaría del Laboratorio) o enviar correo a: sonia.yi@saltillo.tecnm.mx. También se dispone de buzón físico de sugerencias en el edificio administrativo del campus y sistema de quejas en el portal oficial saltillo.tecnm.mx.",
     },
 ];
 

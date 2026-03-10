@@ -961,15 +961,29 @@ const groups = [
                 <div>
                     <strong>{lab.nombre}</strong>
                     <p>{lab.ubicacion}</p>
-                    <a
-                        href="https://maps.google.com/?q=Instituto+Tecnologico+de+Saltillo"
-                        target="_blank"
-                        class="map-btn"
-                        style={`background:${lab.color}`}
-                    >
-                        Ver en Google Maps →
-                    </a>
+                    <div class="ubic-btns">
+                        <a
+                            href="https://maps.app.goo.gl/NUjSez4Zb8UwZwmF7"
+                            target="_blank"
+                            class="map-btn"
+                            style={`background:${lab.color}`}
+                        >
+                            Cómo llegar →
+                        </a>
+                        <a
+                            href="https://maps.app.goo.gl/NUjSez4Zb8UwZwmF7"
+                            target="_blank"
+                            class="map-btn outline"
+                            style={`color:${lab.color};border-color:${lab.color}`}
+                        >
+                            Ver en Google Maps
+                        </a>
+                    </div>
                 </div>
+            </div>
+            <!-- Leaflet Map -->
+            <div id="map-container" class="map-container">
+                <div id="leaflet-map" style="width:100%;height:100%;"></div>
             </div>
         </section>
 
@@ -2258,10 +2272,41 @@ const groups = [
         border-radius: 8px;
         font-size: 0.9rem;
         font-weight: 600;
-        transition: opacity 0.2s;
+        transition: opacity 0.2s, background 0.2s;
     }
     .map-btn:hover {
         opacity: 0.85;
+    }
+    .map-btn.outline {
+        background: transparent;
+        border: 2px solid;
+    }
+    .map-btn.outline:hover {
+        opacity: 0.7;
+    }
+    .ubic-btns {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+    .map-container {
+        margin-top: 1.5rem;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        height: 400px;
+        background: var(--bg-surface);
+    }
+    .map-container .leaflet-control-attribution {
+        font-size: 0.7rem;
+        background: rgba(255, 255, 255, 0.8) !important;
+    }
+    [data-theme="dark"] .map-container .leaflet-control-attribution {
+        background: rgba(0, 0, 0, 0.6) !important;
+        color: rgba(255, 255, 255, 0.6);
+    }
+    [data-theme="dark"] .map-container .leaflet-control-attribution a {
+        color: rgba(255, 255, 255, 0.6);
     }
 
     /* ── CONTACTO ─────────────────────────────────────────────────── */
@@ -2583,4 +2628,89 @@ const groups = [
             });
         });
     }
+
+    // ── LEAFLET MAP ─────────────────────────────────────────────────────────
+    (function initMap() {
+        const mapEl = document.getElementById("leaflet-map");
+        if (!mapEl) return;
+
+        // Load Leaflet CSS
+        const linkEl = document.createElement("link");
+        linkEl.rel = "stylesheet";
+        linkEl.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+        document.head.appendChild(linkEl);
+
+        // Load Leaflet JS
+        const scriptEl = document.createElement("script");
+        scriptEl.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+        scriptEl.onload = function () {
+            const L = (window as any).L;
+            if (!L) return;
+
+            const lat = 25.4449611;
+            const lng = -100.9953923;
+            const isDark =
+                document.documentElement.getAttribute("data-theme") === "dark";
+
+            const lightTiles =
+                "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
+            const darkTiles =
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+
+            const map = L.map("leaflet-map", {
+                center: [lat, lng],
+                zoom: 16,
+                scrollWheelZoom: false,
+            });
+
+            const tileLayer = L.tileLayer(isDark ? darkTiles : lightTiles, {
+                attribution:
+                    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+                maxZoom: 19,
+            }).addTo(map);
+
+            // Custom marker with popup
+            const marker = L.marker([lat, lng]).addTo(map);
+            marker
+                .bindPopup(
+                    '<div style="text-align:center;padding:4px 8px;"><strong>Instituto Tecnológico de Saltillo</strong><br><span style="font-size:0.85em;color:#666;">Campus ITS – Blvd. V. Carranza #2400, Col. Tecnológico, Saltillo</span></div>'
+                )
+                .openPopup();
+
+            // Listen for theme changes to swap tiles
+            const observer = new MutationObserver(function () {
+                const dark =
+                    document.documentElement.getAttribute("data-theme") ===
+                    "dark";
+                tileLayer.setUrl(dark ? darkTiles : lightTiles);
+            });
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ["data-theme"],
+            });
+
+            // Fix map size when panel becomes visible
+            const ubPanel = document.getElementById("panel-ubicacion");
+            if (ubPanel) {
+                const resizeObserver = new ResizeObserver(() => {
+                    if (ubPanel.classList.contains("active")) {
+                        setTimeout(() => map.invalidateSize(), 100);
+                    }
+                });
+                resizeObserver.observe(ubPanel);
+
+                // Also trigger on tab click
+                document.querySelectorAll(".tab-btn").forEach((tabBtn) => {
+                    tabBtn.addEventListener("click", () => {
+                        setTimeout(() => {
+                            if (ubPanel.classList.contains("active")) {
+                                map.invalidateSize();
+                            }
+                        }, 200);
+                    });
+                });
+            }
+        };
+        document.head.appendChild(scriptEl);
+    })();
 </script>
