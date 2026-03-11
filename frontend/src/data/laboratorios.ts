@@ -129,6 +129,28 @@ export interface Laboratorio {
         coordinadores: string[];
         tecnicos: string[];
     };
+    organizacionDetallada?: {
+        jefeDepartamento?: {
+            nombre: string;
+            grado_academico?: string;
+            departamento?: string;
+            email?: string;
+            telefono?: string;
+            extension?: string;
+            foto?: string;
+        };
+        jefeLabor?: {
+            nombre: string;
+            rol?: string;
+            ubicacion_codigo?: string;
+            email?: string;
+            telefono?: string;
+            whatsapp?: string;
+            zona_horaria?: string;
+            hora_local?: string;
+            foto?: string;
+        };
+    };
 
     // Actividades
     practicas: Practica[];
@@ -247,9 +269,30 @@ export const laboratorios: Laboratorio[] = [
             { nombre: "Impresoras y periféricos", cantidad: 4, descripcion: "Disponibles según la práctica y autorización del encargado." },
         ],
         organizacion: {
-            jefe: "Mendoza Morales Sergio Arturo – Jefe del Laboratorio",
+            jefe: "M.C. Luis Javier Mona Peña – Jefe de Departamento de Sistemas Computacionales | Mendoza Morales Sergio Arturo – Jefe del Laboratorio",
             coordinadores: ["Sonia Judith Rivera López – Secretaria"],
             tecnicos: ["Ricardo Rodríguez – Aux. Soporte Técnico (Software)", "Gilberto Alemán – Aux. Soporte Técnico (Impresión)", "Flavio Covarrubias – Aux. Soporte Técnico (Impresión)", "Israel Nojera – Soporte, Limpieza y Mantenimiento"],
+        },
+        organizacionDetallada: {
+            jefeDepartamento: {
+                nombre: "Luis Javier Mona Peña",
+                grado_academico: "M.C.",
+                departamento: "Sistemas Computacionales",
+                email: "luis.mp3@saltillo.tecnm.mx",
+                telefono: "8442889460",
+                extension: "1023",
+                foto: "/Mona.png"
+            },
+            jefeLabor: {
+                nombre: "Sergio Arturo Mendoza Morales",
+                rol: "Docente",
+                ubicacion_codigo: "968",
+                email: "sergio.mm@saltillo.tecnm.mx",
+                telefono: "8444389500",
+                zona_horaria: "La misma zona horaria que tú",
+                hora_local: "08:11",
+                foto: "/checo.png"
+            }
         },
 
         practicas: [
