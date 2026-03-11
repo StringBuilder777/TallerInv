@@ -1,0 +1,769 @@
+{
+  "institucion": "Instituto Tecnológico de Saltillo",
+  "periodo": "Enero-Junio 2026",
+  "carrera_base": "Ingeniería en Sistemas Computacionales",
+  "clave": "ISIC-2010-224",
+  "nota_metodologia": "El programa se identifica por el 2do carácter del código de grupo: f=Sistemas, j=Mecatrónica, k=Eléctrica, e=Electrónica, h=Industrial, l=Mecánica, d=Gestión Empresarial",
+  "materias": [
+    {
+      "nombre": "Administración de Redes",
+      "abreviacion": "Admon De Redes",
+      "semestre_sistemas": 8,
+      "area": "Redes",
+      "grupos_sistemas": [
+        "Bf8/A",
+        "Bf8/B",
+        "Bf8/C"
+      ],
+      "tipo": "compartida",
+      "conexiones": [
+        {
+          "carrera": "Ing. Mecatrónica",
+          "materia_equivalente": "Redes Industriales",
+          "codigo_reticula": "SCD-1004",
+          "semestre_otra_carrera": 7,
+          "grupos": [
+            "LJB/A",
+            "LJB/B",
+            "LJB/C",
+            "LJB/E",
+            "LJB/J"
+          ],
+          "tipo_relacion": "contenido_compartido",
+          "descripcion": "Redes industriales y administración de redes de datos convergen en protocolos de comunicación"
+        },
+        {
+          "carrera": "Ing. Eléctrica",
+          "materia_equivalente": "Sistemas de Control (SCADA/redes)",
+          "codigo_reticula": "CME-2504",
+          "semestre_otra_carrera": 8,
+          "grupos": [],
+          "tipo_relacion": "tematica_relacionada",
+          "descripcion": "Redes de monitoreo en sistemas eléctricos de potencia"
+        }
+      ]
+    },
+    {
+      "nombre": "Redes de Computadoras",
+      "abreviacion": "Redes De Comp.",
+      "semestre_sistemas": 6,
+      "area": "Redes",
+      "grupos_sistemas": [
+        "Bf6/A",
+        "Bf6/B",
+        "Bf6/C"
+      ],
+      "tipo": "compartida",
+      "conexiones": [
+        {
+          "carrera": "Ing. Mecatrónica",
+          "materia_equivalente": "Redes Industriales",
+          "codigo_reticula": "SCD-1004",
+          "semestre_otra_carrera": 7,
+          "grupos": [
+            "LJB/A",
+            "LJB/B",
+            "LJB/C"
+          ],
+          "tipo_relacion": "base_tematica",
+          "descripcion": "Fundamentos de redes son base para redes industriales en Mecatrónica"
+        },
+        {
+          "carrera": "Ing. Electrónica",
+          "materia_equivalente": "Introducción a las Telecomunicaciones",
+          "codigo_reticula": "ETP-1020",
+          "semestre_otra_carrera": 4,
+          "grupos": [],
+          "tipo_relacion": "tematica_relacionada",
+          "descripcion": "Redes y telecomunicaciones comparten capa física y protocolos"
+        }
+      ]
+    },
+    {
+      "nombre": "Conmutación y Enrutamiento",
+      "abreviacion": "Conm.Y Enrut. D",
+      "semestre_sistemas": 7,
+      "area": "Redes",
+      "grupos_sistemas": [
+        "Bf7/A",
+        "Bf7/B",
+        "Bf7/C"
+      ],
+      "tipo": "exclusiva_con_relacion",
+      "conexiones": [
+        {
+          "carrera": "Ing. Eléctrica",
+          "materia_equivalente": "Coordinación de Protecciones Eléctricas",
+          "codigo_reticula": "CME-2502",
+          "semestre_otra_carrera": 9,
+          "grupos": [],
+          "tipo_relacion": "tematica_relacionada",
+          "descripcion": "Enrutamiento de señales en redes de potencia y SCADA"
+        }
+      ]
+    },
+    {
+      "nombre": "Redes Industriales",
+      "abreviacion": "Redes Indust.",
+      "semestre_sistemas": null,
+      "area": "Redes",
+      "grupos_sistemas": [],
+      "tipo": "externa_impartida_en_sistemas",
+      "carrera_origen": "Ing. Mecatrónica",
+      "conexiones": [
+        {
+          "carrera": "Ing. Mecatrónica",
+          "materia_equivalente": "Redes Industriales",
+          "codigo_reticula": "SCD-1004",
+          "semestre_otra_carrera": 7,
+          "grupos": [
+            "LJB/A",
+            "LJB/B",
+            "LJB/C",
+            "LJB/E",
+            "LJB/J"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "Materia de Mecatrónica impartida en laboratorios de Sistemas"
+        },
+        {
+          "carrera": "Ing. Sistemas",
+          "materia_equivalente": "Administración de Redes / Conmutación",
+          "codigo_reticula": "SCA-1002",
+          "semestre_otra_carrera": 8,
+          "grupos": [
+            "Bf8/A",
+            "Bf8/B",
+            "Bf8/C"
+          ],
+          "tipo_relacion": "contenido_compartido",
+          "descripcion": "Protocolos industriales (PROFIBUS, Modbus) vs redes de datos"
+        }
+      ]
+    },
+    {
+      "nombre": "Fundamentos de Telecomunicaciones",
+      "abreviacion": "F. De Telecom.",
+      "semestre_sistemas": 5,
+      "area": "Redes",
+      "grupos_sistemas": [
+        "Bf5/B",
+        "Bf5/C"
+      ],
+      "tipo": "compartida",
+      "conexiones": [
+        {
+          "carrera": "Ing. Electrónica",
+          "materia_equivalente": "Introducción a las Telecomunicaciones",
+          "codigo_reticula": "ETP-1020",
+          "semestre_otra_carrera": 4,
+          "grupos": [],
+          "tipo_relacion": "contenido_compartido",
+          "descripcion": "Capa física, modulación y transmisión de datos"
+        },
+        {
+          "carrera": "Ing. Eléctrica",
+          "materia_equivalente": "Electrónica Industrial",
+          "codigo_reticula": "ELD-1009",
+          "semestre_otra_carrera": 7,
+          "grupos": [],
+          "tipo_relacion": "tematica_relacionada",
+          "descripcion": "Señales y comunicación en sistemas eléctricos"
+        }
+      ]
+    },
+    {
+      "nombre": "Fundamentos de Programación",
+      "abreviacion": "Fund De Prog",
+      "semestre_sistemas": 1,
+      "area": "Programación",
+      "grupos_sistemas": [
+        "Bf1/T"
+      ],
+      "tipo": "compartida",
+      "conexiones": [
+        {
+          "carrera": "Ing. Mecatrónica",
+          "materia_equivalente": "Programación Básica",
+          "codigo_reticula": null,
+          "semestre_otra_carrera": 1,
+          "grupos": [
+            "Ej1/A",
+            "Ej1/C",
+            "Ej1/D",
+            "Ej1/E",
+            "Ej1/F",
+            "Ej1/H",
+            "Ej1/K"
+          ],
+          "tipo_relacion": "materia_equivalente",
+          "descripcion": "Mismo contenido introductorio (variables, ciclos, funciones)"
+        }
+      ]
+    },
+    {
+      "nombre": "Programación Básica",
+      "abreviacion": "Prog Basica / Prog. Básica",
+      "semestre_sistemas": 1,
+      "area": "Programación",
+      "grupos_sistemas": [],
+      "tipo": "externa_impartida_en_sistemas",
+      "carrera_origen": "Ing. Mecatrónica",
+      "conexiones": [
+        {
+          "carrera": "Ing. Mecatrónica",
+          "materia_equivalente": "Programación Básica",
+          "codigo_reticula": null,
+          "semestre_otra_carrera": 1,
+          "grupos": [
+            "Ej1/3",
+            "Ej1/A",
+            "Ej1/C",
+            "Ej1/D",
+            "Ej1/E",
+            "Ej1/F",
+            "Ej1/H",
+            "Ej1/I",
+            "Ej1/K"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "Materia de Mecatrónica impartida en laboratorios de Sistemas"
+        },
+        {
+          "carrera": "Ing. Eléctrica",
+          "materia_equivalente": "Programación",
+          "codigo_reticula": null,
+          "semestre_otra_carrera": 3,
+          "grupos": [
+            "Fk3/A"
+          ],
+          "tipo_relacion": "materia_equivalente",
+          "descripcion": "Base de programación imperativa, mismo currículo inicial"
+        }
+      ]
+    },
+    {
+      "nombre": "Programación Estructurada",
+      "abreviacion": "Prog. Estructur",
+      "semestre_sistemas": 3,
+      "area": "Programación",
+      "grupos_sistemas": [],
+      "tipo": "externa_impartida_en_sistemas",
+      "carrera_origen": "Ing. Electrónica",
+      "conexiones": [
+        {
+          "carrera": "Ing. Electrónica",
+          "materia_equivalente": "Programación Estructurada",
+          "codigo_reticula": null,
+          "semestre_otra_carrera": 3,
+          "grupos": [
+            "Ee3/B"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "Electrónica toma programación estructurada en aulas de Sistemas"
+        },
+        {
+          "carrera": "Ing. Sistemas",
+          "materia_equivalente": "Fundamentos de Programación",
+          "codigo_reticula": "SCD-1008",
+          "semestre_otra_carrera": 1,
+          "grupos": [
+            "Bf1/T"
+          ],
+          "tipo_relacion": "progresion_curricular",
+          "descripcion": "Prog. Estructurada es continuación de Fundamentos"
+        }
+      ]
+    },
+    {
+      "nombre": "Programación Avanzada",
+      "abreviacion": "Prog Avanzada / Prog. Avanzada",
+      "semestre_sistemas": 7,
+      "area": "Programación",
+      "grupos_sistemas": [],
+      "tipo": "externa_impartida_en_sistemas",
+      "carrera_origen": "Ing. Mecatrónica",
+      "conexiones": [
+        {
+          "carrera": "Ing. Mecatrónica",
+          "materia_equivalente": "Programación Avanzada",
+          "codigo_reticula": null,
+          "semestre_otra_carrera": 7,
+          "grupos": [
+            "Fj7/A",
+            "Fj7/D",
+            "Fj7/F",
+            "Fj7/H",
+            "Fj7/I"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "Mecatrónica toma Prog. Avanzada en laboratorios de Sistemas"
+        },
+        {
+          "carrera": "Ing. Sistemas",
+          "materia_equivalente": "Tópicos Avanzados de Programación",
+          "codigo_reticula": null,
+          "semestre_otra_carrera": 4,
+          "grupos": [
+            "CF4/B",
+            "CF4/C"
+          ],
+          "tipo_relacion": "contenido_compartido",
+          "descripcion": "Patrones avanzados, OOP, estructuras de alto nivel"
+        }
+      ]
+    },
+    {
+      "nombre": "Tópicos Avanzados de Programación",
+      "abreviacion": "Top Av De Prog",
+      "semestre_sistemas": 4,
+      "area": "Programación",
+      "grupos_sistemas": [
+        "CF4/B",
+        "CF4/C"
+      ],
+      "tipo": "exclusiva_con_relacion",
+      "conexiones": [
+        {
+          "carrera": "Ing. Industrial",
+          "materia_equivalente": "Tópicos Avanzados de Ingeniería",
+          "codigo_reticula": "MFF-2507",
+          "semestre_otra_carrera": 8,
+          "grupos": [],
+          "tipo_relacion": "tematica_relacionada",
+          "descripcion": "Temas avanzados aplicados a simulación y optimización industrial"
+        }
+      ]
+    },
+    {
+      "nombre": "Algoritmos y Programación",
+      "abreviacion": "Alg. Y Progr.",
+      "semestre_sistemas": null,
+      "area": "Programación",
+      "grupos_sistemas": [],
+      "tipo": "externa_impartida_en_sistemas",
+      "carrera_origen": "Ing. Mecánica / Ing. Electrónica",
+      "conexiones": [
+        {
+          "carrera": "Ing. Mecánica",
+          "materia_equivalente": "Algoritmos y Programación",
+          "codigo_reticula": null,
+          "semestre_otra_carrera": 2,
+          "grupos": [
+            "El2/A",
+            "El2/B",
+            "El2/D",
+            "El2/E",
+            "El2/F"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "Mecánica toma algoritmos en laboratorios de Sistemas"
+        },
+        {
+          "carrera": "Ing. Electrónica",
+          "materia_equivalente": "Algoritmos y Programación",
+          "codigo_reticula": null,
+          "semestre_otra_carrera": 3,
+          "grupos": [
+            "Ei3/D"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "Electrónica toma algoritmos en laboratorios de Sistemas"
+        }
+      ]
+    },
+    {
+      "nombre": "Algoritmos y Lenguajes de Programación",
+      "abreviacion": "Alg. Leng. Prog",
+      "semestre_sistemas": null,
+      "area": "Programación",
+      "grupos_sistemas": [],
+      "tipo": "externa_impartida_en_sistemas",
+      "carrera_origen": "Ing. Industrial",
+      "conexiones": [
+        {
+          "carrera": "Ing. Industrial",
+          "materia_equivalente": "Algoritmos y Lenguajes de Programación",
+          "codigo_reticula": "INC-1022",
+          "semestre_otra_carrera": 4,
+          "grupos": [
+            "Ch4/A",
+            "Ch4/C",
+            "Ch4/D",
+            "Ch4/E",
+            "Ch4/G",
+            "Ch4/H",
+            "Ch4/I",
+            "Ch4/J",
+            "Ch4/K"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "Industrial toma ALyP en laboratorios de Sistemas"
+        },
+        {
+          "carrera": "Ing. Sistemas",
+          "materia_equivalente": "Lenguajes y Autómatas I/II",
+          "codigo_reticula": "SCD-1015",
+          "semestre_otra_carrera": 6,
+          "grupos": [],
+          "tipo_relacion": "progresion_curricular",
+          "descripcion": "ALyP de Industrial es equivalente al eje de Lenguajes en Sistemas"
+        }
+      ]
+    },
+    {
+      "nombre": "Diseño de Lenguajes de Programación",
+      "abreviacion": "Dis. Leng. Prog",
+      "semestre_sistemas": null,
+      "area": "Programación",
+      "grupos_sistemas": [],
+      "tipo": "externa_impartida_en_sistemas",
+      "carrera_origen": "Ing. Industrial",
+      "conexiones": [
+        {
+          "carrera": "Ing. Industrial",
+          "materia_equivalente": "Diseño de Lenguajes de Programación",
+          "codigo_reticula": "INC-1022",
+          "semestre_otra_carrera": 4,
+          "grupos": [
+            "Ch4/G"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "Subgrupo de Industrial con énfasis en diseño de lenguajes"
+        }
+      ]
+    },
+    {
+      "nombre": "Programación",
+      "abreviacion": "Programación",
+      "semestre_sistemas": null,
+      "area": "Programación",
+      "grupos_sistemas": [],
+      "tipo": "externa_impartida_en_sistemas",
+      "carrera_origen": "Ing. Eléctrica",
+      "conexiones": [
+        {
+          "carrera": "Ing. Eléctrica",
+          "materia_equivalente": "Programación",
+          "codigo_reticula": null,
+          "semestre_otra_carrera": 3,
+          "grupos": [
+            "Fk3/A"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "Eléctrica toma programación básica en laboratorios de Sistemas"
+        }
+      ]
+    },
+    {
+      "nombre": "Lenguajes y Autómatas II",
+      "abreviacion": "Leng. Y Aut. II",
+      "semestre_sistemas": 8,
+      "area": "Programación",
+      "grupos_sistemas": [
+        "Af8/C"
+      ],
+      "tipo": "exclusiva",
+      "conexiones": []
+    },
+    {
+      "nombre": "Programación Lógica y Funcional",
+      "abreviacion": "Prog.Logica Y F",
+      "semestre_sistemas": 8,
+      "area": "Programación",
+      "grupos_sistemas": [
+        "Ff8/D"
+      ],
+      "tipo": "exclusiva",
+      "conexiones": []
+    },
+    {
+      "nombre": "Lenguajes de Interfaz",
+      "abreviacion": "Leng De Interfa",
+      "semestre_sistemas": 6,
+      "area": "Programación",
+      "grupos_sistemas": [
+        "Ff6/C",
+        "Ff6/G"
+      ],
+      "tipo": "exclusiva",
+      "conexiones": []
+    },
+    {
+      "nombre": "Estructura de Datos",
+      "abreviacion": "Estr. Datos",
+      "semestre_sistemas": 3,
+      "area": "Datos",
+      "grupos_sistemas": [
+        "Bf3/B",
+        "Bf3/D"
+      ],
+      "tipo": "exclusiva",
+      "conexiones": []
+    },
+    {
+      "nombre": "Fundamentos de Bases de Datos",
+      "abreviacion": "Fund. Base De D",
+      "semestre_sistemas": 4,
+      "area": "Datos",
+      "grupos_sistemas": [
+        "Df4/A",
+        "Df4/C"
+      ],
+      "tipo": "exclusiva",
+      "conexiones": []
+    },
+    {
+      "nombre": "Taller de Bases de Datos",
+      "abreviacion": "Tall. Base Datos",
+      "semestre_sistemas": 5,
+      "area": "Datos",
+      "grupos_sistemas": [
+        "Cf5/A",
+        "Cf5/B",
+        "Cf5/C"
+      ],
+      "tipo": "compartida",
+      "conexiones": [
+        {
+          "carrera": "Ing. Gestión Empresarial",
+          "materia_equivalente": "Fundamentos de Bases de Datos / Sistemas de Información",
+          "codigo_reticula": "GEF-0916",
+          "semestre_otra_carrera": 6,
+          "grupos": [],
+          "tipo_relacion": "tematica_relacionada",
+          "descripcion": "IGE usa BD para sistemas de información empresarial"
+        }
+      ]
+    },
+    {
+      "nombre": "Administración de Bases de Datos",
+      "abreviacion": "Admon. Base Dato",
+      "semestre_sistemas": 6,
+      "area": "Datos",
+      "grupos_sistemas": [
+        "Cf6/A",
+        "Cf6/B",
+        "Cf6/C"
+      ],
+      "tipo": "exclusiva",
+      "conexiones": []
+    },
+    {
+      "nombre": "Sistemas Operativos",
+      "abreviacion": "Sist Operativos",
+      "semestre_sistemas": 3,
+      "area": "Sistemas Operativos",
+      "grupos_sistemas": [
+        "EF3/B"
+      ],
+      "tipo": "compartida",
+      "conexiones": [
+        {
+          "carrera": "Ing. Mecatrónica",
+          "materia_equivalente": "Controladores Lógicos Programables",
+          "codigo_reticula": "MTG-1005",
+          "semestre_otra_carrera": 7,
+          "grupos": [],
+          "tipo_relacion": "tematica_relacionada",
+          "descripcion": "Control de procesos en tiempo real, gestión de interrupciones y tareas"
+        }
+      ]
+    },
+    {
+      "nombre": "Taller de Sistemas Operativos",
+      "abreviacion": "Taller Sis. Op.",
+      "semestre_sistemas": 4,
+      "area": "Sistemas Operativos",
+      "grupos_sistemas": [
+        "Ef4/A",
+        "Ef4/B",
+        "Ef4/C",
+        "Ef4/D"
+      ],
+      "tipo": "exclusiva",
+      "conexiones": []
+    },
+    {
+      "nombre": "Habilidades DevOps",
+      "abreviacion": "Habilidades Devops",
+      "semestre_sistemas": 6,
+      "area": "Especialidad — DevOps",
+      "grupos_sistemas": [
+        "Jf6/A"
+      ],
+      "tipo": "exclusiva",
+      "especialidad": "Desarrollo Integrado DevOps (93)",
+      "codigo_modulo": "DED-2503",
+      "conexiones": []
+    },
+    {
+      "nombre": "Programación para Dispositivos Móviles",
+      "abreviacion": "Prog. Disp. Moviles",
+      "semestre_sistemas": 9,
+      "area": "Especialidad — Tecnologías Inteligentes",
+      "grupos_sistemas": [
+        "Hf9/A"
+      ],
+      "tipo": "exclusiva",
+      "especialidad": "Tecnologías Inteligentes (86)",
+      "codigo_modulo": "TED-2305",
+      "conexiones": []
+    },
+    {
+      "nombre": "Programación en Ambientes Distribuidos",
+      "abreviacion": "Prog. En Amb. Dist.",
+      "semestre_sistemas": 8,
+      "area": "Especialidad — DevOps / TecInt",
+      "grupos_sistemas": [
+        "AVf8/A"
+      ],
+      "tipo": "exclusiva",
+      "especialidad": "DevOps (93) / Tecnologías Inteligentes (86)",
+      "conexiones": []
+    },
+    {
+      "nombre": "Graficación",
+      "abreviacion": "Graficación",
+      "semestre_sistemas": 6,
+      "area": "Visualización",
+      "grupos_sistemas": [
+        "Df6/B",
+        "Df6/D"
+      ],
+      "tipo": "compartida",
+      "conexiones": [
+        {
+          "carrera": "Ing. Mecatrónica",
+          "materia_equivalente": "Dibujo Asistido por Computadora",
+          "codigo_reticula": "AEA-1013",
+          "semestre_otra_carrera": 7,
+          "grupos": [
+            "Kj7/D",
+            "Kj7/E"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "CAD/CAM en Mecatrónica usa fundamentos de graficación computacional"
+        }
+      ]
+    },
+    {
+      "nombre": "Dibujo Asistido por Computadora",
+      "abreviacion": "Dis. Asist. Por Comp.",
+      "semestre_sistemas": null,
+      "area": "Visualización",
+      "grupos_sistemas": [],
+      "tipo": "externa_impartida_en_sistemas",
+      "carrera_origen": "Ing. Mecatrónica",
+      "conexiones": [
+        {
+          "carrera": "Ing. Mecatrónica",
+          "materia_equivalente": "Dibujo Asistido por Computadora",
+          "codigo_reticula": "AEA-1013",
+          "semestre_otra_carrera": 7,
+          "grupos": [
+            "Kj7/D",
+            "Kj7/E"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "Mecatrónica toma CAD en laboratorios de Sistemas"
+        }
+      ]
+    },
+    {
+      "nombre": "Programación Visual",
+      "abreviacion": "Program. Visual",
+      "semestre_sistemas": null,
+      "area": "Programación",
+      "grupos_sistemas": [],
+      "tipo": "externa_impartida_en_sistemas",
+      "carrera_origen": "Ing. Electrónica",
+      "conexiones": [
+        {
+          "carrera": "Ing. Electrónica",
+          "materia_equivalente": "Programación Visual",
+          "codigo_reticula": null,
+          "semestre_otra_carrera": 4,
+          "grupos": [
+            "Fe4/A"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "Electrónica toma programación visual (LabVIEW / interfaces HMI) en Sistemas"
+        }
+      ]
+    },
+    {
+      "nombre": "Software de Aplicación Ejecutivo",
+      "abreviacion": "Soft Aplic.Ejec / Soft. Aplic. Ejec / Soft.Aplic.Ejec",
+      "semestre_sistemas": null,
+      "area": "Aplicaciones",
+      "grupos_sistemas": [],
+      "tipo": "externa_impartida_en_sistemas",
+      "carrera_origen": "Ing. Gestión Empresarial",
+      "conexiones": [
+        {
+          "carrera": "Ing. Gestión Empresarial",
+          "materia_equivalente": "Software de Aplicación Ejecutivo",
+          "codigo_reticula": null,
+          "semestre_otra_carrera": 2,
+          "grupos": [
+            "Ad2/A",
+            "Ad2/B",
+            "Ad2/C",
+            "Ad2/D",
+            "Ad2/E",
+            "Ad2/F",
+            "Ad2/G",
+            "Ad2/H",
+            "Ad2/I"
+          ],
+          "tipo_relacion": "materia_impartida_en_aula_sistemas",
+          "descripcion": "IGE toma herramientas de software empresarial en laboratorios de Sistemas"
+        }
+      ]
+    },
+    {
+      "nombre": "Fundamentos de Investigación",
+      "abreviacion": "Fundamentos de Investigacion",
+      "semestre_sistemas": null,
+      "area": "Transversal",
+      "grupos_sistemas": [],
+      "tipo": "transversal",
+      "conexiones": [
+        {
+          "carrera": "Todas las ingenierías",
+          "materia_equivalente": "Fundamentos de Investigación",
+          "codigo_reticula": "ACC-0906",
+          "semestre_otra_carrera": 1,
+          "grupos": [],
+          "tipo_relacion": "materia_comun_TecNM",
+          "descripcion": "Materia del tronco común TecNM, compartida por todas las carreras del instituto"
+        }
+      ]
+    }
+  ],
+  "resumen": {
+    "total_materias": 30,
+    "exclusivas_sistemas": 10,
+    "compartidas_o_relacionadas": 20,
+    "externas_impartidas_en_sistemas": 10,
+    "conexiones_por_carrera": {
+      "Ing. Mecatrónica": 8,
+      "Ing. Electrónica": 5,
+      "Ing. Industrial": 4,
+      "Ing. Mecánica": 2,
+      "Ing. Eléctrica": 4,
+      "Ing. Gestión Empresarial": 2,
+      "Ing. Materiales": 0
+    },
+    "areas": {
+      "Redes": 5,
+      "Programación": 14,
+      "Datos": 4,
+      "Sistemas Operativos": 2,
+      "Especialidad": 3,
+      "Visualización": 2,
+      "Transversal": 1
+    }
+  }
+}

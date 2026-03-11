@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { laboratorios, getLabBySlug } from "../data/laboratorios";
+import conexionesSistemas from "../data/conexiones_sistemas_ITS.json";
+import horariosSistemas from "../data/horarios_ITS_Sistemas.json";
 
 export function getStaticPaths() {
     return laboratorios.map((lab) => ({ params: { lab: lab.slug } }));
@@ -8,6 +10,366 @@ export function getStaticPaths() {
 
 const { lab: slug } = Astro.params;
 const lab = getLabBySlug(slug!)!;
+
+// ── Sistemas: rich materias list with carrera connections ──
+const _carreraKeyMap: Record<string, string> = {
+    "Ing. Mecatrónica": "Ingeniería Mecatrónica",
+    "Ing. Electrónica": "Ingeniería Electrónica",
+    "Ing. Eléctrica": "Ingeniería Eléctrica",
+    "Ing. Industrial": "Ingeniería Industrial",
+    "Ing. Mecánica": "Ingeniería Mecánica",
+    "Ing. Gestión Empresarial": "Ingeniería en Gestión Empresarial",
+    "Ing. Sistemas": "Ingeniería en Sistemas Computacionales",
+};
+const _sistCarreras = [
+    "Ingeniería en Sistemas Computacionales",
+    "Ingeniería Industrial",
+    "Ingeniería Mecatrónica",
+    "Ingeniería en Gestión Empresarial",
+    "Ingeniería Mecánica",
+    "Ingeniería Eléctrica",
+    "Ingeniería Electrónica",
+    "Ingeniería en Materiales",
+];
+// Extract unique materia abbreviations from the real schedule
+const _horarioMaterias = new Set<string>();
+const _days = ["lunes", "martes", "miercoles", "jueves", "viernes"] as const;
+for (const aula of (horariosSistemas as any).aulas) {
+    for (const slot of aula.horario) {
+        for (const day of _days) {
+            if (slot[day] && typeof slot[day] === "object" && slot[day].materia) {
+                _horarioMaterias.add(slot[day].materia as string);
+            }
+        }
+    }
+}
+
+const sistemasMateriasRich = (conexionesSistemas.materias as any[])
+    .filter((m: any) => {
+        // Check if any abbreviation variant of this materia appears in the schedule
+        const variants: string[] = (m.abreviacion as string)
+            .split("/")
+            .map((s: string) => s.trim());
+        return variants.some((v) => _horarioMaterias.has(v));
+    })
+    .map((m: any) => {
+        const carreras = new Set<string>();
+        if ((m.grupos_sistemas?.length ?? 0) > 0 || m.tipo === "exclusiva") {
+            carreras.add("Ingeniería en Sistemas Computacionales");
+        }
+        for (const con of m.conexiones ?? []) {
+            if (con.tipo_relacion === "tematica_relacionada") continue;
+            const c: string = con.carrera;
+            if (c === "Ing. Sistemas") {
+                carreras.add("Ingeniería en Sistemas Computacionales");
+            } else if (c === "Todas las ingenierías") {
+                _sistCarreras.forEach((x) => carreras.add(x));
+            } else {
+                const full = _carreraKeyMap[c];
+                if (full) carreras.add(full);
+            }
+        }
+        if (m.tipo === "externa_impartida_en_sistemas" && m.carrera_origen) {
+            (m.carrera_origen as string).split("/").map((s: string) => s.trim()).forEach((orig: string) => {
+                const full = _carreraKeyMap[orig];
+                if (full) carreras.add(full);
+            });
+        }
+        return { nombre: m.nombre as string, carreras: Array.from(carreras) };
+    });
+
+// ── Prácticas enriquecidas con conexiones de materias ──────────────
+const _carreraColors: Record<string, string> = {
+    "Ingeniería en Sistemas Computacionales": "#2563eb",
+    "Ingeniería Mecatrónica":               "#f97316",
+    "Ingeniería Electrónica":               "#ec4899",
+    "Ingeniería Eléctrica":                 "#8b5cf6",
+    "Ingeniería Industrial":                "#eab308",
+    "Ingeniería Mecánica":                  "#84cc16",
+    "Ingeniería en Gestión Empresarial":    "#f59e0b",
+    "Ingeniería en Materiales":             "#06b6d4",
+};
+const _carreraShort: Record<string, string> = {
+    "Ingeniería en Sistemas Computacionales": "Sistemas",
+    "Ingeniería Mecatrónica":               "Mecatrónica",
+    "Ingeniería Electrónica":               "Electrónica",
+    "Ingeniería Eléctrica":                 "Eléctrica",
+    "Ingeniería Industrial":                "Industrial",
+    "Ingeniería Mecánica":                  "Mecánica",
+    "Ingeniería en Gestión Empresarial":    "Gest. Empresarial",
+    "Ingeniería en Materiales":             "Materiales",
+};
+const _practicaMateriaMap: Record<number, string[]> = {
+    1: ["Fundamentos de Programación","Programación Básica","Programación Estructurada","Programación Avanzada","Programación Lógica y Funcional","Lenguajes y Autómatas II"],
+    2: ["Fundamentos de Bases de Datos","Taller de Bases de Datos","Administración de Bases de Datos","Estructura de Datos"],
+    3: ["Administración de Redes","Redes de Computadoras","Conmutación y Enrutamiento"],
+    4: ["Graficación","Programación Visual","Lenguajes de Interfaz","Programación en Ambientes Distribuidos"],
+    5: ["Sistemas Operativos","Taller de Sistemas Operativos"],
+    6: ["Habilidades DevOps","Programación en Ambientes Distribuidos","Programación para Dispositivos Móviles"],
+    7: ["Tópicos Avanzados de Programación","Algoritmos y Programación","Algoritmos y Lenguajes de Programación"],
+    8: ["Administración de Redes","Redes de Computadoras","Sistemas Operativos","Taller de Sistemas Operativos"],
+    9: ["Dibujo Asistido por Computadora","Graficación"],
+};
+const _practicaImgs: Record<number, {src:string,caption:string}[]> = {
+    1: [
+        {src:"https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80",caption:"Programación en Java"},
+        {src:"/Img_lab_sis/salonlc1/salacomputo.jfif",caption:"Sala de Cómputo"},
+        {src:"/Img_lab_sis/salonlc1/equiposcomputo.jfif",caption:"Equipos de Cómputo"}
+    ],
+    2: [
+        {src:"https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80",caption:"Bases de Datos SQL"},
+        {src:"/Img_lab_sis/salonlc1/salonls3.jfif",caption:"Salón LS3"},
+        {src:"/Img_lab_sis/salonlc1/salacomputo.jfif",caption:"Práctica de Bases de Datos"}
+    ],
+    3: [
+        {src:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80",caption:"Redes y Switches"},
+        {src:"/Img_lab_sis/salonlc1/routersswitch1.jfif",caption:"Routers y Switches"},
+        {src:"/Img_lab_sis/salonlc1/practicaredes.jfif",caption:"Práctica de Redes"}
+    ],
+    4: [
+        {src:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",caption:"Desarrollo de Interfaces"},
+        {src:"/Img_lab_sis/salonlc1/salonlc1.jfif",caption:"Salón LC1"},
+        {src:"/Img_lab_sis/salonlc1/salacomputo.jfif",caption:"Desarrollo de Interfaces"}
+    ],
+    5: [
+        {src:"https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",caption:"Sistemas Operativos Linux"},
+        {src:"/Img_lab_sis/salonlc1/salonls1.jfif",caption:"Salón LS1"},
+        {src:"/Img_lab_sis/salonlc1/equiposlanix.jfif",caption:"Equipos Lanix"}
+    ],
+    6: [
+        {src:"https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=80",caption:"DevOps y Cloud"},
+        {src:"/Img_lab_sis/salonlc1/routersswitch4.jfif",caption:"Equipamiento DevOps"},
+        {src:"/Img_lab_sis/salonlc1/salacomputo.jfif",caption:"Desarrollo DevOps"}
+    ],
+    7: [
+        {src:"https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&q=80",caption:"Algoritmos y Estructuras"},
+        {src:"/Img_lab_sis/salonlc1/salacomputo.jfif",caption:"Sala de Cómputo"},
+        {src:"/Img_lab_sis/salonlc1/equiposcomputo.jfif",caption:"Práctica de Algoritmos"}
+    ],
+    8: [
+        {src:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",caption:"Administración de Redes"},
+        {src:"/Img_lab_sis/salonlc1/routersswitch1.jfif",caption:"Lab de Redes"},
+        {src:"/Img_lab_sis/salonlc1/salonls5redes.jfif",caption:"Salón LS5 - Redes"}
+    ],
+    9: [
+        {src:"https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=80",caption:"Diseño CAD/CAM"},
+        {src:"/Img_lab_sis/salonlc1/salacomputo.jfif",caption:"Sala de Cómputo – CAD/CAM"},
+        {src:"/Img_lab_sis/salonlc1/salacomputo3.jfif",caption:"Estaciones de trabajo"}
+    ],
+};
+
+// Rutas para llegar a cada salón con imágenes
+const _rutasSalones: Record<string, {pasos: {img: string, desc: string}[], alternativas?: {pasos: {img: string, desc: string}[]}}> = {
+    "LS1": {
+        pasos: [
+            {img: "/ubicaciones/inicio_pb.jfif", desc: "Inicio - Planta Baja"},
+            {img: "/ubicaciones/centro_pb.jfif", desc: "Centro - Planta Baja"},
+            {img: "/ubicaciones/escaleras_pb.jfif", desc: "Escaleras - Planta Baja"},
+            {img: "/ubicaciones/entrada_pa.jfif", desc: "Entrada - Primer Piso"},
+            {img: "/ubicaciones/derecha_pa.jfif", desc: "Gira a la derecha"},
+            {img: "/ubicaciones/ls1_pa.jfif", desc: "Salón LS1"}
+        ],
+        alternativas: {
+            pasos: [
+                {img: "/ubicaciones/ls1_pa2.jfif", desc: "Salón LS1 - Vista alternativa"}
+            ]
+        }
+    },
+    "LS2": {
+        pasos: [
+            {img: "/ubicaciones/inicio_pb.jfif", desc: "Inicio - Planta Baja"},
+            {img: "/ubicaciones/centro_pb.jfif", desc: "Centro - Planta Baja"},
+            {img: "/ubicaciones/ls5_pb.jfif", desc: "Pasillo hacia LS5"},
+            {img: "/ubicaciones/ls2_pb.jfif", desc: "Salón LS2"}
+        ]
+    },
+    "LS3": {
+        pasos: [
+            {img: "/ubicaciones/inicio_pb.jfif", desc: "Inicio - Planta Baja"},
+            {img: "/ubicaciones/centro_pb.jfif", desc: "Centro - Planta Baja"},
+            {img: "/ubicaciones/escaleras_pb.jfif", desc: "Escaleras - Planta Baja"},
+            {img: "/ubicaciones/entrada_pa.jfif", desc: "Entrada - Primer Piso"},
+            {img: "/ubicaciones/izquierda_pa.jfif", desc: "Gira a la izquierda"},
+            {img: "/ubicaciones/ls3_pa.jfif", desc: "Salón LS3"}
+        ],
+        alternativas: {
+            pasos: [
+                {img: "/ubicaciones/ls3_pa2.jfif", desc: "Salón LS3 - Vista alternativa"}
+            ]
+        }
+    },
+    "LS4": {
+        pasos: [
+            {img: "/ubicaciones/inicio_pb.jfif", desc: "Inicio - Planta Baja"},
+            {img: "/ubicaciones/centro_pb.jfif", desc: "Centro - Planta Baja"},
+            {img: "/ubicaciones/salacomputo_pb.jfif", desc: "Pasillo Sala de Cómputo"},
+            {img: "/ubicaciones/salacomputo_pb2.jfif", desc: "Continúa por el pasillo"},
+            {img: "/ubicaciones/ls4_pb.jfif", desc: "Salón LS4"}
+        ]
+    },
+    "LS5": {
+        pasos: [
+            {img: "/ubicaciones/inicio_pb.jfif", desc: "Inicio - Planta Baja"},
+            {img: "/ubicaciones/centro_pb.jfif", desc: "Centro - Planta Baja"},
+            {img: "/ubicaciones/ls5_pb.jfif", desc: "Salón LS5"}
+        ]
+    },
+    "LC1": {
+        pasos: [
+            {img: "/ubicaciones/inicio_pb.jfif", desc: "Inicio - Planta Baja"},
+            {img: "/ubicaciones/centro_pb.jfif", desc: "Centro - Planta Baja"},
+            {img: "/ubicaciones/escaleras_pb.jfif", desc: "Escaleras - Planta Baja"},
+            {img: "/ubicaciones/entrada_pa.jfif", desc: "Entrada - Primer Piso"},
+            {img: "/ubicaciones/izquierda_pa.jfif", desc: "Gira a la izquierda"},
+            {img: "/ubicaciones/lc1_pa.jfif", desc: "Salón LC1"}
+        ]
+    },
+    "LC2": {
+        pasos: [
+            {img: "/ubicaciones/inicio_pb.jfif", desc: "Inicio - Planta Baja"},
+            {img: "/ubicaciones/centro_pb.jfif", desc: "Centro - Planta Baja"},
+            {img: "/ubicaciones/escaleras_pb.jfif", desc: "Escaleras - Planta Baja"},
+            {img: "/ubicaciones/entrada_pa.jfif", desc: "Entrada - Primer Piso"},
+            {img: "/ubicaciones/izquierda_pa.jfif", desc: "Gira a la izquierda"},
+            {img: "/ubicaciones/ls3_pa.jfif", desc: "Pasa por LS3"},
+            {img: "/ubicaciones/lc2_pa.jfif", desc: "Salón LC2"}
+        ]
+    },
+    "Sala de Cómputo": {
+        pasos: [
+            {img: "/ubicaciones/inicio_pb.jfif", desc: "Inicio - Planta Baja"},
+            {img: "/ubicaciones/centro_pb.jfif", desc: "Centro - Planta Baja"},
+            {img: "/ubicaciones/salacomputo_pb.jfif", desc: "Pasillo Sala de Cómputo"},
+            {img: "/ubicaciones/salacomputo_pb2.jfif", desc: "Sala de Cómputo"}
+        ]
+    },
+    "VR Lab": {
+        pasos: [
+            {img: "/ubicaciones/inicio_pb.jfif", desc: "Inicio - Planta Baja"},
+            {img: "/ubicaciones/centro_pb.jfif", desc: "Centro - Planta Baja"},
+            {img: "/ubicaciones/escaleras_pb.jfif", desc: "Escaleras - Planta Baja"},
+            {img: "/ubicaciones/entrada_pa.jfif", desc: "Entrada - Primer Piso"},
+            {img: "/ubicaciones/izquierda_pa.jfif", desc: "Gira a la izquierda"},
+            {img: "/ubicaciones/ls3_pa.jfif", desc: "Pasa por LS3"},
+            {img: "/ubicaciones/lc2_pa.jfif", desc: "Pasa por LC2"},
+            {img: "/ubicaciones/vrlab_pa2.jfif", desc: "VR Lab"}
+        ],
+        alternativas: {
+            pasos: [
+                {img: "/ubicaciones/derecha_pa.jfif", desc: "Alternativa: Gira a la derecha"},
+                {img: "/ubicaciones/ls1_pa.jfif", desc: "Pasa por LS1"},
+                {img: "/ubicaciones/vrlab_pa.jfif", desc: "VR Lab"}
+            ]
+        }
+    }
+};
+
+const practicasEnriquecidas = lab.practicas.map((p) => {
+    const materiaNames = _practicaMateriaMap[p.numero] ?? [];
+    const materiasRaw = (conexionesSistemas.materias as any[]).filter((m: any) =>
+        materiaNames.includes(m.nombre as string)
+    );
+    // Build carrera → {color, short, materias[]} map
+    // Solo incluir carreras que realmente cursan estas materias en el lab de sistemas
+    const carreraMap = new Map<string, {color:string;short:string;materias:string[]}>();
+    materiasRaw.forEach((m: any) => {
+        const addC = (k: string) => {
+            if (!_carreraColors[k]) return;
+            if (!carreraMap.has(k)) carreraMap.set(k, {color:_carreraColors[k],short:_carreraShort[k],materias:[]});
+            if (!carreraMap.get(k)!.materias.includes(m.nombre)) carreraMap.get(k)!.materias.push(m.nombre);
+        };
+        // Solo agregar Sistemas si tiene grupos o es exclusiva
+        if ((m.grupos_sistemas?.length ?? 0) > 0 || m.tipo === "exclusiva") {
+            addC("Ingeniería en Sistemas Computacionales");
+        }
+        // Para conexiones, solo agregar si NO es temática relacionada
+        for (const con of m.conexiones ?? []) {
+            if (con.tipo_relacion === "tematica_relacionada") continue;
+            // Ignorar "Todas las ingenierías" para evitar mostrar carreras que no usan el lab
+            if (con.carrera === "Todas las ingenierías") continue;
+            const full = _carreraKeyMap[con.carrera]; 
+            if (full) addC(full);
+            if (con.carrera === "Ing. Sistemas") addC("Ingeniería en Sistemas Computacionales");
+        }
+        // Para materias externas, solo agregar si realmente se imparten en sistemas
+        if (m.tipo === "externa_impartida_en_sistemas" && m.carrera_origen) {
+            (m.carrera_origen as string).split("/").forEach((o:string)=>{ 
+                const f=_carreraKeyMap[o.trim()]; 
+                if(f) addC(f); 
+            });
+        }
+    });
+    
+    // Obtener salones reales desde los horarios
+    const salonesReales = new Set<string>();
+    materiasRaw.forEach((m: any) => {
+        const abrevs = (m.abreviacion as string).split("/").map((s: string) => s.trim());
+        for (const aula of (horariosSistemas as any).aulas) {
+            for (const slot of aula.horario) {
+                for (const dia of _days) {
+                    const celda = slot[dia];
+                    if (celda && typeof celda === "object" && abrevs.includes(celda.materia)) {
+                        salonesReales.add(aula.aula);
+                    }
+                }
+            }
+        }
+    });
+    
+    // Grupos per materia (for expand) - con mini horario completo
+    const materiasConGrupos = materiasRaw.map((m: any) => {
+        const gs = [
+            ...(m.grupos_sistemas ?? []),
+            ...(m.conexiones ?? []).flatMap((c: any) => c.grupos ?? []),
+        ].filter((v:string,i:number,a:string[])=>a.indexOf(v)===i);
+        
+        // Buscar información de horario completo para cada grupo
+        const gruposConInfo = gs.map((grupo: string) => {
+            const abrevs = (m.abreviacion as string).split("/").map((s: string) => s.trim());
+            const horarioDias: Record<string, {salon: string, maestro: string, hora: string}[]> = {
+                lunes: [],
+                martes: [],
+                miercoles: [],
+                jueves: [],
+                viernes: []
+            };
+            
+            // Buscar todas las ocurrencias del grupo en los horarios
+            for (const aula of (horariosSistemas as any).aulas) {
+                for (const slot of aula.horario) {
+                    for (const dia of _days) {
+                        const celda = slot[dia];
+                        if (celda && typeof celda === "object" && celda.grupo === grupo) {
+                            // Verificar si la materia coincide
+                            if (abrevs.includes(celda.materia)) {
+                                horarioDias[dia].push({
+                                    salon: aula.aula,
+                                    maestro: celda.maestro,
+                                    hora: slot.hora
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            
+            return {
+                grupo,
+                horario: horarioDias
+            };
+        });
+        
+        return { nombre: m.nombre as string, grupos: gruposConInfo };
+    }).filter((m: any) => m.grupos.length > 0);
+
+    return { 
+        ...p, 
+        carrerasConexion: Array.from(carreraMap.values()), 
+        materiasConGrupos, 
+        imgs: _practicaImgs[p.numero] ?? [],
+        salones: Array.from(salonesReales).sort()
+    };
+});
 
 const sections = [
     { id: "practicas", label: "Prácticas", group: "Académico" },
@@ -217,29 +579,167 @@ const groups = [
                 </span>
             </div>
             <div class="practicas-grid">
-                {
-                    lab.practicas.map((p) => (
-                        <div class="practica-card" style={`--c:${lab.color}`}>
-                            <div
-                                class="p-num"
-                                style={`background:${lab.color}`}
-                            >
-                                {p.numero}
+                {lab.slug === "sistemas"
+                    ? practicasEnriquecidas.map((p) => (
+                        <div class="practica-card pc-rich" style={`--c:${lab.color}`}>
+                            <div class="p-num" style={`background:${lab.color}`}>{p.numero}</div>
+                            <div class="p-body">
+                                <div class="p-body-left">
+                                    {p.imgs.length > 0 && (
+                                        <div class="p-imgs-preview">
+                                            {p.imgs.slice(0, 1).map((img) => (
+                                                <img src={img.src} alt={img.caption} loading="lazy" class="p-preview-img"/>
+                                            ))}
+                                        </div>
+                                    )}
+                                    <h3>{p.nombre}</h3>
+                                    <p>{p.descripcion}</p>
+                                    <div class="p-dur">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                        </svg>
+                                        {p.duracion}
+                                    </div>
+                                    {p.salones && p.salones.length > 0 && (
+                                        <div class="p-salones">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            <span>Salones: {p.salones.join(", ")}</span>
+                                        </div>
+                                    )}
+                                    {p.carrerasConexion.length > 0 && (
+                                        <div class="p-connections">
+                                            {p.carrerasConexion.map((c) => (
+                                                <div class="p-conn-row">
+                                                    <span class="p-conn-dot" style={`background:${c.color}`}></span>
+                                                    <span class="p-conn-prog">{c.short}</span>
+                                                    <span class="p-conn-detail">{c.materias[0]}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                                <div class="p-expanded">
+                                    {p.imgs.length > 1 && (
+                                        <div class="p-exp-imgs">
+                                            {p.imgs.slice(1).map((img) => (
+                                                <div class="p-exp-img-wrap">
+                                                    <img src={img.src} alt={img.caption} loading="lazy" class="p-exp-img"/>
+                                                    <span class="p-exp-img-cap">{img.caption}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                    {p.materiasConGrupos.length > 0 && (
+                                        <div class="p-exp-grupos">
+                                            <div class="p-exp-sec-title">Grupos en horario</div>
+                                            {p.materiasConGrupos.map((m) => {
+                                                const gruposConHorario = m.grupos.filter((g) => {
+                                                    const diasConClase = Object.entries(g.horario).filter(([_, clases]) => clases.length > 0);
+                                                    return diasConClase.length > 0;
+                                                });
+                                                if (gruposConHorario.length === 0) return null;
+                                                
+                                                return (
+                                                    <details class="p-exp-materia-details">
+                                                        <summary class="p-exp-materia-summary" style={`--c:${lab.color}`}>
+                                                            <span class="p-exp-mat-name-toggle">{m.nombre}</span>
+                                                            <svg class="p-exp-chevron-mat" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                                            </svg>
+                                                        </summary>
+                                                        <div class="p-exp-grupos-list">
+                                                            {gruposConHorario.map((g) => {
+                                                                const diasConClase = Object.entries(g.horario).filter(([_, clases]) => clases.length > 0);
+                                                                return (
+                                                                    <div class="p-exp-grupo-card" style={`border-color:${lab.color}30`}>
+                                                                        <span class="p-exp-grupo-badge" style={`background:${lab.color}15;color:${lab.color}`}>{g.grupo}</span>
+                                                                        <div class="p-exp-mini-horario">
+                                                                            {diasConClase.map(([dia, clases]) => (
+                                                                                <div class="p-exp-horario-row">
+                                                                                    <span class="p-exp-dia">{dia.charAt(0).toUpperCase() + dia.slice(1)}</span>
+                                                                                    <div class="p-exp-horario-info">
+                                                                                        {clases.map((clase, idx) => (
+                                                                                            <div class="p-exp-clase-item">
+                                                                                                <span class="p-exp-hora">{clase.hora}</span>
+                                                                                                <span class="p-exp-salon-maestro">
+                                                                                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                                                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                                                                        <circle cx="12" cy="10" r="3"></circle>
+                                                                                                    </svg>
+                                                                                                    {clase.salon}
+                                                                                                </span>
+                                                                                                <span class="p-exp-maestro-mini">{clase.maestro}</span>
+                                                                                            </div>
+                                                                                        ))}
+                                                                                    </div>
+                                                                                </div>
+                                                                            ))}
+                                                                        </div>
+                                                                    </div>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    </details>
+                                                );
+                                            })}
+                                        </div>
+                                    )}
+                                    {p.salones && p.salones.length > 0 && (
+                                        <div class="p-exp-ubicacion">
+                                            <div class="p-exp-sec-title">Cómo llegar</div>
+                                            {p.salones.map((salon) => {
+                                                const ruta = _rutasSalones[salon];
+                                                if (!ruta) return null;
+                                                return (
+                                                    <details class="p-exp-ubicacion-details">
+                                                        <summary class="p-exp-ubicacion-summary" style={`--c:${lab.color}`}>
+                                                            <span class="p-exp-ubicacion-salon">{salon}</span>
+                                                            <svg class="p-exp-chevron-ubi" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                                            </svg>
+                                                        </summary>
+                                                        <div class="p-exp-ruta-pasos">
+                                                            {ruta.pasos.map((paso, idx) => (
+                                                                <div class="p-exp-paso">
+                                                                    <div class="p-exp-paso-num">{idx + 1}</div>
+                                                                    <img src={paso.img} alt={paso.desc} class="p-exp-paso-img" loading="lazy"/>
+                                                                    <span class="p-exp-paso-desc">{paso.desc}</span>
+                                                                </div>
+                                                            ))}
+                                                            {ruta.alternativas && (
+                                                                <div class="p-exp-alternativa">
+                                                                    <div class="p-exp-alt-label">Ruta alternativa</div>
+                                                                    {ruta.alternativas.pasos.map((paso, idx) => (
+                                                                        <div class="p-exp-paso">
+                                                                            <div class="p-exp-paso-num alt">{idx + 1}</div>
+                                                                            <img src={paso.img} alt={paso.desc} class="p-exp-paso-img" loading="lazy"/>
+                                                                            <span class="p-exp-paso-desc">{paso.desc}</span>
+                                                                        </div>
+                                                                    ))}
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    </details>
+                                                );
+                                            })}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
+                        </div>
+                    ))
+                    : lab.practicas.map((p) => (
+                        <div class="practica-card" style={`--c:${lab.color}`}>
+                            <div class="p-num" style={`background:${lab.color}`}>{p.numero}</div>
                             <div class="p-body">
                                 <h3>{p.nombre}</h3>
                                 <p>{p.descripcion}</p>
                                 <div class="p-dur">
-                                    <svg
-                                        width="12"
-                                        height="12"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                    >
-                                        <circle cx="12" cy="12" r="10" />
-                                        <polyline points="12 6 12 12 16 14" />
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                                     </svg>
                                     {p.duracion}
                                 </div>
@@ -825,6 +1325,9 @@ const groups = [
                                                                                 celda.maestro
                                                                             }
                                                                         </span>
+                                                                        <span class="hd-salon">
+                                                                            📍 {a.aula}
+                                                                        </span>
                                                                     </div>
                                                                 </td>
                                                             );
@@ -1126,19 +1629,34 @@ const groups = [
                 <span class="ph-bar" style={`background:${lab.color}`}></span>
                 <h2>Carreras y materias</h2>
             </div>
-            <div class="two-col">
+            <div class="two-col" id="carreras-materias-panel">
                 <div class="list-box">
                     <h3 style={`color:${lab.color}`}>Carreras vinculadas</h3>
-                    <ul class="dot-list" style={`--c:${lab.color}`}>
-                        {lab.carreras.map((c) => <li>{c}</li>)}
+                    <ul class="dot-list carreras-list" style={`--c:${lab.color}`}>
+                        {lab.carreras.map((c) => (
+                            <li class="carrera-item" data-carrera={c}>{c}</li>
+                        ))}
                     </ul>
                 </div>
                 <div class="list-box">
                     <h3 style={`color:${lab.color}`}>
                         Materias que usan el lab
                     </h3>
-                    <ul class="dot-list" style={`--c:${lab.color}`}>
-                        {lab.materias.map((m) => <li>{m}</li>)}
+                    <ul class="dot-list materias-list" style={`--c:${lab.color}`}>
+                        {lab.slug === "sistemas"
+                            ? sistemasMateriasRich.map((m) => (
+                                <li
+                                    class="materia-item"
+                                    data-materia={m.nombre}
+                                    data-carreras={m.carreras.join("|")}
+                                >
+                                    {m.nombre}
+                                </li>
+                              ))
+                            : lab.materias.map((m) => (
+                                <li class="materia-item" data-materia={m}>{m}</li>
+                              ))
+                        }
                     </ul>
                 </div>
             </div>
@@ -2588,18 +3106,28 @@ const groups = [
     }
     .practica-card {
         display: flex;
-        gap: 1.25rem;
+        flex-direction: column;
         background: var(--bg-card);
         border: 1px solid var(--border);
         border-radius: 14px;
         padding: 1.25rem 1.5rem;
         transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s,
-            background 0.3s;
+            background 0.3s, grid-column 0.3s;
+        height: 100%;
     }
     .practica-card:hover {
         box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
         border-color: color-mix(in srgb, var(--c) 35%, transparent);
-        transform: translateX(4px);
+        transform: translateY(-4px);
+    }
+    .practica-card.expanded {
+        grid-column: 1 / -1;
+        transform: translateY(0);
+        order: -1;
+    }
+    /* Cuando hay una tarjeta expandida, las demás se reordenan */
+    .practicas-grid:has(.practica-card.expanded) .practica-card:not(.expanded) {
+        order: 1;
     }
     .p-num {
         flex-shrink: 0;
@@ -2612,6 +3140,12 @@ const groups = [
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 1rem;
+    }
+    .p-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
     }
     .p-body h3 {
         font-size: 0.97rem;
@@ -2623,6 +3157,7 @@ const groups = [
         color: var(--text-secondary);
         line-height: 1.6;
         margin-bottom: 0.5rem;
+        flex: 1;
     }
     .p-dur {
         display: inline-flex;
@@ -2633,6 +3168,408 @@ const groups = [
         background: var(--bg-surface);
         padding: 0.2rem 0.6rem;
         border-radius: 100px;
+        width: fit-content;
+    }
+    .p-salones {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.75rem;
+        color: var(--c);
+        margin-top: 0.4rem;
+        font-weight: 600;
+        background: color-mix(in srgb, var(--c) 8%, transparent);
+        padding: 0.25rem 0.65rem;
+        border-radius: 100px;
+        width: fit-content;
+    }
+    .p-salones svg {
+        stroke: var(--c);
+    }
+
+    /* ── PRACTICA RICH (conexiones + expand) ─────────────────────── */
+    .practica-card.pc-rich {
+        transition: all 0.3s ease;
+    }
+    .practica-card.pc-rich:hover {
+        transform: translateY(-6px);
+    }
+    .practica-card.pc-rich.expanded {
+        transform: translateY(0);
+        grid-column: 1 / -1;
+    }
+    .practica-card.pc-rich.expanded .p-body {
+        display: grid;
+        grid-template-columns: minmax(300px, 400px) 1fr;
+        gap: 2.5rem;
+        align-items: start;
+    }
+    .practica-card.pc-rich.expanded .p-body-left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .practica-card.pc-rich.expanded .p-expanded {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        padding-left: 2.5rem;
+        border-left: 2px solid var(--border);
+    }
+    .p-imgs-preview {
+        width: 100%;
+        margin-bottom: 0.75rem;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .p-preview-img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        display: block;
+    }
+    .p-connections {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--border);
+    }
+    .p-conn-row {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 0.75rem;
+    }
+    .p-conn-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+    .p-conn-prog {
+        font-weight: 600;
+        color: var(--text-primary);
+        white-space: nowrap;
+    }
+    .p-conn-detail {
+        font-size: 0.68rem;
+        color: var(--text-secondary);
+        margin-left: auto;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 130px;
+        font-family: monospace;
+    }
+    .p-expanded {
+        display: none;
+        animation: expandIn 0.3s ease;
+    }
+    @keyframes expandIn {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .p-expanded.open { 
+        display: block; 
+    }
+    .p-exp-imgs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .p-exp-img-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .p-exp-img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .p-exp-img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .p-exp-img-cap {
+        font-size: 0.72rem;
+        color: var(--text-secondary);
+        text-align: center;
+        line-height: 1.3;
+        font-weight: 500;
+    }
+    .p-exp-sec-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-secondary);
+        margin-bottom: 0.75rem;
+        margin-top: 0.5rem;
+    }
+    .p-exp-grupos {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .p-exp-materia {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .p-exp-materia-details {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 0.75rem;
+    }
+    .p-exp-materia-details[open] {
+        border-color: var(--c);
+    }
+    .p-exp-materia-summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.85rem 1rem;
+        cursor: pointer;
+        user-select: none;
+        list-style: none;
+        background: var(--bg-surface);
+        transition: all 0.2s;
+    }
+    .p-exp-materia-summary::-webkit-details-marker {
+        display: none;
+    }
+    .p-exp-materia-summary:hover {
+        background: var(--bg-card);
+    }
+    .p-exp-mat-name-toggle {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--text-primary);
+    }
+    .p-exp-chevron-mat {
+        flex-shrink: 0;
+        transition: transform 0.2s;
+        opacity: 0.5;
+        stroke: var(--c);
+    }
+    .p-exp-materia-details[open] .p-exp-chevron-mat {
+        transform: rotate(180deg);
+    }
+    .p-exp-mat-name {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    .p-exp-grupos-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        padding: 0.75rem 1rem 1rem 1rem;
+    }
+    .p-exp-grupo-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.75rem 0.9rem;
+        background: var(--bg-surface);
+        border: 1px solid;
+        border-radius: 8px;
+        transition: all 0.2s;
+    }
+    .p-exp-grupo-card:hover {
+        background: var(--bg-card);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .p-exp-grupo {
+        font-size: 0.7rem;
+        font-weight: 600;
+        font-family: monospace;
+        padding: 0.3rem 0.7rem;
+        border-radius: 6px;
+        border: 1px solid;
+    }
+    .p-exp-grupo-badge {
+        font-size: 0.75rem;
+        font-weight: 700;
+        font-family: monospace;
+        padding: 0.3rem 0.7rem;
+        border-radius: 5px;
+        width: fit-content;
+    }
+    .p-exp-mini-horario {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem 0.9rem 0.75rem 0.9rem;
+        border-top: 1px solid var(--border);
+    }
+    .p-exp-horario-row {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        gap: 0.6rem;
+        align-items: start;
+    }
+    .p-exp-dia {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        text-transform: capitalize;
+    }
+    .p-exp-horario-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .p-exp-clase-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.68rem;
+        color: var(--text-secondary);
+        flex-wrap: wrap;
+    }
+    .p-exp-hora {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-family: monospace;
+        min-width: 45px;
+    }
+    .p-exp-salon-maestro {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-weight: 600;
+        color: var(--c);
+    }
+    .p-exp-salon-maestro svg {
+        flex-shrink: 0;
+    }
+    .p-exp-maestro-mini {
+        font-size: 0.65rem;
+        color: var(--text-tertiary);
+    }
+
+    /* ── UBICACIÓN / CÓMO LLEGAR ──────────────────────────────────── */
+    .p-exp-ubicacion {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+    }
+    .p-exp-ubicacion-details {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 0.6rem;
+    }
+    .p-exp-ubicacion-details[open] {
+        border-color: var(--c);
+    }
+    .p-exp-ubicacion-summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 0.9rem;
+        cursor: pointer;
+        user-select: none;
+        list-style: none;
+        transition: all 0.2s;
+    }
+    .p-exp-ubicacion-summary::-webkit-details-marker {
+        display: none;
+    }
+    .p-exp-ubicacion-summary:hover {
+        background: var(--bg-card);
+    }
+    .p-exp-ubicacion-salon {
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: var(--c);
+        font-family: monospace;
+    }
+    .p-exp-chevron-ubi {
+        flex-shrink: 0;
+        transition: transform 0.2s;
+        opacity: 0.5;
+        stroke: var(--c);
+    }
+    .p-exp-ubicacion-details[open] .p-exp-chevron-ubi {
+        transform: rotate(180deg);
+    }
+    .p-exp-ruta-pasos {
+        padding: 0.75rem 0.9rem 0.9rem 0.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    .p-exp-paso {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        grid-template-rows: auto auto;
+        gap: 0.4rem 0.6rem;
+        align-items: start;
+    }
+    .p-exp-paso-num {
+        grid-row: 1 / 3;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--c);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+    .p-exp-paso-num.alt {
+        background: color-mix(in srgb, var(--c) 70%, transparent);
+    }
+    .p-exp-paso-img {
+        grid-column: 2;
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+    }
+    .p-exp-paso-desc {
+        grid-column: 2;
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+    .p-exp-alternativa {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px dashed var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    .p-exp-alt-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
 
     /* ── HORARIO ──────────────────────────────────────────────────── */
@@ -2857,6 +3794,14 @@ const groups = [
         font-size: 0.7rem;
         color: var(--text-secondary);
         line-height: 1.3;
+    }
+    .hd-salon {
+        font-size: 0.68rem;
+        color: var(--text-tertiary);
+        font-weight: 600;
+        margin-top: 0.15rem;
+        display: inline-block;
+        opacity: 0.85;
     }
 
     /* Asesorías collapsible */
@@ -3089,6 +4034,19 @@ const groups = [
         overflow: hidden;
         text-overflow: ellipsis;
     }
+    .se-salon-grupo {
+        font-size: 0.7rem;
+        color: var(--text-tertiary);
+        font-weight: 600;
+        padding: 0.15rem 0.4rem;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 0.1rem;
+    }
+    :global([data-theme="dark"]) .se-salon-grupo {
+        background: rgba(255, 255, 255, 0.08);
+    }
     .se-fuera-horario {
         font-size: 0.85rem;
         color: var(--text-secondary);
@@ -3138,6 +4096,38 @@ const groups = [
         border-radius: 50%;
         background: var(--c);
         flex-shrink: 0;
+    }
+
+    /* ── HOVER FILTER – CARRERAS / MATERIAS ──────────────────────── */
+    .carrera-item {
+        cursor: pointer;
+        border-radius: 6px;
+        padding-left: 0.2rem;
+        transition: background 0.2s, opacity 0.2s, transform 0.15s;
+    }
+    .carrera-item:hover {
+        background: color-mix(in srgb, var(--c) 10%, transparent);
+        transform: translateX(3px);
+    }
+    /* When a carrera is hovered, dim all materias by default */
+    .carreras-list.is-filtering ~ * .materia-item,
+    #carreras-materias-panel.is-filtering .materia-item {
+        opacity: 0.22;
+        transition: opacity 0.2s;
+    }
+    /* Highlighted materia */
+    #carreras-materias-panel.is-filtering .materia-item.match {
+        opacity: 1;
+        font-weight: 600;
+    }
+    /* Dimmed carrera when another is hovered */
+    #carreras-materias-panel.is-filtering .carrera-item {
+        opacity: 0.35;
+        transition: opacity 0.2s, transform 0.15s;
+    }
+    #carreras-materias-panel.is-filtering .carrera-item.active-carrera {
+        opacity: 1;
+        font-weight: 700;
     }
 
     /* ── ESPECIALIDADES SISTEMAS ─────────────────────────────────── */
@@ -4469,6 +5459,10 @@ const groups = [
                         !libre && typeof celda === "object" && celda
                             ? celda.materia || ""
                             : "";
+                    const grupo =
+                        !libre && typeof celda === "object" && celda && celda.grupo
+                            ? celda.grupo
+                            : "";
                     return `
                     <div class="se-salon ${libre ? "libre" : "ocupado"}">
                         <span class="se-salon-id">${a.aula}</span>
@@ -4476,6 +5470,11 @@ const groups = [
                         ${
                             detail
                                 ? `<span class="se-salon-clase">${detail}</span>`
+                                : ""
+                        }
+                        ${
+                            grupo
+                                ? `<span class="se-salon-grupo">${grupo}</span>`
                                 : ""
                         }
                     </div>`;
@@ -4570,5 +5569,224 @@ const groups = [
             }
         };
         document.head.appendChild(scriptEl);
+    })();
+
+    /* ── EXPAND – Práctica cards (click en toda la tarjeta) ──────────────────────────────────── */
+    document.querySelectorAll('.practica-card.pc-rich').forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Evitar que se active si se hace click en un link, imagen o details/summary dentro
+            const target = e.target as HTMLElement;
+            if (target.tagName === 'A' || target.tagName === 'IMG') return;
+            if (target.tagName === 'SUMMARY' || target.closest('summary')) return;
+            if (target.closest('details')) return;
+            
+            const expanded = card.querySelector('.p-expanded') as HTMLElement | null;
+            if (!expanded) return;
+            
+            const isOpen = expanded.classList.contains('open');
+            
+            // Cerrar todas las demás tarjetas expandidas
+            document.querySelectorAll('.practica-card.pc-rich').forEach(otherCard => {
+                if (otherCard !== card) {
+                    const otherExpanded = otherCard.querySelector('.p-expanded') as HTMLElement | null;
+                    if (otherExpanded) {
+                        otherExpanded.classList.remove('open');
+                        otherCard.classList.remove('expanded');
+                    }
+                }
+            });
+            
+            // Toggle la tarjeta actual
+            expanded.classList.toggle('open', !isOpen);
+            card.classList.toggle('expanded', !isOpen);
+        });
+        
+        // Agregar cursor pointer para indicar que es clickeable
+        (card as HTMLElement).style.cursor = 'pointer';
+    });
+
+    /* ── HOVER FILTER – Sistemas (data-carreras + FLIP reorder) ───── */
+    (function () {
+        const panel = document.getElementById('carreras-materias-panel');
+        if (!panel) return;
+
+        const materiaItems = Array.from(panel.querySelectorAll('.materia-item')) as HTMLElement[];
+        const hasSistemas = materiaItems.some(li => li.hasAttribute('data-carreras'));
+        if (!hasSistemas) return;
+
+        const carreraItems = Array.from(panel.querySelectorAll('.carrera-item')) as HTMLElement[];
+        const matList = panel.querySelector('.materias-list') as HTMLElement | null;
+        if (!matList) return;
+
+        // Make the list a flex column so CSS order works
+        matList.style.display = 'flex';
+        matList.style.flexDirection = 'column';
+
+        function applyFilter(carreraText: string) {
+            // First: snapshot positions
+            const before = new Map<HTMLElement, number>();
+            materiaItems.forEach(li => before.set(li, li.getBoundingClientRect().top));
+
+            // Apply order
+            materiaItems.forEach(li => {
+                const attr = li.getAttribute('data-carreras') || '';
+                const matches = carreraText
+                    ? attr.split('|').some(c => c === carreraText)
+                    : false;
+                li.classList.toggle('match', matches);
+                li.style.order = carreraText ? (matches ? '-1' : '1') : '';
+            });
+
+            // FLIP: invert & play
+            materiaItems.forEach(li => {
+                const delta = (before.get(li) ?? 0) - li.getBoundingClientRect().top;
+                if (delta === 0) return;
+                li.style.transition = 'none';
+                li.style.transform = `translateY(${delta}px)`;
+                requestAnimationFrame(() => {
+                    li.style.transition = 'transform 0.28s cubic-bezier(0.4,0,0.2,1), opacity 0.2s';
+                    li.style.transform = '';
+                });
+            });
+        }
+
+        function clearFilter() {
+            // Snapshot before restore
+            const before = new Map<HTMLElement, number>();
+            materiaItems.forEach(li => before.set(li, li.getBoundingClientRect().top));
+
+            materiaItems.forEach(li => {
+                li.classList.remove('match');
+                li.style.order = '';
+            });
+
+            // FLIP back
+            materiaItems.forEach(li => {
+                const delta = (before.get(li) ?? 0) - li.getBoundingClientRect().top;
+                if (delta === 0) return;
+                li.style.transition = 'none';
+                li.style.transform = `translateY(${delta}px)`;
+                requestAnimationFrame(() => {
+                    li.style.transition = 'transform 0.28s cubic-bezier(0.4,0,0.2,1), opacity 0.2s';
+                    li.style.transform = '';
+                });
+            });
+        }
+
+        carreraItems.forEach(carreraLi => {
+            carreraLi.addEventListener('mouseenter', () => {
+                const carreraText = carreraLi.getAttribute('data-carrera') || '';
+                panel.classList.add('is-filtering');
+                carreraItems.forEach(li => li.classList.remove('active-carrera'));
+                carreraLi.classList.add('active-carrera');
+                applyFilter(carreraText);
+            });
+            carreraLi.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                    if (!panel.matches(':hover')) {
+                        panel.classList.remove('is-filtering');
+                        carreraItems.forEach(li => li.classList.remove('active-carrera'));
+                        clearFilter();
+                    }
+                }, 80);
+            });
+        });
+
+        panel.addEventListener('mouseleave', () => {
+            panel.classList.remove('is-filtering');
+            carreraItems.forEach(li => li.classList.remove('active-carrera'));
+            clearFilter();
+        });
+    })();
+
+    /* ── HOVER FILTER – Carreras ↔ Materias (física/química + FLIP) ── */
+    (function () {
+        const panel = document.getElementById('carreras-materias-panel');
+        if (!panel) return;
+
+        const carreraItems = Array.from(panel.querySelectorAll('.carrera-item')) as HTMLElement[];
+        const materiaItems = Array.from(panel.querySelectorAll('.materia-item')) as HTMLElement[];
+
+        const hasSuffix = materiaItems.some(li => li.textContent && li.textContent.includes(' – '));
+        if (!hasSuffix) return;
+
+        const matList = panel.querySelector('.materias-list') as HTMLElement | null;
+        if (matList) {
+            matList.style.display = 'flex';
+            matList.style.flexDirection = 'column';
+        }
+
+        function flipReorder(matchFn: (li: HTMLElement) => boolean) {
+            const before = new Map<HTMLElement, number>();
+            materiaItems.forEach(li => before.set(li, li.getBoundingClientRect().top));
+
+            materiaItems.forEach(li => {
+                const matches = matchFn(li);
+                li.classList.toggle('match', matches);
+                li.style.order = matches ? '-1' : '1';
+            });
+
+            materiaItems.forEach(li => {
+                const delta = (before.get(li) ?? 0) - li.getBoundingClientRect().top;
+                if (delta === 0) return;
+                li.style.transition = 'none';
+                li.style.transform = `translateY(${delta}px)`;
+                requestAnimationFrame(() => {
+                    li.style.transition = 'transform 0.28s cubic-bezier(0.4,0,0.2,1), opacity 0.2s';
+                    li.style.transform = '';
+                });
+            });
+        }
+
+        function clearReorder() {
+            const before = new Map<HTMLElement, number>();
+            materiaItems.forEach(li => before.set(li, li.getBoundingClientRect().top));
+
+            materiaItems.forEach(li => {
+                li.classList.remove('match');
+                li.style.order = '';
+            });
+
+            materiaItems.forEach(li => {
+                const delta = (before.get(li) ?? 0) - li.getBoundingClientRect().top;
+                if (delta === 0) return;
+                li.style.transition = 'none';
+                li.style.transform = `translateY(${delta}px)`;
+                requestAnimationFrame(() => {
+                    li.style.transition = 'transform 0.28s cubic-bezier(0.4,0,0.2,1), opacity 0.2s';
+                    li.style.transform = '';
+                });
+            });
+        }
+
+        carreraItems.forEach(carreraLi => {
+            carreraLi.addEventListener('mouseenter', () => {
+                const carreraText = carreraLi.getAttribute('data-carrera') || '';
+                const keyword = carreraText.replace(/^Ingeniería\s+(en\s+|de\s+)?/i, '').trim();
+                panel.classList.add('is-filtering');
+                carreraItems.forEach(li => li.classList.remove('active-carrera'));
+                carreraLi.classList.add('active-carrera');
+                flipReorder(li => {
+                    const text = li.textContent || '';
+                    return text.includes(keyword) || text.includes(carreraText);
+                });
+            });
+
+            carreraLi.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                    if (!panel.matches(':hover')) {
+                        panel.classList.remove('is-filtering');
+                        carreraItems.forEach(li => li.classList.remove('active-carrera'));
+                        clearReorder();
+                    }
+                }, 80);
+            });
+        });
+
+        panel.addEventListener('mouseleave', () => {
+            panel.classList.remove('is-filtering');
+            carreraItems.forEach(li => li.classList.remove('active-carrera'));
+            clearReorder();
+        });
     })();
 </script>
