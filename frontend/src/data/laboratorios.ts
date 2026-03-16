@@ -251,7 +251,7 @@ export const laboratorios: Laboratorio[] = [
         ],
         aulas: [
             { id: "S-1", nombre: "Centro de Cómputo Principal", capacidad: 30, descripcion: "Aula principal del laboratorio con estaciones de trabajo PC con procesadores Intel Core i5/i7 o AMD Ryzen, pantallas de 21\" a 24\", acceso a internet de banda ancha." },
-            { id: "S-2", nombre: "Laboratorio de Redes", capacidad: 25, descripcion: "Equipado con switches y routers administrables para prácticas de redes; Cisco Packet Tracer, GNS3." },
+            { id: "S-2", nombre: "Laboratorio de Redes", capacidad: 25, descripcion: "Equipado con switches y routers administrables para prácticas de redes; Cisco Packet Tracer." },
             { id: "S-3", nombre: "Sala de Desarrollo y Bases de Datos", capacidad: 30, descripcion: "Estaciones con Visual Studio, Eclipse, IntelliJ IDEA, VS Code; bases de datos MySQL, SQL Server, Oracle Database." },
             { id: "S-4", nombre: "Laboratorio de Sistemas Operativos", capacidad: 20, descripcion: "Configurado con Windows 10/11, Ubuntu, CentOS para prácticas de instalación y administración de sistemas operativos." },
         ],
@@ -298,7 +298,7 @@ export const laboratorios: Laboratorio[] = [
         practicas: [
             { numero: 1, nombre: "Programación en lenguajes de alto nivel", descripcion: "Programación en Python, Java, C++, C# y ensamblador. Configuración de entornos de desarrollo (Visual Studio, Eclipse, IntelliJ IDEA, VS Code).", duracion: "4 horas" },
             { numero: 2, nombre: "Desarrollo y administración de bases de datos", descripcion: "Desarrollo y administración de bases de datos con MySQL, SQL Server y Oracle. Modelado, normalización e implementación de esquemas.", duracion: "5 horas" },
-            { numero: 3, nombre: "Configuración y administración de redes", descripcion: "Configuración y administración de redes computacionales usando Cisco Packet Tracer y GNS3. Switches, routers y protocolos de red.", duracion: "4 horas" },
+            { numero: 3, nombre: "Configuración y administración de redes", descripcion: "Configuración y administración de redes computacionales usando Cisco Packet Tracer. Switches, routers y protocolos de red.", duracion: "4 horas" },
             { numero: 4, nombre: "Diseño de interfaces y aplicaciones web", descripcion: "Diseño e implementación de interfaces hombre-máquina y aplicaciones web. Desarrollo front-end y back-end.", duracion: "5 horas" },
             { numero: 5, nombre: "Sistemas operativos", descripcion: "Prácticas de instalación, configuración y administración de Linux (Ubuntu, CentOS) y Windows Server.", duracion: "4 horas" },
             { numero: 6, nombre: "Proyectos de automatización e IoT", descripcion: "Proyectos de automatización, Internet de las Cosas (IoT) y cómputo en la nube (AWS, Google Cloud, Microsoft Azure).", duracion: "6 horas" },

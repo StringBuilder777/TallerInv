@@ -127,9 +127,10 @@ const _practicaImgs: Record<number, {src:string,caption:string}[]> = {
         {src:"/Img_lab_sis/salonlc1/practicaredes.jfif",caption:"Práctica de Redes"}
     ],
     4: [
-        {src:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",caption:"Desarrollo de Interfaces"},
         {src:"/Img_lab_sis/salonlc1/salonlc1.jfif",caption:"Salón LC1"},
-        {src:"/Img_lab_sis/salonlc1/salacomputo.jfif",caption:"Desarrollo de Interfaces"}
+        {src:"/Img_lab_sis/salonlc1/salacomputo.jfif",caption:"Desarrollo de Interfaces"},
+        {src:"/Img_lab_sis/salonlc1/salacomputo3.jfif",caption:"Estaciones de trabajo"},
+        {src:"/Img_lab_sis/salonlc1/equiposcomputo.jfif",caption:"Equipos de Cómputo"}
     ],
     5: [
         {src:"https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",caption:"Sistemas Operativos Linux"},
@@ -282,9 +283,11 @@ const practicasEnriquecidas = lab.practicas.map((p) => {
         if ((m.grupos_sistemas?.length ?? 0) > 0 || m.tipo === "exclusiva") {
             addC("Ingeniería en Sistemas Computacionales");
         }
-        // Para conexiones, solo agregar si NO es temática relacionada
+        // Para conexiones, solo agregar carreras que realmente usan el lab
         for (const con of m.conexiones ?? []) {
-            if (con.tipo_relacion === "tematica_relacionada") continue;
+            if (con.tipo_relacion === "tematica_relacionada" ||
+                con.tipo_relacion === "contenido_compartido" ||
+                con.tipo_relacion === "base_tematica") continue;
             // Ignorar "Todas las ingenierías" para evitar mostrar carreras que no usan el lab
             if (con.carrera === "Todas las ingenierías") continue;
             const full = _carreraKeyMap[con.carrera]; 
@@ -620,18 +623,18 @@ const groups = [
                                             ))}
                                         </div>
                                     )}
-                                </div>
-                                <div class="p-expanded">
                                     {p.imgs.length > 1 && (
-                                        <div class="p-exp-imgs">
+                                        <div class="p-left-gallery">
                                             {p.imgs.slice(1).map((img) => (
-                                                <div class="p-exp-img-wrap">
+                                                <div class="p-left-gallery-item">
                                                     <img src={img.src} alt={img.caption} loading="lazy" class="p-exp-img"/>
                                                     <span class="p-exp-img-cap">{img.caption}</span>
                                                 </div>
                                             ))}
                                         </div>
                                     )}
+                                </div>
+                                <div class="p-expanded">
                                     {p.materiasConGrupos.length > 0 && (
                                         <div class="p-exp-grupos">
                                             <div class="p-exp-sec-title">Grupos en horario</div>
@@ -747,6 +750,21 @@ const groups = [
                         </div>
                     ))
                 }
+            </div>
+
+            <!-- Modal overlay macOS-style para prácticas -->
+            <div class="practicas-overlay" id="practicas-overlay">
+                <div class="practicas-modal">
+                    <div class="practicas-modal-header">
+                        <div class="practicas-modal-dots">
+                            <div class="practicas-modal-dot practicas-modal-dot--close" id="modal-close-dot"></div>
+                            <div class="practicas-modal-dot practicas-modal-dot--min"></div>
+                            <div class="practicas-modal-dot practicas-modal-dot--max"></div>
+                        </div>
+                        <div class="practicas-modal-title" id="modal-title"></div>
+                    </div>
+                    <div class="practicas-modal-body" id="modal-body"></div>
+                </div>
             </div>
 
             {
@@ -3282,13 +3300,113 @@ const groups = [
         transform: translateY(-4px);
     }
     .practica-card.expanded {
-        grid-column: 1 / -1;
         transform: translateY(0);
-        order: -1;
     }
-    /* Cuando hay una tarjeta expandida, las demás se reordenan */
-    .practicas-grid:has(.practica-card.expanded) .practica-card:not(.expanded) {
-        order: 1;
+
+    /* ── MODAL OVERLAY (backdrop blur macOS-style) ────────────────── */
+    .practicas-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    .practicas-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .practicas-modal {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        width: 100%;
+        max-width: 900px;
+        max-height: 85vh;
+        overflow-y: auto;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255,255,255,0.05);
+        transform: scale(0.95) translateY(10px);
+        transition: transform 0.3s ease;
+        position: relative;
+    }
+    .practicas-overlay.active .practicas-modal {
+        transform: scale(1) translateY(0);
+    }
+    .practicas-modal-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        background: var(--bg-card);
+        border-radius: 16px 16px 0 0;
+        z-index: 2;
+    }
+    .practicas-modal-dots {
+        display: flex;
+        gap: 6px;
+    }
+    .practicas-modal-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+    .practicas-modal-dot--close { background: #ff5f57; cursor: pointer; }
+    .practicas-modal-dot--close:hover { background: #e0443e; }
+    .practicas-modal-dot--min { background: #febc2e; }
+    .practicas-modal-dot--max { background: #28c840; }
+    .practicas-modal-title {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        flex: 1;
+        text-align: center;
+        margin-right: 54px; /* offset for dots width so title is truly centered */
+    }
+    .practicas-modal-body {
+        padding: 1.5rem;
+    }
+    .practicas-modal-body .p-body {
+        display: grid;
+        grid-template-columns: minmax(280px, 380px) 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+    .practicas-modal-body .p-body-left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .practicas-modal-body .p-expanded {
+        display: block !important;
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        padding-left: 2rem;
+        border-left: 2px solid var(--border);
+        animation: expandIn 0.3s ease;
+    }
+    @media (max-width: 768px) {
+        .practicas-overlay { padding: 1rem; }
+        .practicas-modal { max-height: 90vh; }
+        .practicas-modal-body .p-body {
+            grid-template-columns: 1fr;
+        }
+        .practicas-modal-body .p-expanded {
+            padding-left: 0;
+            border-left: none;
+            border-top: 2px solid var(--border);
+            padding-top: 1.5rem;
+        }
     }
     .p-num {
         flex-shrink: 0;
@@ -3348,34 +3466,28 @@ const groups = [
         stroke: var(--c);
     }
 
+    /* ── Galería izquierda (solo visible en modal) ──────────────── */
+    .p-left-gallery {
+        display: none;
+    }
+    .practicas-modal-body .p-left-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+    .p-left-gallery-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
     /* ── PRACTICA RICH (conexiones + expand) ─────────────────────── */
     .practica-card.pc-rich {
         transition: all 0.3s ease;
     }
     .practica-card.pc-rich:hover {
         transform: translateY(-6px);
-    }
-    .practica-card.pc-rich.expanded {
-        transform: translateY(0);
-        grid-column: 1 / -1;
-    }
-    .practica-card.pc-rich.expanded .p-body {
-        display: grid;
-        grid-template-columns: minmax(300px, 400px) 1fr;
-        gap: 2.5rem;
-        align-items: start;
-    }
-    .practica-card.pc-rich.expanded .p-body-left {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    .practica-card.pc-rich.expanded .p-expanded {
-        margin-top: 0;
-        padding-top: 0;
-        border-top: none;
-        padding-left: 2.5rem;
-        border-left: 2px solid var(--border);
     }
     .p-imgs-preview {
         width: 100%;
@@ -3389,6 +3501,7 @@ const groups = [
         height: 160px;
         object-fit: cover;
         display: block;
+        transition: transform 0.2s, box-shadow 0.2s;
     }
     .p-connections {
         display: flex;
@@ -3461,10 +3574,12 @@ const groups = [
         border: 1px solid var(--border);
         transition: transform 0.2s, box-shadow 0.2s;
     }
-    .p-exp-img:hover {
+    .p-exp-img:hover, .p-preview-img:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        cursor: zoom-in;
     }
+
     .p-exp-img-cap {
         font-size: 0.72rem;
         color: var(--text-secondary);
@@ -3710,6 +3825,12 @@ const groups = [
         height: auto;
         border-radius: 6px;
         border: 1px solid var(--border);
+        cursor: zoom-in;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .p-exp-paso-img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
     .p-exp-paso-desc {
         grid-column: 2;
@@ -4656,80 +4777,6 @@ const groups = [
         transform: translateY(0);
     }
 
-    /* Lightbox */
-    .gallery-lightbox {
-        display: none;
-        position: fixed;
-        inset: 0;
-        z-index: 1000;
-        background: rgba(0, 0, 0, 0.88);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1.5rem;
-    }
-    .gallery-lightbox.open {
-        display: flex;
-    }
-    .gallery-lightbox img {
-        max-width: 90vw;
-        max-height: 80vh;
-        object-fit: contain;
-        border-radius: 12px;
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
-    }
-    .gallery-lightbox-caption {
-        color: rgba(255, 255, 255, 0.75);
-        font-size: 0.9rem;
-        text-align: center;
-    }
-    .gallery-lightbox-close {
-        position: absolute;
-        top: 1.25rem;
-        right: 1.5rem;
-        background: rgba(255, 255, 255, 0.12);
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        color: #fff;
-        transition: background 0.2s;
-    }
-    .gallery-lightbox-close:hover {
-        background: rgba(255, 255, 255, 0.25);
-    }
-    .gallery-lightbox-nav {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.12);
-        border: none;
-        border-radius: 50%;
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        color: #fff;
-        transition: background 0.2s;
-    }
-    .gallery-lightbox-nav:hover {
-        background: rgba(255, 255, 255, 0.25);
-    }
-    .gallery-lightbox-prev {
-        left: 1rem;
-    }
-    .gallery-lightbox-next {
-        right: 1rem;
-    }
 
     /* ── ORGANIZACION ─────────────────────────────────────────────── */
     .org-tree {
@@ -5335,6 +5382,83 @@ const groups = [
     }
 </style>
 
+<style is:global>
+    /* Lightbox – global porque se crea dinámicamente via JS */
+    .gallery-lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1100;
+        background: rgba(0, 0, 0, 0.88);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    .gallery-lightbox.open {
+        display: flex;
+    }
+    .gallery-lightbox img {
+        max-width: 90vw;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    }
+    .gallery-lightbox-caption {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    .gallery-lightbox-close {
+        position: absolute;
+        top: 1.25rem;
+        right: 1.5rem;
+        background: rgba(255, 255, 255, 0.12);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #fff;
+        transition: background 0.2s;
+    }
+    .gallery-lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+    .gallery-lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.12);
+        border: none;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #fff;
+        transition: background 0.2s;
+    }
+    .gallery-lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+    .gallery-lightbox-prev {
+        left: 1rem;
+    }
+    .gallery-lightbox-next {
+        right: 1rem;
+    }
+</style>
+
 <script>
     // ── ATROPOS 3D TILT (Historia) ─────────────────────────────────────────
     import Atropos from "atropos";
@@ -5482,6 +5606,41 @@ const groups = [
                         );
                     });
             });
+
+        // ── Abrir lightbox para una sola imagen (modal prácticas, rutas, etc.) ──
+        function openSingle(src: string, caption: string) {
+            items = [{ src, caption }];
+            current = 0;
+            show();
+        }
+
+        // Click en imágenes dentro del modal de prácticas
+        const modalBody = document.getElementById('modal-body');
+        if (modalBody) {
+            modalBody.addEventListener('click', (e) => {
+                const img = (e.target as HTMLElement).closest('.p-exp-img, .p-preview-img') as HTMLImageElement | null;
+                if (!img) return;
+                e.stopPropagation();
+                openSingle(img.src, img.alt);
+            });
+        }
+
+        // Click en imágenes de rutas "como llegar" dentro del modal
+        document.addEventListener('click', (e) => {
+            const img = (e.target as HTMLElement).closest('.p-exp-paso-img') as HTMLImageElement | null;
+            if (!img) return;
+            e.stopPropagation();
+            // Recoger todas las imágenes de la misma ruta para navegar
+            const rutaContainer = img.closest('.p-exp-ruta-pasos');
+            if (rutaContainer) {
+                const allImgs = Array.from(rutaContainer.querySelectorAll<HTMLImageElement>('.p-exp-paso-img'));
+                items = allImgs.map(i => ({ src: i.src, caption: i.alt }));
+                current = allImgs.indexOf(img);
+                show();
+            } else {
+                openSingle(img.src, img.alt);
+            }
+        });
     })();
 
     // ── HERO PARTICLES ─────────────────────────────────────────────────────
@@ -5845,39 +6004,63 @@ const groups = [
         document.head.appendChild(scriptEl);
     })();
 
-    /* ── EXPAND – Práctica cards (click en toda la tarjeta) ──────────────────────────────────── */
-    document.querySelectorAll('.practica-card.pc-rich').forEach(card => {
-        card.addEventListener('click', (e) => {
-            // Evitar que se active si se hace click en un link, imagen o details/summary dentro
-            const target = e.target as HTMLElement;
-            if (target.tagName === 'A' || target.tagName === 'IMG') return;
-            if (target.tagName === 'SUMMARY' || target.closest('summary')) return;
-            if (target.closest('details')) return;
-            
-            const expanded = card.querySelector('.p-expanded') as HTMLElement | null;
-            if (!expanded) return;
-            
-            const isOpen = expanded.classList.contains('open');
-            
-            // Cerrar todas las demás tarjetas expandidas
-            document.querySelectorAll('.practica-card.pc-rich').forEach(otherCard => {
-                if (otherCard !== card) {
-                    const otherExpanded = otherCard.querySelector('.p-expanded') as HTMLElement | null;
-                    if (otherExpanded) {
-                        otherExpanded.classList.remove('open');
-                        otherCard.classList.remove('expanded');
-                    }
-                }
+    /* ── EXPAND – Práctica cards → modal macOS-style ──────────────────────────────────── */
+    const overlay = document.getElementById('practicas-overlay');
+    const modalBody = document.getElementById('modal-body');
+    const modalTitle = document.getElementById('modal-title');
+    const modalCloseDot = document.getElementById('modal-close-dot');
+
+    function closeModal() {
+        if (!overlay) return;
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => { if (modalBody) modalBody.innerHTML = ''; }, 300);
+    }
+
+    if (overlay && modalBody && modalTitle && modalCloseDot) {
+        // Click en card → abrir modal
+        document.querySelectorAll('.practica-card.pc-rich').forEach(card => {
+            (card as HTMLElement).style.cursor = 'pointer';
+            card.addEventListener('click', (e) => {
+                const target = e.target as HTMLElement;
+                if (target.tagName === 'A' || target.tagName === 'IMG') return;
+                if (target.tagName === 'SUMMARY' || target.closest('summary')) return;
+                if (target.closest('details')) return;
+
+                // Clonar contenido de la card al modal
+                const numEl = card.querySelector('.p-num');
+                const bodyEl = card.querySelector('.p-body');
+                if (!bodyEl) return;
+
+                const titleText = card.querySelector('h3')?.textContent || 'Práctica';
+                const numText = numEl?.textContent || '';
+                modalTitle.textContent = `Práctica ${numText} — ${titleText}`;
+
+                const clone = bodyEl.cloneNode(true) as HTMLElement;
+                // Mostrar la sección expandida en el clone
+                const expEl = clone.querySelector('.p-expanded');
+                if (expEl) expEl.classList.add('open');
+                modalBody.innerHTML = '';
+                modalBody.appendChild(clone);
+
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
-            
-            // Toggle la tarjeta actual
-            expanded.classList.toggle('open', !isOpen);
-            card.classList.toggle('expanded', !isOpen);
         });
-        
-        // Agregar cursor pointer para indicar que es clickeable
-        (card as HTMLElement).style.cursor = 'pointer';
-    });
+
+        // Cerrar con el dot rojo
+        modalCloseDot.addEventListener('click', closeModal);
+
+        // Cerrar al hacer click en el overlay (fuera del modal)
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeModal();
+        });
+
+        // Cerrar con Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
+        });
+    }
 
     /* ── HOVER FILTER – Sistemas (data-carreras + FLIP reorder) ───── */
     (function () {
