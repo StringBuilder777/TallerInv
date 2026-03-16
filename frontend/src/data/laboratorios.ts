@@ -194,11 +194,11 @@ export const laboratorios: Laboratorio[] = [
             "Inclusión y respeto a la diversidad",
             "Prevención de la contaminación y cuidado del medio ambiente",
         ],
-        historia: "En sus inicios no era el laboratorio de cómputo que conocemos hoy en día, solían ser las oficinas administrativas de sistemas computacionales, posteriormente pasó a ser el edificio de centro de cómputo, se dividió entre centro de cómputo y laboratorio de cómputo y finalmente por las necesidades del momento, pasó a ser el laboratorio de cómputo.",
+        historia: "El espacio que hoy alberga el laboratorio de cómputo tuvo un origen muy distinto: comenzó como las oficinas administrativas del Departamento de Sistemas Computacionales. Con el paso del tiempo, el edificio fue reconvertido en el Centro de Cómputo del instituto. Más adelante, ante la creciente demanda académica, se dividió en dos áreas: el Centro de Cómputo y el Laboratorio de Cómputo. Finalmente, las necesidades de formación práctica llevaron a destinar el edificio completo como el Laboratorio de Cómputo que conocemos actualmente. — Ing. Sergio Arturo Mendoza Morales, Jefe del Laboratorio",
         ubicacion: "República, 25260 Saltillo, Coah.",
         contacto: {
-            responsable: "Mendoza Morales Sergio Arturo",
-            email: "sonia.yi@saltillo.tecnm.mx",
+            responsable: "Ing. Mendoza Morales Sergio Arturo",
+            email: "sonia.rl@saltillo.tecnm.mx",
             telefono: "844 288-94-60 / 844 402-0840",
             extension: "Consultar en Subdirección Académica",
         },
@@ -269,7 +269,7 @@ export const laboratorios: Laboratorio[] = [
             { nombre: "Impresoras y periféricos", cantidad: 4, descripcion: "Disponibles según la práctica y autorización del encargado." },
         ],
         organizacion: {
-            jefe: "M.C. Luis Javier Mona Peña – Jefe de Departamento de Sistemas Computacionales | Mendoza Morales Sergio Arturo – Jefe del Laboratorio",
+            jefe: "M.C. Luis Javier Mona Peña – Jefe de Departamento de Sistemas Computacionales | Ing. Sergio Arturo Mendoza Morales – Jefe del Laboratorio",
             coordinadores: ["Sonia Judith Rivera López – Secretaria"],
             tecnicos: ["Ricardo Rodríguez – Aux. Soporte Técnico (Software)", "Gilberto Alemán – Aux. Soporte Técnico (Impresión)", "Flavio Covarrubias – Aux. Soporte Técnico (Impresión)", "Israel Nojera – Soporte, Limpieza y Mantenimiento"],
         },
@@ -284,8 +284,8 @@ export const laboratorios: Laboratorio[] = [
                 foto: "/Mona.png"
             },
             jefeLabor: {
-                nombre: "Sergio Arturo Mendoza Morales",
-                rol: "Docente",
+                nombre: "Ing. Sergio Arturo Mendoza Morales",
+                rol: "Jefe del Laboratorio",
                 ubicacion_codigo: "968",
                 email: "sergio.mm@saltillo.tecnm.mx",
                 telefono: "8444389500",
@@ -336,7 +336,7 @@ export const laboratorios: Laboratorio[] = [
             { nombre: "Premio Santander", organismo: "Banco Santander", descripcion: "Categoría Proyecto de Negocios con Impacto Social, otorgado a un estudiante del ITS." },
             { nombre: "Membresía TecNM", organismo: "Tecnológico Nacional de México", descripcion: "Integración al Tecnológico Nacional de México con reporte periódico de auditorías internas y certificaciones." },
         ],
-        buzonSugerencias: "Para quejas, sugerencias o propuestas de mejora, contactar a Sonia Judith Rivera López (Secretaría del Laboratorio) o enviar correo a: sonia.yi@saltillo.tecnm.mx. También se dispone de buzón físico de sugerencias en el edificio administrativo del campus y sistema de quejas en el portal oficial saltillo.tecnm.mx.",
+        buzonSugerencias: "Para quejas, sugerencias o propuestas de mejora, contactar a Sonia Judith Rivera López (Secretaría del Laboratorio) o enviar correo a: sonia.rl@saltillo.tecnm.mx. También se dispone de buzón físico de sugerencias en el edificio administrativo del campus y sistema de quejas en el portal oficial saltillo.tecnm.mx.",
         horariosDetallados: horariosData as unknown as HorariosDetallados,
     },
 
@@ -368,10 +368,10 @@ export const laboratorios: Laboratorio[] = [
         historia: "Establecido en 1972 como parte de los laboratorios fundadores del ITS, el Laboratorio de Física ha sido pilar en la formación básica de todos los ingenieros de la institución. Su primera dotación incluyó equipos de mecánica y óptica básica. En 2010 fue completamente renovado con fondos Promep, incorporando equipos digitales de última generación. En 2018 se incorporó la sala de electromagnetismo avanzada con osciloscopios digitales Tektronix.",
         ubicacion: "República, 25260 Saltillo, Coah.",
         contacto: {
-            responsable: "Departamento de Ciencias Básicas",
-            email: "sonia.yi@saltillo.tecnm.mx",
-            telefono: "844 288-94-60 / 844 402-0840",
-            extension: "Consultar en Subdirección Académica",
+            responsable: "Mtro. Daniel Salas Rodríguez",
+            email: "gloria.mm@saltillo.tecnm.mx",
+            telefono: "8442889460",
+            extension: "1033",
         },
         carreras: [
             "Ingeniería en Sistemas Computacionales",
@@ -453,7 +453,7 @@ export const laboratorios: Laboratorio[] = [
             { nombre: "Pasco Scientific Training", organismo: "Pasco Scientific", descripcion: "Personal certificado en el uso y mantenimiento de equipos Pasco DataStudio." },
             { nombre: "Calibración de Instrumentos ISO 9001", organismo: "CENAM", descripcion: "Instrumentos de medición calibrados y trazables al patrón nacional de medidas." },
         ],
-        buzonSugerencias: "Para quejas, sugerencias o propuestas de mejora, contactar a Sonia Judith Rivera López (Secretaría del Laboratorio) o enviar correo a: sonia.yi@saltillo.tecnm.mx. También se dispone de buzón físico de sugerencias en el edificio administrativo del campus y sistema de quejas en el portal oficial saltillo.tecnm.mx.",
+        buzonSugerencias: "Para quejas, sugerencias o propuestas de mejora, contactar al Departamento de Ciencias Básicas con el Mtro. Daniel Salas Rodríguez o enviar correo a: gloria.mm@saltillo.tecnm.mx. Tel: 8442889460 Ext. 1033. También se dispone de buzón físico de sugerencias en el edificio administrativo del campus y sistema de quejas en el portal oficial saltillo.tecnm.mx.",
     },
 
     {
@@ -485,10 +485,10 @@ export const laboratorios: Laboratorio[] = [
         historia: "El Laboratorio de Química pertenece al Departamento de Ciencias Básicas del Instituto Tecnológico de Saltillo (TecNM – Campus Saltillo). El ITS fue fundado en 1950 y ha formado generaciones de ingenieros con sólidas bases científicas. El laboratorio ha evolucionado con la institución, incorporando equipamiento moderno y adoptando normas de seguridad y calidad ambiental conforme a la política institucional de prevención de la contaminación y cumplimiento de requisitos legales aplicables.",
         ubicacion: "República, 25260 Saltillo, Coah.",
         contacto: {
-            responsable: "Departamento de Ciencias Básicas",
-            email: "sonia.yi@saltillo.tecnm.mx",
-            telefono: "844 288-94-60 / 844 402-0840",
-            extension: "Consultar en Subdirección Académica",
+            responsable: "Mtro. Daniel Salas Rodríguez",
+            email: "gloria.mm@saltillo.tecnm.mx",
+            telefono: "8442889460",
+            extension: "1033",
         },
         carreras: [
             "Ingeniería en Sistemas Computacionales",
@@ -579,7 +579,7 @@ export const laboratorios: Laboratorio[] = [
             { nombre: "NOM-087-SEMARNAT – Residuos Peligrosos", organismo: "SEMARNAT", descripcion: "Laboratorio certificado en el manejo y disposición correcta de residuos peligrosos biológico-infecciosos." },
             { nombre: "Plan de Emergencias Químicas", organismo: "Protección Civil Coahuila", descripcion: "Personal capacitado y plan de acción ante emergencias por derrames o exposición a sustancias." },
         ],
-        buzonSugerencias: "Para quejas, sugerencias o propuestas de mejora, contactar a Sonia Judith Rivera López (Secretaría del Laboratorio) o enviar correo a: sonia.yi@saltillo.tecnm.mx. También se dispone de buzón físico de sugerencias en el edificio administrativo del campus y sistema de quejas en el portal oficial saltillo.tecnm.mx.",
+        buzonSugerencias: "Para quejas, sugerencias o propuestas de mejora, contactar al Departamento de Ciencias Básicas con el Mtro. Daniel Salas Rodríguez o enviar correo a: gloria.mm@saltillo.tecnm.mx. Tel: 8442889460 Ext. 1033. También se dispone de buzón físico de sugerencias en el edificio administrativo del campus y sistema de quejas en el portal oficial saltillo.tecnm.mx.",
         horariosDetallados: {
             institucion: quimicaData.institucion.nombre,
             periodo: quimicaData.laboratorio.periodo,
